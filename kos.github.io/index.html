@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>向可信软件时代进军 —— 建设中国可信软件产业</title>
+  <meta name="description" content="软件不仅要能够运行，更必须值得信任。KOS-TL 可信软件宣言：关于建设中国新一代可信软件基础设施。"/>
+  <meta property="og:title" content="向可信软件时代进军"/>
+  <meta property="og:description" content="建设中国可信软件产业。软件不仅要能够运行，更必须值得信任。"/>
+  <meta property="og:type" content="article"/>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect fill='%238c1c13' width='64' height='64' rx='4'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-size='32' fill='%23f4ead5' font-family='serif'%3E信%3C/text%3E%3C/svg%3E"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Noto+Serif+SC:wght@400;500;600;700;900&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --paper: #f3ead6;
+      --paper-2: #ebe1c8;
+      --ink: #1c1712;
+      --ink-soft: #3a3229;
+      --muted: #6b5e4e;
+      --cinnabar: #9e1c14;
+      --cinnabar-deep: #6e120d;
+      --gold: #8a6a32;
+      --rule: #d7c7a8;
+      --card: #fff8ea;
+      --shadow: rgba(40, 24, 8, .12);
+      --max: 42rem;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 600px at 12% -10%, rgba(158,28,20,.06), transparent 55%),
+        radial-gradient(900px 500px at 110% 8%, rgba(138,106,50,.08), transparent 50%),
+        var(--paper);
+      font-family: "Noto Serif SC", "Songti SC", "SimSun", serif;
+      font-size: 18px;
+      line-height: 1.9;
+      letter-spacing: .02em;
+    }
+    body::before {
+      content: "";
+      position: fixed; inset: 0; pointer-events: none; z-index: 8; opacity: .18;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+    }
+    a { color: var(--cinnabar); text-underline-offset: .18em; }
+    a:hover { color: var(--cinnabar-deep); }
+    .skip {
+      position: absolute; left: -999px; top: 0;
+    }
+    .skip:focus { left: 12px; background: var(--card); padding: 8px 12px; z-index: 20; }
+    .topbar {
+      position: sticky; top: 0; z-index: 12;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; padding: 10px 28px;
+      background: color-mix(in srgb, var(--paper) 88%, transparent);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .brand {
+      display: flex; align-items: baseline; gap: 12px;
+      text-decoration: none; color: inherit;
+    }
+    .brand b {
+      font-family: Syne, sans-serif;
+      letter-spacing: .18em;
+      font-size: 13px;
+      color: var(--cinnabar);
+    }
+    .brand span { color: var(--muted); font-size: 13px; }
+    .topbar nav { display: flex; gap: 18px; font-size: 13px; }
+    .topbar nav a { color: var(--ink-soft); text-decoration: none; }
+    .toc-btn {
+      display: none;
+      background: transparent; border: 1px solid var(--rule);
+      color: var(--ink); padding: 4px 10px; font: inherit; cursor: pointer;
+    }
+    .layout {
+      display: grid;
+      grid-template-columns: 220px minmax(0, var(--max)) 1fr;
+      gap: 0 40px;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 28px 80px;
+    }
+    .toc {
+      position: sticky; top: 64px;
+      align-self: start;
+      max-height: calc(100vh - 80px);
+      overflow: auto;
+      padding: 36px 0 24px;
+      font-size: 12.5px;
+      line-height: 1.45;
+    }
+    .toc h2 {
+      margin: 0 0 14px;
+      font-size: 11px;
+      letter-spacing: .22em;
+      color: var(--gold);
+      font-weight: 700;
+    }
+    .toc a {
+      display: block;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 5px 0 5px 12px;
+      border-left: 2px solid transparent;
+    }
+    .toc a:hover, .toc a.active {
+      color: var(--cinnabar);
+      border-left-color: var(--cinnabar);
+    }
+    article { padding: 12px 0 40px; min-width: 0; }
+    .hero {
+      padding: 56px 0 40px;
+      border-bottom: 1px solid var(--rule);
+      position: relative;
+    }
+    .kicker {
+      font-family: Syne, sans-serif;
+      font-size: 11px;
+      letter-spacing: .34em;
+      color: var(--cinnabar);
+      margin: 0 0 18px;
+    }
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 6vw, 3.6rem);
+      line-height: 1.18;
+      font-weight: 900;
+      letter-spacing: .04em;
+    }
+    .hero .sub {
+      margin: 18px 0 0;
+      font-size: 1.25rem;
+      color: var(--ink-soft);
+      font-weight: 600;
+    }
+    .seal {
+      position: absolute; right: 0; top: 72px;
+      width: 84px; height: 84px;
+      border: 3px solid var(--cinnabar);
+      color: var(--cinnabar);
+      display: grid; place-items: center;
+      font-weight: 900; font-size: 28px;
+      transform: rotate(-12deg);
+      opacity: .88;
+      box-shadow: inset 0 0 0 2px var(--cinnabar);
+    }
+    .lede {
+      margin: 28px 0 0;
+      font-size: 1.12rem;
+      color: var(--ink-soft);
+    }
+    .lede::first-letter {
+      float: left;
+      font-size: 3.4rem;
+      line-height: .85;
+      padding: 8px 10px 0 0;
+      color: var(--cinnabar);
+      font-weight: 900;
+    }
+    h2.sec {
+      margin: 3.2rem 0 1rem;
+      font-size: 1.45rem;
+      line-height: 1.35;
+      font-weight: 800;
+      scroll-margin-top: 76px;
+    }
+    h2.sec small {
+      display: block;
+      font-size: 12px;
+      letter-spacing: .2em;
+      color: var(--cinnabar);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    p { margin: 0 0 1.05em; }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 1.4em 0 1.6em;
+    }
+    .stat {
+      background: var(--card);
+      border: 1px solid var(--rule);
+      padding: 14px 14px 12px;
+      box-shadow: 0 8px 24px var(--shadow);
+    }
+    .stat b {
+      display: block;
+      font-family: Fraunces, "Noto Serif SC", serif;
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--cinnabar-deep);
+      letter-spacing: 0;
+      line-height: 1.2;
+    }
+    .stat span { font-size: 12px; color: var(--muted); }
+    ul.q, ul.plain { margin: 0 0 1.2em; padding: 0; list-style: none; }
+    ul.q li, ul.plain li {
+      position: relative;
+      padding: 6px 0 6px 18px;
+      border-bottom: 1px dashed var(--rule);
+    }
+    ul.q li::before, ul.plain li::before {
+      content: "";
+      position: absolute; left: 0; top: 1.05em;
+      width: 7px; height: 7px;
+      background: var(--cinnabar);
+      transform: rotate(45deg);
+    }
+    .ask {
+      display: grid;
+      gap: 8px;
+      margin: 0 0 1.3em;
+    }
+    .ask div {
+      background: var(--card);
+      border-left: 3px solid var(--cinnabar);
+      padding: 8px 12px;
+    }
+    .ask b { color: var(--cinnabar-deep); }
+    .formula {
+      margin: 1.2em 0 1.4em;
+      padding: 16px 18px;
+      background: #1c1712;
+      color: #f3ead6;
+      font-family: Fraunces, "Noto Serif SC", serif;
+      letter-spacing: .03em;
+      box-shadow: 0 12px 30px var(--shadow);
+    }
+    .formula .lbl {
+      font-family: Syne, sans-serif;
+      font-size: 10px;
+      letter-spacing: .22em;
+      color: #d9a39a;
+      margin-bottom: 8px;
+    }
+    .formula p { margin: 0; color: #f3ead6; font-size: 1.05rem; }
+    .formula .op { color: #e8c27a; padding: 0 .35em; }
+    .chain {
+      display: flex; flex-wrap: wrap; gap: 6px; align-items: center;
+      margin: 0 0 1.3em;
+    }
+    .chain span, .chain b {
+      background: var(--card);
+      border: 1px solid var(--rule);
+      padding: 4px 10px;
+      font-size: .92rem;
+    }
+    .chain b { border-color: var(--cinnabar); color: var(--cinnabar-deep); }
+    .chain i {
+      font-style: normal;
+      color: var(--gold);
+      font-family: Fraunces, serif;
+    }
+    blockquote.pull {
+      margin: 1.6em 0;
+      padding: 0 0 0 18px;
+      border-left: 3px solid var(--cinnabar);
+      font-size: 1.18rem;
+      font-weight: 600;
+      line-height: 1.7;
+      color: var(--cinnabar-deep);
+    }
+    .two {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 0 0 1.3em;
+    }
+    .two figure {
+      margin: 0;
+      background: var(--card);
+      border: 1px solid var(--rule);
+      padding: 14px;
+    }
+    .two figcaption {
+      font-size: 12px;
+      letter-spacing: .16em;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+    .close {
+      margin-top: 3rem;
+      padding-top: 1.6rem;
+      border-top: 1px solid var(--rule);
+    }
+    .close .final {
+      font-size: 1.35rem;
+      font-weight: 800;
+      line-height: 1.7;
+    }
+    footer.site {
+      grid-column: 1 / -1;
+      border-top: 1px solid var(--rule);
+      padding: 28px 0 12px;
+      color: var(--muted);
+      font-size: 13px;
+      display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+    }
+    .mask {
+      display: none;
+      position: fixed; inset: 0; background: rgba(28,23,18,.35); z-index: 14;
+    }
+    @media (max-width: 980px) {
+      .layout { grid-template-columns: 1fr; padding: 0 18px 64px; }
+      .toc {
+        display: none; position: fixed; top: 48px; left: 0; bottom: 0;
+        width: min(82vw, 320px); background: var(--paper);
+        padding: 20px; z-index: 15; box-shadow: 8px 0 30px var(--shadow);
+        max-height: none;
+      }
+      body.toc-open .toc, body.toc-open .mask { display: block; }
+      .toc-btn { display: inline-block; }
+      .seal { display: none; }
+      .stats, .two { grid-template-columns: 1fr; }
+      .topbar { padding: 10px 16px; }
+    }
+    @media print {
+      .topbar, .toc, .toc-btn, .grain, body::before { display: none !important; }
+      body { background: #fff; font-size: 12pt; }
+      .layout { display: block; max-width: none; }
+      a { color: inherit; text-decoration: none; }
+      .formula { background: #111; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">跳到正文</a>
+  <div class="mask" id="mask" hidden></div>
+  <header class="topbar">
+    <a class="brand" href="#top">
+      <b>KOS-TL</b>
+      <span>可信软件宣言</span>
+    </a>
+    <nav>
+      <button class="toc-btn" type="button" id="tocBtn">目录</button>
+      <a href="https://github.com/KOS-TL">GitHub</a>
+    </nav>
+  </header>
+
+  <div class="layout" id="top">
+    <nav class="toc" id="toc" aria-label="章节目录">
+      <h2>目录</h2>
+      <a href="#intro">引言</a>
+      <a href="#s1">一、可信性赤字</a>
+      <a href="#s2">二、不知是否可信</a>
+      <a href="#s3">三、复杂度越界</a>
+      <a href="#s4">四、漏洞的压力</a>
+      <a href="#s5">五、软件供应链</a>
+      <a href="#s6">六、经济代价</a>
+      <a href="#s7">七、人工智能新变量</a>
+      <a href="#s8">八、软件生产函数</a>
+      <a href="#s9">九、是否值得信任</a>
+      <a href="#s10">十、理解现实世界</a>
+      <a href="#s11">十一、理解还不够</a>
+      <a href="#s12">十二、KOS 的历史机会</a>
+      <a href="#s13">十三、KOS-TL</a>
+      <a href="#s14">十四、重新定义测试</a>
+      <a href="#s15">十五、新产业</a>
+      <a href="#s16">十六、软件价值</a>
+      <a href="#s17">十七、可信软件产业链</a>
+      <a href="#s18">十八、数字基础设施</a>
+      <a href="#s19">十九、更强的可信软件</a>
+      <a href="#s20">二十、中国的机会</a>
+      <a href="#s21">二十一、不能只做使用者</a>
+      <a href="#s22">二十二、从大国到强国</a>
+      <a href="#s23">二十三、这一代的使命</a>
+      <a href="#coda">结语</a>
+    </nav>
+
+    <article id="main">
+      <header class="hero">
+        <p class="kicker">MANIFESTO · 檄文</p>
+        <h1>向可信软件时代进军</h1>
+        <p class="sub">——建设中国可信软件产业</p>
+        <div class="seal" aria-hidden="true">信</div>
+        <p class="lede">软件已经成为人类文明的基础设施，但我们真的能够信任它吗？人类文明正在进入一个前所未有的软件时代。</p>
+      </header>
+
+      <h2 class="sec" id="intro"><small>PROLOGUE</small>引言</h2>
+      <p>过去半个多世纪，人类创造了无数伟大的软件系统。从 Unix、C、Lisp、Windows、Linux、Git、Web、数据库、编译器，到今天的云计算、大数据、人工智能、工业软件、自动驾驶、数字孪生和智能 Agent。</p>
+      <p>这些软件，是人类智慧的结晶。它们把数学、逻辑、工程、知识和人类经验，转化成了可以被机器执行的形式。</p>
+      <p>今天：金融由软件运行；通信由软件连接；电网由软件调度；铁路由软件控制；汽车由软件定义；工厂由软件组织；医院由软件支撑；城市由软件治理；人工智能则开始让软件拥有越来越强的认知与行动能力。</p>
+      <p>软件已经不再是人类社会的辅助工具。软件正在成为现代文明本身的重要组成部分。</p>
+      <blockquote class="pull">当我们把越来越多的现实世界交给软件，我们是否已经建立了与软件重要性相匹配的可信体系？</blockquote>
+      <p>答案恐怕并不令人乐观。</p>
+
+      <h2 class="sec" id="s1"><small>01</small>十五万亿元级软件产业背后，隐藏着一个巨大的「可信性赤字」</h2>
+      <p>中国的软件产业已经发展成为一个巨大的产业体系。</p>
+      <div class="stats">
+        <div class="stat"><b>15.48 万亿</b><span>2025 年软件业务收入 · 同比增长 13.2%</span></div>
+        <div class="stat"><b>1.88 万亿</b><span>利润总额</span></div>
+        <div class="stat"><b>10.64 万亿</b><span>信息技术服务收入</span></div>
+      </div>
+      <p>其中软件产品收入 3.24 万亿元；工业软件产品收入 3330 亿元；信息安全产品和服务收入 2235 亿元。这意味着：中国已经拥有一个 15 万亿元级的软件产业。</p>
+      <p>然而，我们必须提出一个更加基本的问题：在这 15 万亿元的软件中，有多少软件能够真正回答「为什么可以相信它」？</p>
+      <p>传统的软件工程当然已经建立了大量质量保障体系：编程语言、类型系统、编译器、软件测试、静态分析、动态分析、代码审查、软件配置管理、软件安全、形式化验证、DevOps、DevSecOps。这些都是人类软件工程最伟大的成果。</p>
+      <p>但是，随着软件规模和复杂度不断增加，一个新的问题正在出现：传统软件工程正在越来越难以独立承担现代软件系统的全部可信责任。</p>
+
+      <h2 class="sec" id="s2"><small>02</small>软件最大的危险，不只是 Bug，而是「我们不知道它是否可信」</h2>
+      <p>传统软件问题通常被理解为：有没有 Bug？但今天真正的问题已经远远超出了 Bug。我们需要问：</p>
+      <div class="ask">
+        <div><b>代码可信吗？</b> 代码是否正确实现了需求？</div>
+        <div><b>数据可信吗？</b> 数据来自哪里？是否完整、真实、最新？</div>
+        <div><b>软件供应链可信吗？</b> 第三方组件是否安全？开源软件是否存在未知漏洞？</div>
+        <div><b>知识可信吗？</b> 系统使用的知识是否正确？谁定义了这些知识？</div>
+        <div><b>规则可信吗？</b> 业务规则是否完整？规则之间是否存在冲突？</div>
+        <div><b>模型可信吗？</b> 模型为什么得出这个结果？</div>
+        <div><b>决策可信吗？</b> 系统为什么采取这个决策？</div>
+        <div><b>行动可信吗？</b> Agent 为什么执行这个动作？</div>
+        <div><b>系统可信吗？</b> 整个系统在复杂环境下是否仍然按照预期运行？</div>
+      </div>
+      <p>于是我们发现：软件可信已经从「代码正确性」扩展成为一个系统性问题。</p>
+
+      <h2 class="sec" id="s3"><small>03</small>软件复杂度已经远远超出了过去的软件工程想象</h2>
+      <p>过去的软件可能只有几千行代码。后来几万行。再后来几百万行、几千万行。</p>
+      <p>今天，一个大型软件系统往往不是一个程序，而是一个庞大的生态：</p>
+      <div class="chain">
+        <span>操作系统</span><i>→</i>
+        <span>数据库</span><i>→</i>
+        <span>编译器</span><i>→</i>
+        <span>开源组件</span><i>→</i>
+        <span>第三方 SDK</span><i>→</i>
+        <span>云平台</span><i>→</i>
+        <span>API</span><i>→</i>
+        <span>数据</span><i>→</i>
+        <span>AI 模型</span><i>→</i>
+        <span>Agent</span><i>→</i>
+        <span>业务规则</span>
+      </div>
+      <p>因此，现代软件已经不是一个程序，而是一个复杂的软件系统。更进一步：它已经成为一个复杂的社会—技术系统。</p>
+
+      <h2 class="sec" id="s4"><small>04</small>漏洞正在证明传统软件可信体系面临巨大压力</h2>
+      <p>美国国家标准与技术研究院（NIST）的数据已经给出了非常强烈的信号。2020—2025 年，CVE 漏洞提交数量增长 263%。2025 年，NIST 处理的 CVE 数量已经达到约 4.2 万个。</p>
+      <p>而进入 2026 年以后，漏洞提交速度仍然快速增长。这说明一个非常重要的问题：软件世界产生问题的速度，正在越来越接近甚至超过传统人工分析和治理能力。</p>
+      <p>这不是某一个软件公司的问题，也不是某一种编程语言的问题，而是软件规模化时代的结构性问题。</p>
+
+      <h2 class="sec" id="s5"><small>05</small>软件供应链让可信问题从「一个程序」扩展到「整个生态」</h2>
+      <p>现代软件几乎没有真正意义上的「独立软件」。一个系统可能依赖几百个、几千个、甚至数万个第三方软件组件。一个组件的问题可能沿着供应链传播。</p>
+      <p>Verizon 2026 年《Data Breach Investigations Report》显示：软件漏洞利用已经成为数据泄露最主要的初始攻击方式之一，占 31%。同时，涉及第三方的泄露事件达到 48%。</p>
+      <p>这说明：软件可信已经成为整个数字生态系统的问题。</p>
+
+      <h2 class="sec" id="s6"><small>06</small>软件错误的经济代价已经巨大到不能忽视</h2>
+      <p>IBM 2025 年《Cost of a Data Breach Report》显示：全球一次数据泄露事件的平均成本约为 444 万美元。美国则达到 1022 万美元。这还只是安全事件。</p>
+      <p>如果把软件故障、业务中断、工业停机、金融错误、医疗错误、数据损坏、软件供应链事故全部纳入考虑，那么现代社会因为「不可信软件」付出的代价将更加巨大。</p>
+      <blockquote class="pull">软件可信不是软件企业自己的质量问题，而是整个数字经济的基础设施问题。</blockquote>
+
+      <h2 class="sec" id="s7"><small>07</small>人工智能正在成为软件可信问题中的一个重要新变量</h2>
+      <p>这里必须特别强调：大模型不是软件可信问题的全部，也不是唯一解决方案。它只是正在改变软件工程的一项重要技术力量。</p>
+      <div class="two">
+        <figure>
+          <figcaption>过去</figcaption>
+          <div class="chain"><span>需求</span><i>↓</i><span>架构设计</span><i>↓</i><span>程序员</span><i>↓</i><span>代码</span><i>↓</i><span>测试</span><i>↓</i><span>软件</span></div>
+        </figure>
+        <figure>
+          <figcaption>今天</figcaption>
+          <div class="chain"><span>人的意图</span><i>↓</i><span>大模型</span><i>↓</i><span>代码</span><i>↓</i><span>测试</span><i>↓</i><span>部署</span><i>↓</i><span>Agent</span><i>↓</i><span>执行</span></div>
+        </figure>
+      </div>
+      <p>自动编程正在极大提高软件生产效率。这是一件非常积极的事情。它能够：降低开发门槛；提高程序员效率；自动生成代码；自动生成测试；自动分析代码；自动发现部分问题；自动重构；自动生成文档。</p>
+      <p>因此，大模型实际上也可能成为可信软件的重要技术工具。但是，它同时提出了一些新的问题：</p>
+      <ul class="q">
+        <li>AI 是否正确理解需求？</li>
+        <li>AI 生成的代码是否满足完整业务语义？</li>
+        <li>AI 使用的知识是否正确？</li>
+        <li>AI 是否遗漏边界条件？</li>
+        <li>AI 生成的软件是否存在隐藏漏洞？</li>
+        <li>AI Agent 是否越权？</li>
+        <li>AI 执行过程是否可追溯？</li>
+      </ul>
+      <p>因此：AI 不是简单地「解决可信问题」，而是把软件可信问题带入了新的阶段。它既是可信软件的工具，也是可信软件需要治理的新对象。这个定位更加准确。</p>
+
+      <h2 class="sec" id="s8"><small>08</small>大模型真正改变的是「软件生产函数」</h2>
+      <p>传统软件工程的核心瓶颈之一是：人写代码太慢。大模型正在改变这一点。可以粗略表示为：</p>
+      <div class="formula">
+        <div class="lbl">PRODUCTION FUNCTION</div>
+        <p>Software Generation Cost <span class="op">↓</span></p>
+        <p>Software Generation Speed <span class="op">↑</span></p>
+      </div>
+      <p>这是一场巨大的生产力革命。但软件产业存在一个非常重要的不对称：</p>
+      <div class="formula">
+        <div class="lbl">ASYMMETRY</div>
+        <p>生成软件 <span class="op">≠</span> 验证软件</p>
+      </div>
+      <p>软件生成能力提高以后：验证、测试、审计、理解和维护的重要性反而会上升。因此，AI 时代可能出现一个新的产业规律：</p>
+      <div class="formula">
+        <div class="lbl">INDUSTRIAL LAW</div>
+        <p>Generation <span class="op">↑</span> <span class="op">⇒</span> Verification Demand <span class="op">↑</span></p>
+      </div>
+      <p>这就是可信软件产业的重要经济基础。</p>
+
+      <h2 class="sec" id="s9"><small>09</small>真正的问题不是「AI 会不会写代码」，而是「软件是否值得信任」</h2>
+      <p>这是两个完全不同的问题。一个系统即使没有明显 Bug、测试通过、性能优秀，也未必可信——因为它可能实现了错误的需求。</p>
+      <p>因此未来必须从代码正确性进一步走向意图正确性，再进一步让知识、规则、决策、行动全部进入可信体系。</p>
+      <div class="chain">
+        <span>Code Correctness</span><i>→</i>
+        <span>Intent Correctness</span><i>→</i>
+        <b>Knowledge</b><i>→</i>
+        <b>Rule</b><i>→</i>
+        <b>Decision</b><i>→</i>
+        <b>Action</b>
+      </div>
+      <p>这意味着：软件可信正在从「代码层问题」升级为「语义层问题」。</p>
+
+      <h2 class="sec" id="s10"><small>10</small>Palantir 揭示了另一个重要变化：软件开始理解现实世界</h2>
+      <p>这也是我们研究 Palantir 最重要的原因。Palantir 真正重要的地方，并不是某个单独的软件产品，而是它提出了一种重要的软件思想：AI 不能只理解数据，还必须理解数据背后的现实世界。</p>
+      <p>因此，它通过 Ontology 组织对象、属性、关系、业务规则、行动、权限。这使软件从 Data-Centric 逐渐走向 World-Centric。这是 AI 时代软件体系非常重要的一次变化。</p>
+
+      <h2 class="sec" id="s11"><small>11</small>但仅仅「理解世界」还不够</h2>
+      <p>这恰恰是中国可信软件产业可以进一步突破的地方。下一代系统不能只回答「这是什么」，还必须回答：</p>
+      <ul class="plain">
+        <li>为什么？</li>
+        <li>应该怎么办？</li>
+        <li>谁允许这么做？</li>
+        <li>这个规则从哪里来？</li>
+        <li>这个决定是否正确？</li>
+        <li>这个动作是否符合约束？</li>
+        <li>最终到底发生了什么？</li>
+      </ul>
+      <p>因此需要从</p>
+      <div class="chain"><span>Data</span><i>→</i><span>Ontology</span><i>→</i><span>AI</span><i>→</i><span>Action</span></div>
+      <p>进一步走向</p>
+      <div class="chain">
+        <span>Data</span><i>→</i><span>Knowledge</span><i>→</i><span>Ontology</span><i>→</i>
+        <span>Rule</span><i>→</i><span>AI</span><i>→</i><span>Decision</span><i>→</i>
+        <span>Action</span><i>→</i><span>Verification</span><i>→</i><b>Evidence</b>
+      </div>
+      <p>这就是：可信智能软件。</p>
+
+      <h2 class="sec" id="s12"><small>12</small>这正是 Knowledge Operating System 的历史机会</h2>
+      <p>传统操作系统管理 CPU、内存、进程、文件、设备。下一代知识操作系统需要管理 Entity、Event、State、Relation、Rule、Decision、Action、Trace、Evidence。</p>
+      <blockquote class="pull">KOS 不是一个知识库。它是面向知识计算、推理、决策、执行与验证的新型软件基础设施。</blockquote>
+
+      <h2 class="sec" id="s13"><small>13</small>KOS-TL 解决的是「知识如何进入可信执行」</h2>
+      <p>知识如果只是文档、PDF、向量、RAG 上下文，仍然不能保证可信。必须让知识能够进入：</p>
+      <div class="chain"><span>事件</span><i>→</i><span>规则</span><i>→</i><span>状态</span><i>→</i><span>行动</span><i>→</i><b>轨迹</b></div>
+      <p>形成可计算、可验证的执行语义。因此 KOS-TL 所探索的</p>
+      <div class="formula">
+        <div class="lbl">KOS-TL</div>
+        <p>Event <span class="op">+</span> Rule <span class="op">+</span> State <span class="op">+</span> Execution Trace</p>
+      </div>
+      <p>实际上对应的是一个非常重要的未来问题：如何让知识成为可信计算过程的一部分。这可能成为可信软件基础理论的重要组成部分。</p>
+
+      <h2 class="sec" id="s14"><small>14</small>可信软件将重新定义软件测试</h2>
+      <p>传统测试：输入 → 输出。未来测试覆盖数据、知识、语义、规则、模型、决策、行动、执行、证据：</p>
+      <ul class="plain">
+        <li>数据可信测试</li>
+        <li>知识一致性测试</li>
+        <li>Ontology 一致性测试</li>
+        <li>规则冲突测试</li>
+        <li>模型行为测试</li>
+        <li>Agent 行为测试</li>
+        <li>权限测试</li>
+        <li>执行轨迹测试</li>
+        <li>证据链测试</li>
+      </ul>
+      <p>最终，Software Verification 将从 Code Verification 走向 Knowledge + Software + AI + Action Verification。</p>
+
+      <h2 class="sec" id="s15"><small>15</small>这将产生一个巨大的新产业</h2>
+      <p>中国 2025 年软件产业规模已经达到 15.48 万亿元。即使仅按照整个软件产业的 1% 计算：</p>
+      <div class="formula">
+        <div class="lbl">SCENARIO</div>
+        <p>15.48 万亿 × 1% = 1548 亿元</p>
+        <p>15.48 万亿 × 5% = 7740 亿元</p>
+      </div>
+      <p>这不是对未来市场规模的预测，而是一个简单的产业渗透情景测算。它所揭示的是：即使可信软件只成为整个软件产业中的一个小价值层，也足以形成千亿元乃至万亿元级产业空间。</p>
+      <p>而可信软件还将覆盖 AI 安全、Agent 治理、软件验证、软件供应链、知识基础设施、Ontology、工业软件、数字孪生、可信操作系统、软件认证、软件审计。</p>
+      <p>因此：可信软件完全有可能成为 AI 时代新的基础软件产业。</p>
+
+      <h2 class="sec" id="s16"><small>16</small>我们必须重新定义「软件价值」</h2>
+      <div class="formula">
+        <div class="lbl">VALUE FUNCTION</div>
+        <p>过去：Software Value ≈ Function</p>
+        <p>后来：Software Value ≈ Function + Platform</p>
+        <p>AI 时代：Software Value ≈ Function + Platform + Intelligence</p>
+        <p>未来：Software Value ≈ Function + Platform + Intelligence + <span class="op">Trust</span></p>
+      </div>
+      <p>最终：可信将成为软件价值的重要组成部分。</p>
+
+      <h2 class="sec" id="s17"><small>17</small>我们必须建立中国自己的可信软件产业链</h2>
+      <p>不是再建设一个单独的「安全软件产业」，而是形成完整链条：</p>
+      <div class="chain">
+        <span>可信芯片</span><i>↓</i>
+        <span>可信硬件</span><i>↓</i>
+        <span>可信操作系统</span><i>↓</i>
+        <span>可信数据库</span><i>↓</i>
+        <span>可信中间件</span><i>↓</i>
+        <b>Knowledge OS</b><i>↓</i>
+        <span>Ontology</span><i>↓</i>
+        <span>可信 AI</span><i>↓</i>
+        <span>可信 Agent</span><i>↓</i>
+        <span>可信行业软件</span><i>↓</i>
+        <span>可信认证</span><i>↓</i>
+        <span>可信服务</span>
+      </div>
+      <p>形成完整的：标准—技术—平台—工具—软件—行业—认证体系。</p>
+
+      <h2 class="sec" id="s18"><small>18</small>这不是一个普通产业问题，而是下一代数字基础设施问题</h2>
+      <p>操作系统曾经是数字时代的基础设施。数据库曾经是数字时代的基础设施。互联网曾经是数字时代的基础设施。云计算正在成为基础设施。</p>
+      <p>今天：知识正在成为新的计算资源。而 AI 正在成为新的计算主体。因此未来需要新的基础设施：Knowledge Infrastructure。而可信软件，就是这个基础设施不可缺少的一层。</p>
+
+      <h2 class="sec" id="s19"><small>19</small>我们不能只追求「更强的 AI」，还必须建立「更强的可信软件」</h2>
+      <p>未来的竞争不能只有：谁的模型参数更多？谁的 Benchmark 更高？谁的 GPU 更多？还必须比较：</p>
+      <ul class="q">
+        <li>谁能够让 AI 安全进入现实世界？</li>
+        <li>谁能够让 Agent 可信地行动？</li>
+        <li>谁能够让软件行为被验证？</li>
+        <li>谁能够让知识进入机器执行体系？</li>
+        <li>谁能够建立完整的软件证据链？</li>
+      </ul>
+      <p>这才是真正的下一代软件竞争。</p>
+
+      <h2 class="sec" id="s20"><small>20</small>中国为什么必须抓住这个机会？</h2>
+      <p>因为中国已经拥有 15 万亿元级软件产业；拥有庞大的制造业体系；拥有世界规模最大的产业应用场景之一；拥有快速发展的人工智能产业；拥有巨大的数据和知识资源；拥有完整的软件产业链；拥有庞大的工程师队伍。</p>
+      <p>我们缺少的不是基础。我们缺少的是：把这些基础组织成下一代可信软件基础设施的战略能力。</p>
+
+      <h2 class="sec" id="s21"><small>21</small>我们不能满足于成为软件的使用者</h2>
+      <p>过去的软件时代，中国长期存在一个问题：底层软件基础设施掌握在别人手中。今天，我们有机会改变这种局面。</p>
+      <div class="ask">
+        <div>我们不仅要使用软件，还要<strong>定义软件</strong>。</div>
+        <div>我们不仅要使用 AI，还要<strong>定义 AI 进入现实世界的可信机制</strong>。</div>
+        <div>我们不仅要建设数据中心，还要<strong>建设知识基础设施</strong>。</div>
+        <div>我们不仅要建设大模型，还要<strong>建设可信智能软件体系</strong>。</div>
+      </div>
+
+      <h2 class="sec" id="s22"><small>22</small>这是从「软件大国」走向「软件强国」的关键一步</h2>
+      <p>软件大国意味着：软件产业规模巨大。软件强国则意味着：掌握软件基础理论，掌握核心基础软件，掌握软件标准，掌握软件生态，掌握软件基础设施，掌握下一代软件范式。</p>
+      <p>因此：可信软件可能成为中国软件产业实现范式跃迁的重要突破口。</p>
+
+      <h2 class="sec" id="s23"><small>23</small>我们这一代软件人的历史使命</h2>
+      <p>回望软件史：Unix 改变了操作系统。C 改变了系统软件。Lisp 改变了人工智能思想。Web 改变了信息世界。Git 改变了软件协作。LLVM 改变了编译基础设施。大模型正在改变软件生产方式。</p>
+      <p>那么，我们这一代软件人需要继续回答：</p>
+      <ul class="q">
+        <li>如何让软件真正理解现实世界？</li>
+        <li>如何让知识成为计算的一部分？</li>
+        <li>如何让 AI 可信地使用知识？</li>
+        <li>如何让 Agent 可信地采取行动？</li>
+        <li>如何让复杂软件拥有可验证的行为？</li>
+        <li>如何让每一个关键决策都能够被解释、追踪和审计？</li>
+      </ul>
+      <p>这就是：可信软件时代的问题。</p>
+
+      <section class="close" id="coda">
+        <h2 class="sec"><small>CODA</small>结语：让软件从「能够运行」走向「值得信任」</h2>
+        <p>今天，我们面对的并不是一个简单的软件升级问题，而是一场软件文明的结构性变革。</p>
+        <p>过去：软件帮助人类计算。后来：软件帮助人类连接。再后来：软件帮助人类管理复杂世界。今天：软件开始理解世界。未来：软件将越来越多地参与决策并直接作用于现实世界。</p>
+        <blockquote class="pull">软件不仅要能够运行，更必须值得信任。</blockquote>
+        <p>大模型不会自动解决这个问题。传统软件工程也无法单独解决这个问题。网络安全同样不能完全解决这个问题。我们需要的是一个新的综合体系：</p>
+        <div class="formula">
+          <div class="lbl">TRUSTED SOFTWARE</div>
+          <p>Data + Knowledge + Ontology + Rules + Software + AI + Verification + Execution + Evidence</p>
+        </div>
+        <p>而这正是中国发展可信软件产业的历史起点。</p>
+        <p>它不是对传统软件产业的否定。恰恰相反：它是 15 万亿元级软件产业发展到今天之后，必然出现的下一层价值。</p>
+        <p>它不是为了替代大模型，而是为了让大模型成为可信软件体系的一部分。</p>
+        <p>它不是为了替代传统软件工程，而是为了把传统软件工程提升到知识、AI 和现实世界的时代。</p>
+        <p>它不是为了简单复制 Palantir，而是吸收其 Ontology 和现实世界建模思想，进一步建立完整可信计算体系：</p>
+        <div class="chain">
+          <b>Knowledge</b><i>→</i><b>Reasoning</b><i>→</i><b>Decision</b><i>→</i><b>Action</b><i>→</i><b>Verification</b>
+        </div>
+        <p>这就是我们应该争取的未来。</p>
+        <p class="final">让中国从软件大国走向软件强国。让中国从人工智能大国走向可信智能软件强国。让中国不仅拥有更强大的 AI，更拥有让 AI 可信进入现实世界的软件基础设施。<br/>让机器更聪明。让软件更可靠。让知识可以计算。让智能可以验证。让行动值得信任。</p>
+        <p class="final">这，就是可信软件时代。<br/>这，就是我们这一代软件人的历史使命。</p>
+      </section>
+
+      <footer class="site">
+        <span>KOS-TL · Knowledge Operating System — Type Logic</span>
+        <span>原文：《向可信软件时代进军》</span>
+      </footer>
+    </article>
+  </div>
+
+  <script>
+    const toc = document.getElementById("toc");
+    const btn = document.getElementById("tocBtn");
+    const mask = document.getElementById("mask");
+    const links = [...toc.querySelectorAll("a")];
+    const sections = links
+      .map((a) => document.querySelector(a.getAttribute("href")))
+      .filter(Boolean);
+
+    function setOpen(open) {
+      document.body.classList.toggle("toc-open", open);
+      mask.hidden = !open;
+    }
+    btn.addEventListener("click", () => setOpen(!document.body.classList.contains("toc-open")));
+    mask.addEventListener("click", () => setOpen(false));
+    toc.addEventListener("click", (e) => {
+      if (e.target.tagName === "A") setOpen(false);
+    });
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const id = "#" + entry.target.id;
+        links.forEach((a) => a.classList.toggle("active", a.getAttribute("href") === id));
+      });
+    }, { rootMargin: "-20% 0px -70% 0px", threshold: 0 });
+    sections.forEach((el) => io.observe(el));
+  </script>
+</body>
+</html>
