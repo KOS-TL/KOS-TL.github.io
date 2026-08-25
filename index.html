@@ -7,7 +7,9 @@
   <meta name="description" content="软件不仅要能够运行，更必须值得信任。KOS-TL 可信软件宣言：关于建设中国新一代可信软件基础设施。"/>
   <meta property="og:title" content="向可信软件时代进军"/>
   <meta property="og:description" content="建设中国可信软件产业。软件不仅要能够运行，更必须值得信任。"/>
+  <meta name="author" content="陈鹏"/>
   <meta property="og:type" content="article"/>
+  <meta property="article:author" content="陈鹏"/>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect fill='%238c1c13' width='64' height='64' rx='4'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-size='32' fill='%23f4ead5' font-family='serif'%3E信%3C/text%3E%3C/svg%3E"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -139,6 +141,26 @@
       color: var(--ink-soft);
       font-weight: 600;
     }
+    .byline {
+      margin: 22px 0 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 10px 18px;
+      font-size: 15px;
+      color: var(--ink-soft);
+    }
+    .byline .who {
+      font-weight: 700;
+      letter-spacing: .18em;
+    }
+    .byline a {
+      color: var(--muted);
+      text-decoration: none;
+      font-family: Fraunces, "Noto Serif SC", serif;
+      letter-spacing: .02em;
+    }
+    .byline a:hover { color: var(--cinnabar); }
     .seal {
       position: absolute; right: 0; top: 72px;
       width: 84px; height: 84px;
@@ -380,6 +402,10 @@
         <p class="kicker">MANIFESTO · 檄文</p>
         <h1>向可信软件时代进军</h1>
         <p class="sub">——建设中国可信软件产业</p>
+        <p class="byline">
+          <span class="who">陈鹏</span>
+          <a href="mailto:chenpeng_buaa@163.com">chenpeng_buaa@163.com</a>
+        </p>
         <div class="seal" aria-hidden="true">信</div>
         <p class="lede">软件已经成为人类文明的基础设施，但我们真的能够信任它吗？人类文明正在进入一个前所未有的软件时代。</p>
       </header>
@@ -671,8 +697,8 @@
       </section>
 
       <footer class="site">
+        <span>作者　陈鹏　·　<a href="mailto:chenpeng_buaa@163.com">chenpeng_buaa@163.com</a></span>
         <span>KOS-TL · Knowledge Operating System — Type Logic</span>
-        <span>原文：《向可信软件时代进军》</span>
       </footer>
     </article>
   </div>
