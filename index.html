@@ -93,7 +93,11 @@
       letter-spacing: .004em;
       line-height: 1.78;
     }
-    html[lang="en"] .hero h1 { letter-spacing: -.02em; }
+    html[lang="en"] .hero h1 {
+      letter-spacing: -.02em;
+      font-size: clamp(1.85rem, 4.8vw, 3.05rem);
+      padding-right: 92px;
+    }
     html[lang="en"] .byline .who { letter-spacing: .06em; }
     .lang {
       display: flex;
@@ -162,6 +166,7 @@
       line-height: 1.18;
       font-weight: 900;
       letter-spacing: .04em;
+      padding-right: 96px;
     }
     .hero .sub {
       margin: 18px 0 0;
