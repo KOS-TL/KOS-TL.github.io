@@ -88,6 +88,34 @@
       margin: 0 auto;
       padding: 0 28px 80px;
     }
+    html[lang="en"] body {
+      font-family: Fraunces, "Noto Serif SC", Georgia, serif;
+      letter-spacing: .004em;
+      line-height: 1.78;
+    }
+    html[lang="en"] .hero h1 { letter-spacing: -.02em; }
+    html[lang="en"] .byline .who { letter-spacing: .06em; }
+    .lang {
+      display: flex;
+      border: 1px solid var(--rule);
+    }
+    .lang button {
+      background: transparent;
+      border: 0;
+      color: var(--muted);
+      font-family: Syne, sans-serif;
+      font-size: 11px;
+      letter-spacing: .16em;
+      padding: 5px 11px;
+      cursor: pointer;
+    }
+    .lang button[aria-pressed="true"] {
+      background: var(--cinnabar);
+      color: var(--paper);
+    }
+    .layout > .toc { grid-column: 1; grid-row: 1; }
+    .layout > article { grid-column: 2; grid-row: 1; }
+    .pane-off { display: none !important; }
     .toc {
       position: sticky; top: 64px;
       align-self: start;
@@ -345,7 +373,7 @@
       .topbar { padding: 10px 16px; }
     }
     @media print {
-      .topbar, .toc, .toc-btn, .grain, body::before { display: none !important; }
+      .topbar, .toc, .toc-btn, .lang, .grain, body::before { display: none !important; }
       body { background: #fff; font-size: 12pt; }
       .layout { display: block; max-width: none; }
       a { color: inherit; text-decoration: none; }
@@ -354,21 +382,25 @@
   </style>
 </head>
 <body>
-  <a class="skip" href="#main">跳到正文</a>
+  <a class="skip" id="skip" href="#main">跳到正文</a>
   <div class="mask" id="mask" hidden></div>
   <header class="topbar">
     <a class="brand" href="#top">
       <b>KOS-TL</b>
-      <span>可信软件宣言</span>
+      <span id="brandSub">可信软件宣言</span>
     </a>
     <nav>
+      <div class="lang" role="group" aria-label="Language / 语言">
+        <button type="button" data-set-lang="zh" aria-pressed="true">中文</button>
+        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+      </div>
       <button class="toc-btn" type="button" id="tocBtn">目录</button>
       <a href="https://github.com/KOS-TL">GitHub</a>
     </nav>
   </header>
 
   <div class="layout" id="top">
-    <nav class="toc" id="toc" aria-label="章节目录">
+    <nav class="toc" data-lang="zh" aria-label="章节目录">
       <h2>目录</h2>
       <a href="#intro">引言</a>
       <a href="#s1">一、可信性赤字</a>
@@ -397,7 +429,37 @@
       <a href="#coda">结语</a>
     </nav>
 
-    <article id="main">
+    <nav class="toc pane-off" data-lang="en" aria-label="Contents">
+      <h2>Contents</h2>
+      <a href="#en-intro">Prologue</a>
+      <a href="#en-s1">I. The Trust Deficit</a>
+      <a href="#en-s2">II. Not Knowing If It Is Trusted</a>
+      <a href="#en-s3">III. Complexity Beyond the Old Imagination</a>
+      <a href="#en-s4">IV. The Pressure of Vulnerabilities</a>
+      <a href="#en-s5">V. The Software Supply Chain</a>
+      <a href="#en-s6">VI. The Economic Cost</a>
+      <a href="#en-s7">VII. AI as a New Variable</a>
+      <a href="#en-s8">VIII. The Software Production Function</a>
+      <a href="#en-s9">IX. Whether Software Is Worth Trusting</a>
+      <a href="#en-s10">X. Understanding the Real World</a>
+      <a href="#en-s11">XI. Understanding Is Not Enough</a>
+      <a href="#en-s12">XII. The Historical Chance of KOS</a>
+      <a href="#en-s13">XIII. KOS-TL</a>
+      <a href="#en-s14">XIV. Redefining Software Testing</a>
+      <a href="#en-s15">XV. A New Industry</a>
+      <a href="#en-s16">XVI. The Value of Software</a>
+      <a href="#en-s17">XVII. A Trusted Software Industry Chain</a>
+      <a href="#en-s18">XVIII. Next-Generation Digital Infrastructure</a>
+      <a href="#en-s19">XIX. Stronger Trusted Software</a>
+      <a href="#en-s20">XX. Why China Must Take This Chance</a>
+      <a href="#en-s21">XXI. Not Merely Users of Software</a>
+      <a href="#en-s22">XXII. From a Software Power in Scale to a Software Power in Kind</a>
+      <a href="#en-s23">XXIII. The Mission of This Generation</a>
+      <a href="#en-coda">Coda</a>
+    </nav>
+
+
+    <article id="main" data-lang="zh">
       <header class="hero">
         <p class="kicker">MANIFESTO · 檄文</p>
         <h1>向可信软件时代进军</h1>
@@ -701,35 +763,407 @@
         <span>KOS-TL · Knowledge Operating System — Type Logic</span>
       </footer>
     </article>
+
+    <article id="main-en" class="pane-off" data-lang="en">
+      <header class="hero">
+        <p class="kicker">MANIFESTO · 檄文</p>
+        <h1>Advance into the Age of Trusted Software</h1>
+        <p class="sub">— Building China’s Trusted Software Industry</p>
+        <p class="byline">
+          <span class="who">Chen Peng</span>
+          <a href="mailto:chenpeng_buaa@163.com">chenpeng_buaa@163.com</a>
+        </p>
+        <div class="seal" aria-hidden="true">信</div>
+        <p class="lede">Software has become infrastructure for human civilization. But can we truly trust it? Civilization is entering an unprecedented software age.</p>
+      </header>
+
+      <h2 class="sec" id="en-intro"><small>PROLOGUE</small>Introduction</h2>
+      <p>Over the past half century, humanity has created countless great software systems: from Unix, C, Lisp, Windows, Linux, Git, the Web, databases and compilers, to today’s cloud computing, big data, artificial intelligence, industrial software, autonomous driving, digital twins and intelligent agents.</p>
+      <p>These systems are crystallizations of human intelligence. They turn mathematics, logic, engineering, knowledge and experience into forms that machines can execute.</p>
+      <p>Today finance runs on software; communications are joined by software; power grids are dispatched by software; railways are controlled by software; automobiles are defined by software; factories are organized by software; hospitals are supported by software; cities are governed by software. Artificial intelligence is beginning to give software ever stronger powers of cognition and action.</p>
+      <p>Software is no longer an auxiliary tool of human society. It is becoming a constituent part of modern civilization itself.</p>
+      <blockquote class="pull">As we hand more and more of the real world to software, have we built a system of trust commensurate with its importance?</blockquote>
+      <p>The answer, I fear, is not encouraging.</p>
+
+      <h2 class="sec" id="en-s1"><small>01</small>Behind a RMB 15-trillion software industry lies a vast “trust deficit”</h2>
+      <p>China’s software industry has already grown into an enormous industrial system.</p>
+      <div class="stats">
+        <div class="stat"><b>¥15.48 tn</b><span>2025 software business revenue · +13.2% YoY</span></div>
+        <div class="stat"><b>¥1.88 tn</b><span>Total profit</span></div>
+        <div class="stat"><b>¥10.64 tn</b><span>IT services revenue</span></div>
+      </div>
+      <p>Software products accounted for RMB 3.24 trillion; industrial software products, RMB 333 billion; information-security products and services, RMB 223.5 billion. This means China already has a software industry on the order of RMB 15 trillion.</p>
+      <p>Yet we must ask a more basic question: of this RMB 15 trillion in software, how much can truly answer “why it may be trusted”? Traditional software engineering has of course built a great apparatus of quality: programming languages, type systems, compilers, testing, static and dynamic analysis, code review, configuration management, software security, formal verification, DevOps and DevSecOps. These are among the greatest achievements of software engineering.</p>
+      <p>But as scale and complexity keep rising, a new problem appears: traditional software engineering is increasingly unable, by itself, to bear the full burden of trust for modern systems.</p>
+
+      <h2 class="sec" id="en-s2"><small>02</small>The greatest danger is not only bugs, but that we do not know whether software is trusted</h2>
+      <p>The traditional software question is usually: are there bugs? Today’s real question has already gone far beyond bugs. We need to ask:</p>
+      <div class="ask">
+        <div><b>Is the code trusted?</b> Does it correctly implement the requirements?</div>
+        <div><b>Is the data trusted?</b> Where does it come from? Is it complete, authentic and current?</div>
+        <div><b>Is the software supply chain trusted?</b> Are third-party components safe? Do open-source packages hide unknown vulnerabilities?</div>
+        <div><b>Is the knowledge trusted?</b> Is the knowledge the system uses correct? Who defined it?</div>
+        <div><b>Are the rules trusted?</b> Are business rules complete? Do they conflict with one another?</div>
+        <div><b>Is the model trusted?</b> Why did the model reach this result?</div>
+        <div><b>Is the decision trusted?</b> Why did the system take this decision?</div>
+        <div><b>Is the action trusted?</b> Why did the agent execute this act?</div>
+        <div><b>Is the system trusted?</b> Does the whole still behave as intended in complex environments?</div>
+      </div>
+      <p>We then see: software trust has expanded from “code correctness” into a systems problem.</p>
+
+      <h2 class="sec" id="en-s3"><small>03</small>Software complexity has far outrun the old imagination of software engineering</h2>
+      <p>Software once meant a few thousand lines of code. Then tens of thousands. Then millions and tens of millions.</p>
+      <p>Today a large software system is often not a program but a vast ecology:</p>
+      <div class="chain">
+        <span>OS</span><i>→</i>
+        <span>Database</span><i>→</i>
+        <span>Compiler</span><i>→</i>
+        <span>Open source</span><i>→</i>
+        <span>Third-party SDK</span><i>→</i>
+        <span>Cloud</span><i>→</i>
+        <span>API</span><i>→</i>
+        <span>Data</span><i>→</i>
+        <span>AI model</span><i>→</i>
+        <span>Agent</span><i>→</i>
+        <span>Business rules</span>
+      </div>
+      <p>Modern software is therefore not a program. It is a complex software system. Further still: it has become a complex socio-technical system.</p>
+
+      <h2 class="sec" id="en-s4"><small>04</small>Vulnerabilities show that the old trust regime is under severe strain</h2>
+      <p>Data from the U.S. National Institute of Standards and Technology already send a strong signal. From 2020 to 2025, CVE submissions grew 263%. In 2025 NIST handled about 42,000 CVEs.</p>
+      <p>Into 2026 the pace of submissions is still rising fast. This points to a crucial fact: the speed at which the software world produces problems is approaching—and may exceed—the capacity of traditional human analysis and governance.</p>
+      <p>This is not the problem of one company, nor of one programming language. It is a structural problem of the age of software at scale.</p>
+
+      <h2 class="sec" id="en-s5"><small>05</small>The supply chain stretches trust from “one program” to “an entire ecology”</h2>
+      <p>There is almost no truly independent software anymore. A system may depend on hundreds, thousands, even tens of thousands of third-party components. A flaw in one component can travel down the chain.</p>
+      <p>Verizon’s 2026 Data Breach Investigations Report shows that exploitation of software vulnerabilities has become one of the leading initial attack vectors in data breaches, at 31%. Incidents involving third parties reached 48%.</p>
+      <p>This means software trust has become a problem of the whole digital ecosystem.</p>
+
+      <h2 class="sec" id="en-s6"><small>06</small>The economic cost of software failure is already too large to ignore</h2>
+      <p>IBM’s 2025 Cost of a Data Breach Report puts the global average cost of a breach at about USD 4.44 million, and USD 10.22 million in the United States. That is security incidents alone.</p>
+      <p>If we also count software faults, business interruption, industrial downtime, financial error, medical error, data corruption and supply-chain accidents, the price modern society pays for untrusted software is far greater still.</p>
+      <blockquote class="pull">Software trust is not a quality issue for software firms alone. It is an infrastructure issue for the entire digital economy.</blockquote>
+
+      <h2 class="sec" id="en-s7"><small>07</small>Artificial intelligence is becoming an important new variable in software trust</h2>
+      <p>This must be stated with care: large models are neither the whole of the trust problem nor its only solution. They are one major technical force now changing software engineering.</p>
+      <div class="two">
+        <figure>
+          <figcaption>THEN</figcaption>
+          <div class="chain"><span>Requirements</span><i>↓</i><span>Architecture</span><i>↓</i><span>Programmer</span><i>↓</i><span>Code</span><i>↓</i><span>Test</span><i>↓</i><span>Software</span></div>
+        </figure>
+        <figure>
+          <figcaption>NOW</figcaption>
+          <div class="chain"><span>Human intent</span><i>↓</i><span>Large model</span><i>↓</i><span>Code</span><i>↓</i><span>Test</span><i>↓</i><span>Deploy</span><i>↓</i><span>Agent</span><i>↓</i><span>Execute</span></div>
+        </figure>
+      </div>
+      <p>Automatic programming is greatly raising the productivity of software. That is a good thing. It can lower the barrier to building, raise the efficiency of programmers, generate code and tests, analyze code, find some defects, refactor, and write documentation.</p>
+      <p>Large models may therefore become an important tool of trusted software. But they also raise new questions:</p>
+      <ul class="q">
+        <li>Did the AI correctly understand the requirements?</li>
+        <li>Does the generated code satisfy the full business semantics?</li>
+        <li>Is the knowledge the AI used correct?</li>
+        <li>Did it miss edge conditions?</li>
+        <li>Does the generated software hide vulnerabilities?</li>
+        <li>Did the agent exceed its authority?</li>
+        <li>Is the execution traceable?</li>
+      </ul>
+      <p>AI does not simply “solve” trust. It carries the trust problem into a new stage. It is both a tool of trusted software and a new object that trusted software must govern. That is the accurate position.</p>
+
+      <h2 class="sec" id="en-s8"><small>08</small>What large models truly change is the software production function</h2>
+      <p>One core bottleneck of classical software engineering is that people write code too slowly. Large models are changing that. Roughly:</p>
+      <div class="formula">
+        <div class="lbl">PRODUCTION FUNCTION</div>
+        <p>Software Generation Cost <span class="op">↓</span></p>
+        <p>Software Generation Speed <span class="op">↑</span></p>
+      </div>
+      <p>This is a vast productivity revolution. But the industry contains a crucial asymmetry:</p>
+      <div class="formula">
+        <div class="lbl">ASYMMETRY</div>
+        <p>Generating software <span class="op">≠</span> verifying software</p>
+      </div>
+      <p>Once generation capacity rises, verification, testing, audit, understanding and maintenance become more—not less—important. The AI age may therefore obey a new industrial law:</p>
+      <div class="formula">
+        <div class="lbl">INDUSTRIAL LAW</div>
+        <p>Generation <span class="op">↑</span> <span class="op">⇒</span> Verification Demand <span class="op">↑</span></p>
+      </div>
+      <p>That is an economic foundation of the trusted-software industry.</p>
+
+      <h2 class="sec" id="en-s9"><small>09</small>The real question is not whether AI can write code, but whether software is worth trusting</h2>
+      <p>These are two different questions. A system may have no obvious bugs, pass its tests and perform well, and still not be trusted—because it may have implemented the wrong requirements.</p>
+      <p>The future must therefore move from code correctness to intent correctness, and then bring knowledge, rules, decisions and actions all inside the trust regime.</p>
+      <div class="chain">
+        <span>Code Correctness</span><i>→</i>
+        <span>Intent Correctness</span><i>→</i>
+        <b>Knowledge</b><i>→</i>
+        <b>Rule</b><i>→</i>
+        <b>Decision</b><i>→</i>
+        <b>Action</b>
+      </div>
+      <p>This means software trust is rising from a problem of the code layer to a problem of the semantic layer.</p>
+
+      <h2 class="sec" id="en-s10"><small>10</small>Palantir reveals another change: software begins to understand the real world</h2>
+      <p>This is the most important reason we study Palantir. What matters is not any single product, but a software idea: AI cannot understand data alone; it must understand the real world behind the data.</p>
+      <p>Through an ontology it organizes objects, attributes, relations, business rules, actions and permissions. Software thus moves from data-centric toward world-centric. That is a major shift in the software stack of the AI age.</p>
+
+      <h2 class="sec" id="en-s11"><small>11</small>But merely “understanding the world” is not enough</h2>
+      <p>Here is precisely where China’s trusted-software industry can go further. The next systems must not only answer “what is this?” They must also answer:</p>
+      <ul class="plain">
+        <li>Why?</li>
+        <li>What should be done?</li>
+        <li>Who is allowed to do it?</li>
+        <li>Where did this rule come from?</li>
+        <li>Is this decision correct?</li>
+        <li>Does this action satisfy the constraints?</li>
+        <li>What, in the end, actually happened?</li>
+      </ul>
+      <p>We must therefore move from</p>
+      <div class="chain"><span>Data</span><i>→</i><span>Ontology</span><i>→</i><span>AI</span><i>→</i><span>Action</span></div>
+      <p>further to</p>
+      <div class="chain">
+        <span>Data</span><i>→</i><span>Knowledge</span><i>→</i><span>Ontology</span><i>→</i>
+        <span>Rule</span><i>→</i><span>AI</span><i>→</i><span>Decision</span><i>→</i>
+        <span>Action</span><i>→</i><span>Verification</span><i>→</i><b>Evidence</b>
+      </div>
+      <p>That is trusted intelligent software.</p>
+
+      <h2 class="sec" id="en-s12"><small>12</small>This is the historical opportunity of a Knowledge Operating System</h2>
+      <p>A classical operating system manages CPU, memory, processes, files and devices. The next knowledge operating system must manage entity, event, state, relation, rule, decision, action, trace and evidence.</p>
+      <blockquote class="pull">KOS is not a knowledge base. It is a new software infrastructure for computing, reasoning, deciding, executing and verifying knowledge.</blockquote>
+
+      <h2 class="sec" id="en-s13"><small>13</small>KOS-TL asks how knowledge enters trusted execution</h2>
+      <p>If knowledge remains a document, a PDF, a vector or a RAG context, trust is still not guaranteed. Knowledge must be able to enter:</p>
+      <div class="chain"><span>Event</span><i>→</i><span>Rule</span><i>→</i><span>State</span><i>→</i><span>Action</span><i>→</i><b>Trace</b></div>
+      <p>and form executable, verifiable semantics. What KOS-TL explores—</p>
+      <div class="formula">
+        <div class="lbl">KOS-TL</div>
+        <p>Event <span class="op">+</span> Rule <span class="op">+</span> State <span class="op">+</span> Execution Trace</p>
+      </div>
+      <p>—corresponds to a decisive future question: how knowledge becomes part of a trusted computational process. This may become an important piece of the foundational theory of trusted software.</p>
+
+      <h2 class="sec" id="en-s14"><small>14</small>Trusted software will redefine software testing</h2>
+      <p>Classical testing: input → output. Future testing covers data, knowledge, semantics, rules, models, decisions, actions, execution and evidence:</p>
+      <ul class="plain">
+        <li>Data-trust tests</li>
+        <li>Knowledge-consistency tests</li>
+        <li>Ontology-consistency tests</li>
+        <li>Rule-conflict tests</li>
+        <li>Model-behavior tests</li>
+        <li>Agent-behavior tests</li>
+        <li>Authorization tests</li>
+        <li>Execution-trace tests</li>
+        <li>Evidence-chain tests</li>
+      </ul>
+      <p>In the end, software verification will move from code verification to knowledge + software + AI + action verification.</p>
+
+      <h2 class="sec" id="en-s15"><small>15</small>This will give rise to a large new industry</h2>
+      <p>China’s software industry reached RMB 15.48 trillion in 2025. Even at 1% of that whole:</p>
+      <div class="formula">
+        <div class="lbl">SCENARIO</div>
+        <p>¥15.48 tn × 1% = ¥154.8 bn</p>
+        <p>¥15.48 tn × 5% = ¥774 bn</p>
+      </div>
+      <p>This is not a forecast of future market size. It is a simple penetration scenario. It shows that if trusted software is only a thin value layer inside the software industry, it is still enough to form a space of hundreds of billions—even trillions—of yuan.</p>
+      <p>Trusted software will also cover AI safety, agent governance, software verification, the software supply chain, knowledge infrastructure, ontology, industrial software, digital twins, trusted operating systems, software certification and software audit.</p>
+      <p>Trusted software may well become a new foundational software industry of the AI age.</p>
+
+      <h2 class="sec" id="en-s16"><small>16</small>We must redefine the value of software</h2>
+      <div class="formula">
+        <div class="lbl">VALUE FUNCTION</div>
+        <p>Once: Software Value ≈ Function</p>
+        <p>Then: Software Value ≈ Function + Platform</p>
+        <p>The AI age: Software Value ≈ Function + Platform + Intelligence</p>
+        <p>The future: Software Value ≈ Function + Platform + Intelligence + <span class="op">Trust</span></p>
+      </div>
+      <p>In the end, trust will be an essential part of software’s value.</p>
+
+      <h2 class="sec" id="en-s17"><small>17</small>We must build China’s own trusted-software industry chain</h2>
+      <p>Not another isolated “security-software industry,” but a complete chain:</p>
+      <div class="chain">
+        <span>Trusted chips</span><i>↓</i>
+        <span>Trusted hardware</span><i>↓</i>
+        <span>Trusted OS</span><i>↓</i>
+        <span>Trusted database</span><i>↓</i>
+        <span>Trusted middleware</span><i>↓</i>
+        <b>Knowledge OS</b><i>↓</i>
+        <span>Ontology</span><i>↓</i>
+        <span>Trusted AI</span><i>↓</i>
+        <span>Trusted agent</span><i>↓</i>
+        <span>Trusted industry software</span><i>↓</i>
+        <span>Trusted certification</span><i>↓</i>
+        <span>Trusted services</span>
+      </div>
+      <p>A complete system of standards, technology, platforms, tools, software, industries and certification.</p>
+
+      <h2 class="sec" id="en-s18"><small>18</small>This is not an ordinary industrial question. It is next-generation digital infrastructure</h2>
+      <p>Operating systems were infrastructure of the digital age. So were databases. So was the internet. Cloud computing is becoming infrastructure now.</p>
+      <p>Today knowledge is becoming a new computational resource, and AI a new computational subject. The future therefore needs a new infrastructure: knowledge infrastructure. Trusted software is an indispensable layer of it.</p>
+
+      <h2 class="sec" id="en-s19"><small>19</small>We cannot chase only stronger AI. We must also build stronger trusted software</h2>
+      <p>Future competition cannot be only: whose model has more parameters? Whose benchmark is higher? Who has more GPUs? It must also ask:</p>
+      <ul class="q">
+        <li>Who can let AI enter the real world safely?</li>
+        <li>Who can let agents act in a trusted way?</li>
+        <li>Who can make software behavior verifiable?</li>
+        <li>Who can let knowledge enter machine execution?</li>
+        <li>Who can build a complete software evidence chain?</li>
+      </ul>
+      <p>That is the true next competition in software.</p>
+
+      <h2 class="sec" id="en-s20"><small>20</small>Why China must take this chance</h2>
+      <p>Because China already has a RMB 15-trillion software industry; a vast manufacturing system; one of the world’s largest bodies of industrial application; a fast-growing AI industry; enormous data and knowledge resources; a complete software chain; and a huge corps of engineers.</p>
+      <p>What we lack is not the base. What we lack is the strategic capacity to organize that base into next-generation trusted-software infrastructure.</p>
+
+      <h2 class="sec" id="en-s21"><small>21</small>We cannot be content to remain users of software</h2>
+      <p>In the last software age China long faced a problem: the underlying software infrastructure was in other hands. Today we have a chance to change that.</p>
+      <div class="ask">
+        <div>We must not only use software. We must <strong>define software</strong>.</div>
+        <div>We must not only use AI. We must <strong>define the trusted mechanisms by which AI enters the real world</strong>.</div>
+        <div>We must not only build data centers. We must <strong>build knowledge infrastructure</strong>.</div>
+        <div>We must not only build large models. We must <strong>build a trusted intelligent-software system</strong>.</div>
+      </div>
+
+      <h2 class="sec" id="en-s22"><small>22</small>This is the step from a large software country to a strong software country</h2>
+      <p>A large software country means a vast industry. A strong software country means mastery of foundational theory, of core systems software, of standards, of ecosystems, of infrastructure, and of the next software paradigm.</p>
+      <p>Trusted software may therefore be a decisive opening for a paradigm shift in China’s software industry.</p>
+
+      <h2 class="sec" id="en-s23"><small>23</small>The historical mission of this generation of software people</h2>
+      <p>Look back: Unix changed operating systems. C changed systems software. Lisp changed the ideas of AI. The Web changed the world of information. Git changed collaboration. LLVM changed compiler infrastructure. Large models are changing how software is produced.</p>
+      <p>This generation must still answer:</p>
+      <ul class="q">
+        <li>How can software truly understand the real world?</li>
+        <li>How can knowledge become part of computation?</li>
+        <li>How can AI use knowledge in a trusted way?</li>
+        <li>How can agents act in a trusted way?</li>
+        <li>How can complex software have verifiable behavior?</li>
+        <li>How can every critical decision be explained, traced and audited?</li>
+      </ul>
+      <p>These are the questions of the age of trusted software.</p>
+
+      <section class="close" id="en-coda">
+        <h2 class="sec"><small>CODA</small>Coda: from “it runs” to “it is worth trusting”</h2>
+        <p>What we face is not a simple upgrade of software. It is a structural change in software civilization.</p>
+        <p>Once, software helped us compute. Then it helped us connect. Then it helped us manage a complex world. Today software begins to understand the world. Tomorrow it will take part in decisions and act more and more directly on reality.</p>
+        <blockquote class="pull">Software must not only be able to run. It must be worth trusting.</blockquote>
+        <p>Large models will not solve this by themselves. Neither will classical software engineering alone, nor cybersecurity alone. What we need is a new synthesis:</p>
+        <div class="formula">
+          <div class="lbl">TRUSTED SOFTWARE</div>
+          <p>Data + Knowledge + Ontology + Rules + Software + AI + Verification + Execution + Evidence</p>
+        </div>
+        <p>This is the historical starting point of China’s trusted-software industry.</p>
+        <p>It is not a negation of the traditional software industry. On the contrary: it is the next layer of value that a RMB 15-trillion industry must now grow.</p>
+        <p>It is not meant to replace large models, but to make them part of a trusted-software system.</p>
+        <p>It is not meant to replace classical software engineering, but to raise it into the age of knowledge, AI and the real world.</p>
+        <p>It is not meant to copy Palantir. It absorbs the ontology and world-modeling idea, and goes further, to a complete trusted computational system:</p>
+        <div class="chain">
+          <b>Knowledge</b><i>→</i><b>Reasoning</b><i>→</i><b>Decision</b><i>→</i><b>Action</b><i>→</i><b>Verification</b>
+        </div>
+        <p>That is the future we should contend for.</p>
+        <p class="final">Let China move from a large software country to a strong one. From a large AI country to a strong country of trusted intelligent software. Let China possess not only more powerful AI, but the software infrastructure that lets AI enter the real world in a trusted way.<br/>Let machines be wiser. Let software be more reliable. Let knowledge be computable. Let intelligence be verifiable. Let action be worth trusting.</p>
+        <p class="final">This is the age of trusted software.<br/>This is the historical mission of our generation of software people.</p>
+      </section>
+
+      <footer class="site">
+        <span>Author: Chen Peng · <a href="mailto:chenpeng_buaa@163.com">chenpeng_buaa@163.com</a></span>
+        <span>KOS-TL · Knowledge Operating System — Type Logic</span>
+      </footer>
+    </article>
+
   </div>
 
   <script>
-    const toc = document.getElementById("toc");
     const btn = document.getElementById("tocBtn");
     const mask = document.getElementById("mask");
-    const links = [...toc.querySelectorAll("a")];
-    const sections = links
-      .map((a) => document.querySelector(a.getAttribute("href")))
-      .filter(Boolean);
+    const skip = document.getElementById("skip");
+    const brandSub = document.getElementById("brandSub");
+    const copy = {
+      zh: {
+        title: "向可信软件时代进军 —— 建设中国可信软件产业",
+        brand: "可信软件宣言",
+        toc: "目录",
+        skip: "跳到正文",
+        skipHref: "#main"
+      },
+      en: {
+        title: "Advance into the Age of Trusted Software — Building China’s Trusted Software Industry",
+        brand: "Manifesto",
+        toc: "Contents",
+        skip: "Skip to content",
+        skipHref: "#main-en"
+      }
+    };
 
+    let io;
     function setOpen(open) {
       document.body.classList.toggle("toc-open", open);
       mask.hidden = !open;
     }
     btn.addEventListener("click", () => setOpen(!document.body.classList.contains("toc-open")));
     mask.addEventListener("click", () => setOpen(false));
-    toc.addEventListener("click", (e) => {
-      if (e.target.tagName === "A") setOpen(false);
+    document.querySelectorAll(".toc").forEach((toc) => {
+      toc.addEventListener("click", (e) => {
+        if (e.target.tagName === "A") setOpen(false);
+      });
     });
 
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        const id = "#" + entry.target.id;
-        links.forEach((a) => a.classList.toggle("active", a.getAttribute("href") === id));
+    function bindToc(lang) {
+      if (io) io.disconnect();
+      const toc = document.querySelector('.toc[data-lang="' + lang + '"]');
+      const links = [...toc.querySelectorAll("a")];
+      const sections = links
+        .map((a) => document.querySelector(a.getAttribute("href")))
+        .filter(Boolean);
+      io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const id = "#" + entry.target.id;
+          links.forEach((a) => a.classList.toggle("active", a.getAttribute("href") === id));
+        });
+      }, { rootMargin: "-20% 0px -70% 0px", threshold: 0 });
+      sections.forEach((el) => io.observe(el));
+    }
+
+    function mapHash(lang) {
+      const raw = (location.hash || "").replace(/^#/, "");
+      if (!raw) return;
+      const id = lang === "en"
+        ? (raw.startsWith("en-") ? raw : "en-" + raw)
+        : raw.replace(/^en-/, "");
+      const el = document.getElementById(id);
+      if (el) history.replaceState(null, "", "#" + id);
+    }
+
+    function setLang(lang) {
+      lang = lang === "en" ? "en" : "zh";
+      document.documentElement.lang = lang === "en" ? "en" : "zh-CN";
+      document.querySelectorAll("[data-lang]").forEach((el) => {
+        el.classList.toggle("pane-off", el.getAttribute("data-lang") !== lang);
       });
-    }, { rootMargin: "-20% 0px -70% 0px", threshold: 0 });
-    sections.forEach((el) => io.observe(el));
+      document.querySelectorAll("[data-set-lang]").forEach((b) => {
+        b.setAttribute("aria-pressed", b.getAttribute("data-set-lang") === lang ? "true" : "false");
+      });
+      const t = copy[lang];
+      document.title = t.title;
+      brandSub.textContent = t.brand;
+      btn.textContent = t.toc;
+      skip.textContent = t.skip;
+      skip.setAttribute("href", t.skipHref);
+      const url = new URL(location.href);
+      url.searchParams.set("lang", lang);
+      history.replaceState(null, "", url.pathname + url.search + url.hash);
+      try { localStorage.setItem("kos-lang", lang); } catch (e) {}
+      mapHash(lang);
+      bindToc(lang);
+    }
+
+    document.querySelectorAll("[data-set-lang]").forEach((b) => {
+      b.addEventListener("click", () => setLang(b.getAttribute("data-set-lang")));
+    });
+
+    const params = new URLSearchParams(location.search);
+    const start = params.get("lang") || (function () {
+      try { return localStorage.getItem("kos-lang"); } catch (e) { return null; }
+    }()) || "zh";
+    setLang(start);
   </script>
 </body>
 </html>
