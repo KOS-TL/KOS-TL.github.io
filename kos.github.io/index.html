@@ -3,1172 +3,700 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>向可信软件时代进军 —— 建设中国可信软件产业</title>
-  <meta name="description" content="软件不仅要能够运行，更必须值得信任。KOS-TL 可信软件宣言：关于建设中国新一代可信软件基础设施。"/>
-  <meta property="og:title" content="向可信软件时代进军"/>
-  <meta property="og:description" content="建设中国可信软件产业。软件不仅要能够运行，更必须值得信任。"/>
+  <title>向软件使命时代进军 —— 把软件绑回可检验的托付</title>
+  <meta name="description" content="软件不仅要能够运行，更必须承担使命。KOS-TL 使命软件檄文与专著第v13稿。"/>
   <meta name="author" content="陈鹏"/>
+  <meta property="og:title" content="向软件使命时代进军 —— 把软件绑回可检验的托付"/>
+  <meta property="og:description" content="软件不仅要能够运行，更必须承担使命。KOS-TL 使命软件檄文与专著第v13稿。"/>
   <meta property="og:type" content="article"/>
-  <meta property="article:author" content="陈鹏"/>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect fill='%238c1c13' width='64' height='64' rx='4'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-size='32' fill='%23f4ead5' font-family='serif'%3E信%3C/text%3E%3C/svg%3E"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Noto+Serif+SC:wght@400;500;600;700;900&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect fill='%238c1c13' width='64' height='64' rx='4'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-size='32' fill='%23f4ead5' font-family='serif'%3E命%3C/text%3E%3C/svg%3E"/>
+  
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Noto+Serif+SC:wght@400;500;600;700;900&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+
   <style>
-    :root {
-      --paper: #f3ead6;
-      --paper-2: #ebe1c8;
-      --ink: #1c1712;
-      --ink-soft: #3a3229;
-      --muted: #6b5e4e;
-      --cinnabar: #9e1c14;
-      --cinnabar-deep: #6e120d;
-      --gold: #8a6a32;
-      --rule: #d7c7a8;
-      --card: #fff8ea;
-      --shadow: rgba(40, 24, 8, .12);
-      --max: 42rem;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      color: var(--ink);
-      background:
-        radial-gradient(1200px 600px at 12% -10%, rgba(158,28,20,.06), transparent 55%),
-        radial-gradient(900px 500px at 110% 8%, rgba(138,106,50,.08), transparent 50%),
-        var(--paper);
-      font-family: "Noto Serif SC", "Songti SC", "SimSun", serif;
-      font-size: 18px;
-      line-height: 1.9;
-      letter-spacing: .02em;
-    }
-    body::before {
-      content: "";
-      position: fixed; inset: 0; pointer-events: none; z-index: 8; opacity: .18;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
-    }
-    a { color: var(--cinnabar); text-underline-offset: .18em; }
-    a:hover { color: var(--cinnabar-deep); }
-    .skip {
-      position: absolute; left: -999px; top: 0;
-    }
-    .skip:focus { left: 12px; background: var(--card); padding: 8px 12px; z-index: 20; }
-    .topbar {
-      position: sticky; top: 0; z-index: 12;
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 16px; padding: 10px 28px;
-      background: color-mix(in srgb, var(--paper) 88%, transparent);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--rule);
-    }
-    .brand {
-      display: flex; align-items: baseline; gap: 12px;
-      text-decoration: none; color: inherit;
-    }
-    .brand b {
-      font-family: Syne, sans-serif;
-      letter-spacing: .18em;
-      font-size: 13px;
-      color: var(--cinnabar);
-    }
-    .brand span { color: var(--muted); font-size: 13px; }
-    .topbar nav { display: flex; gap: 18px; font-size: 13px; }
-    .topbar nav a { color: var(--ink-soft); text-decoration: none; }
-    .toc-btn {
-      display: none;
-      background: transparent; border: 1px solid var(--rule);
-      color: var(--ink); padding: 4px 10px; font: inherit; cursor: pointer;
-    }
-    .layout {
-      display: grid;
-      grid-template-columns: 220px minmax(0, var(--max)) 1fr;
-      gap: 0 40px;
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 28px 80px;
-    }
-    html[lang="en"] body {
-      font-family: Fraunces, "Noto Serif SC", Georgia, serif;
-      letter-spacing: .004em;
-      line-height: 1.78;
-    }
-    html[lang="en"] .hero h1 {
-      letter-spacing: -.02em;
-      font-size: clamp(1.85rem, 4.8vw, 3.05rem);
-      padding-right: 92px;
-    }
-    html[lang="en"] .byline .who { letter-spacing: .06em; }
-    .lang {
-      display: flex;
-      border: 1px solid var(--rule);
-    }
-    .lang button {
-      background: transparent;
-      border: 0;
-      color: var(--muted);
-      font-family: Syne, sans-serif;
-      font-size: 11px;
-      letter-spacing: .16em;
-      padding: 5px 11px;
-      cursor: pointer;
-    }
-    .lang button[aria-pressed="true"] {
-      background: var(--cinnabar);
-      color: var(--paper);
-    }
-    .layout > .toc { grid-column: 1; grid-row: 1; }
-    .layout > article { grid-column: 2; grid-row: 1; }
-    .pane-off { display: none !important; }
-    .toc {
-      position: sticky; top: 64px;
-      align-self: start;
-      max-height: calc(100vh - 80px);
-      overflow: auto;
-      padding: 36px 0 24px;
-      font-size: 12.5px;
-      line-height: 1.45;
-    }
-    .toc h2 {
-      margin: 0 0 14px;
-      font-size: 11px;
-      letter-spacing: .22em;
-      color: var(--gold);
-      font-weight: 700;
-    }
-    .toc a {
-      display: block;
-      color: var(--muted);
-      text-decoration: none;
-      padding: 5px 0 5px 12px;
-      border-left: 2px solid transparent;
-    }
-    .toc a:hover, .toc a.active {
-      color: var(--cinnabar);
-      border-left-color: var(--cinnabar);
-    }
-    article { padding: 12px 0 40px; min-width: 0; }
-    .hero {
-      padding: 56px 0 40px;
-      border-bottom: 1px solid var(--rule);
-      position: relative;
-    }
-    .kicker {
-      font-family: Syne, sans-serif;
-      font-size: 11px;
-      letter-spacing: .34em;
-      color: var(--cinnabar);
-      margin: 0 0 18px;
-    }
-    .hero h1 {
-      margin: 0;
-      font-size: clamp(2.2rem, 6vw, 3.6rem);
-      line-height: 1.18;
-      font-weight: 900;
-      letter-spacing: .04em;
-      padding-right: 96px;
-    }
-    .hero .sub {
-      margin: 18px 0 0;
-      font-size: 1.25rem;
-      color: var(--ink-soft);
-      font-weight: 600;
-    }
-    .byline {
-      margin: 22px 0 0;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: baseline;
-      gap: 10px 18px;
-      font-size: 15px;
-      color: var(--ink-soft);
-    }
-    .byline .who {
-      font-weight: 700;
-      letter-spacing: .18em;
-    }
-    .byline a {
-      color: var(--muted);
-      text-decoration: none;
-      font-family: Fraunces, "Noto Serif SC", serif;
-      letter-spacing: .02em;
-    }
-    .byline a:hover { color: var(--cinnabar); }
-    .seal {
-      position: absolute; right: 0; top: 72px;
-      width: 84px; height: 84px;
-      border: 3px solid var(--cinnabar);
-      color: var(--cinnabar);
-      display: grid; place-items: center;
-      font-weight: 900; font-size: 28px;
-      transform: rotate(-12deg);
-      opacity: .88;
-      box-shadow: inset 0 0 0 2px var(--cinnabar);
-    }
-    .lede {
-      margin: 28px 0 0;
-      font-size: 1.12rem;
-      color: var(--ink-soft);
-    }
-    .lede::first-letter {
-      float: left;
-      font-size: 3.4rem;
-      line-height: .85;
-      padding: 8px 10px 0 0;
-      color: var(--cinnabar);
-      font-weight: 900;
-    }
-    h2.sec {
-      margin: 3.2rem 0 1rem;
-      font-size: 1.45rem;
-      line-height: 1.35;
-      font-weight: 800;
-      scroll-margin-top: 76px;
-    }
-    h2.sec small {
-      display: block;
-      font-size: 12px;
-      letter-spacing: .2em;
-      color: var(--cinnabar);
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-    p { margin: 0 0 1.05em; }
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin: 1.4em 0 1.6em;
-    }
-    .stat {
-      background: var(--card);
-      border: 1px solid var(--rule);
-      padding: 14px 14px 12px;
-      box-shadow: 0 8px 24px var(--shadow);
-    }
-    .stat b {
-      display: block;
-      font-family: Fraunces, "Noto Serif SC", serif;
-      font-size: 1.55rem;
-      font-weight: 700;
-      color: var(--cinnabar-deep);
-      letter-spacing: 0;
-      line-height: 1.2;
-    }
-    .stat span { font-size: 12px; color: var(--muted); }
-    ul.q, ul.plain { margin: 0 0 1.2em; padding: 0; list-style: none; }
-    ul.q li, ul.plain li {
-      position: relative;
-      padding: 6px 0 6px 18px;
-      border-bottom: 1px dashed var(--rule);
-    }
-    ul.q li::before, ul.plain li::before {
-      content: "";
-      position: absolute; left: 0; top: 1.05em;
-      width: 7px; height: 7px;
-      background: var(--cinnabar);
-      transform: rotate(45deg);
-    }
-    .ask {
-      display: grid;
-      gap: 8px;
-      margin: 0 0 1.3em;
-    }
-    .ask div {
-      background: var(--card);
-      border-left: 3px solid var(--cinnabar);
-      padding: 8px 12px;
-    }
-    .ask b { color: var(--cinnabar-deep); }
-    .formula {
-      margin: 1.2em 0 1.4em;
-      padding: 16px 18px;
-      background: #1c1712;
-      color: #f3ead6;
-      font-family: Fraunces, "Noto Serif SC", serif;
-      letter-spacing: .03em;
-      box-shadow: 0 12px 30px var(--shadow);
-    }
-    .formula .lbl {
-      font-family: Syne, sans-serif;
-      font-size: 10px;
-      letter-spacing: .22em;
-      color: #d9a39a;
-      margin-bottom: 8px;
-    }
-    .formula p { margin: 0; color: #f3ead6; font-size: 1.05rem; }
-    .formula .op { color: #e8c27a; padding: 0 .35em; }
-    .chain {
-      display: flex; flex-wrap: wrap; gap: 6px; align-items: center;
-      margin: 0 0 1.3em;
-    }
-    .chain span, .chain b {
-      background: var(--card);
-      border: 1px solid var(--rule);
-      padding: 4px 10px;
-      font-size: .92rem;
-    }
-    .chain b { border-color: var(--cinnabar); color: var(--cinnabar-deep); }
-    .chain i {
-      font-style: normal;
-      color: var(--gold);
-      font-family: Fraunces, serif;
-    }
-    blockquote.pull {
-      margin: 1.6em 0;
-      padding: 0 0 0 18px;
-      border-left: 3px solid var(--cinnabar);
-      font-size: 1.18rem;
-      font-weight: 600;
-      line-height: 1.7;
-      color: var(--cinnabar-deep);
-    }
-    .two {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin: 0 0 1.3em;
-    }
-    .two figure {
-      margin: 0;
-      background: var(--card);
-      border: 1px solid var(--rule);
-      padding: 14px;
-    }
-    .two figcaption {
-      font-size: 12px;
-      letter-spacing: .16em;
-      color: var(--gold);
-      margin-bottom: 6px;
-    }
-    .close {
-      margin-top: 3rem;
-      padding-top: 1.6rem;
-      border-top: 1px solid var(--rule);
-    }
-    .close .final {
-      font-size: 1.35rem;
-      font-weight: 800;
-      line-height: 1.7;
-    }
-    footer.site {
-      grid-column: 1 / -1;
-      border-top: 1px solid var(--rule);
-      padding: 28px 0 12px;
-      color: var(--muted);
-      font-size: 13px;
-      display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
-    }
-    .mask {
-      display: none;
-      position: fixed; inset: 0; background: rgba(28,23,18,.35); z-index: 14;
-    }
-    @media (max-width: 980px) {
-      .layout { grid-template-columns: 1fr; padding: 0 18px 64px; }
-      .toc {
-        display: none; position: fixed; top: 48px; left: 0; bottom: 0;
-        width: min(82vw, 320px); background: var(--paper);
-        padding: 20px; z-index: 15; box-shadow: 8px 0 30px var(--shadow);
-        max-height: none;
-      }
-      body.toc-open .toc, body.toc-open .mask { display: block; }
-      .toc-btn { display: inline-block; }
-      .seal { display: none; }
-      .stats, .two { grid-template-columns: 1fr; }
-      .topbar { padding: 10px 16px; }
-    }
-    @media print {
-      .topbar, .toc, .toc-btn, .lang, .grain, body::before { display: none !important; }
-      body { background: #fff; font-size: 12pt; }
-      .layout { display: block; max-width: none; }
-      a { color: inherit; text-decoration: none; }
-      .formula { background: #111; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    }
+:root {
+  --paper: #f3ead6;
+  --paper-2: #ebe1c8;
+  --ink: #1c1712;
+  --ink-soft: #3a3229;
+  --muted: #6b5e4e;
+  --cinnabar: #9e1c14;
+  --cinnabar-deep: #6e120d;
+  --gold: #8a6a32;
+  --rule: #d7c7a8;
+  --card: #fff8ea;
+  --shadow: rgba(40, 24, 8, .12);
+  --max: 42rem;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: var(--ink);
+  background:
+    radial-gradient(1200px 600px at 12% -10%, rgba(158,28,20,.06), transparent 55%),
+    radial-gradient(900px 500px at 110% 8%, rgba(138,106,50,.08), transparent 50%),
+    var(--paper);
+  font-family: "Noto Serif SC", "Songti SC", "SimSun", serif;
+  font-size: 18px;
+  line-height: 1.9;
+  letter-spacing: .02em;
+}
+body.book { font-size: 17px; }
+body::before {
+  content: "";
+  position: fixed; inset: 0; pointer-events: none; z-index: 8; opacity: .18;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+}
+a { color: var(--cinnabar); text-underline-offset: .18em; }
+a:hover { color: var(--cinnabar-deep); }
+.skip { position: absolute; left: -999px; top: 0; }
+.skip:focus { left: 12px; background: var(--card); padding: 8px 12px; z-index: 20; }
+.topbar {
+  position: sticky; top: 0; z-index: 12;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; padding: 10px 28px;
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--rule);
+}
+.brand {
+  display: flex; align-items: baseline; gap: 12px;
+  text-decoration: none; color: inherit;
+}
+.brand b {
+  font-family: Syne, sans-serif;
+  letter-spacing: .18em;
+  font-size: 13px;
+  color: var(--cinnabar);
+}
+.brand span { color: var(--muted); font-size: 13px; }
+.topbar nav {
+  display: flex; gap: 14px; font-size: 13px; align-items: center; flex-wrap: wrap;
+}
+.topbar nav a { color: var(--ink-soft); text-decoration: none; }
+.topbar nav a[aria-current="page"] { color: var(--cinnabar); }
+.toc-btn {
+  display: none;
+  background: transparent; border: 1px solid var(--rule);
+  color: var(--ink); padding: 4px 10px; font: inherit; cursor: pointer;
+}
+.layout {
+  display: grid;
+  grid-template-columns: 240px minmax(0, var(--max)) 1fr;
+  gap: 0 40px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 28px 80px;
+}
+body.book .layout { --max: 46rem; }
+html[lang="en"] body {
+  font-family: Fraunces, "Noto Serif SC", Georgia, serif;
+  letter-spacing: .004em;
+  line-height: 1.78;
+}
+html[lang="en"] .hero h1 {
+  letter-spacing: -.02em;
+  font-size: clamp(1.85rem, 4.8vw, 3.05rem);
+  padding-right: 92px;
+}
+html[lang="en"] .byline .who { letter-spacing: .06em; }
+.lang { display: flex; border: 1px solid var(--rule); }
+.lang button {
+  background: transparent; border: 0; color: var(--muted);
+  font-family: Syne, sans-serif; font-size: 11px; letter-spacing: .16em;
+  padding: 5px 11px; cursor: pointer;
+}
+.lang button[aria-pressed="true"] {
+  background: var(--cinnabar); color: var(--paper);
+}
+.layout > .toc { grid-column: 1; grid-row: 1; }
+.layout > article { grid-column: 2; grid-row: 1; }
+.pane-off { display: none !important; }
+.toc {
+  position: sticky; top: 64px;
+  align-self: start;
+  max-height: calc(100vh - 80px);
+  overflow: auto;
+  padding: 36px 0 24px;
+  font-size: 12.5px;
+  line-height: 1.45;
+}
+.toc h2 {
+  margin: 0 0 14px;
+  font-size: 11px;
+  letter-spacing: .22em;
+  color: var(--gold);
+  font-weight: 700;
+}
+.toc a {
+  display: block;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 5px 0 5px 12px;
+  border-left: 2px solid transparent;
+}
+.toc a.h2 { padding-left: 22px; font-size: 12px; }
+.toc a:hover, .toc a.active {
+  color: var(--cinnabar);
+  border-left-color: var(--cinnabar);
+}
+article { padding: 12px 0 40px; min-width: 0; }
+.hero {
+  padding: 56px 0 40px;
+  border-bottom: 1px solid var(--rule);
+  position: relative;
+}
+.kicker {
+  font-family: Syne, sans-serif;
+  font-size: 11px;
+  letter-spacing: .34em;
+  color: var(--cinnabar);
+  margin: 0 0 18px;
+}
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2.2rem, 6vw, 3.6rem);
+  line-height: 1.18;
+  font-weight: 900;
+  letter-spacing: .04em;
+  padding-right: 96px;
+}
+.hero .sub {
+  margin: 18px 0 0;
+  font-size: 1.25rem;
+  color: var(--ink-soft);
+  font-weight: 600;
+}
+.hero .kicker2 {
+  margin: 10px 0 0;
+  font-size: 15px;
+  color: var(--muted);
+  font-style: italic;
+}
+.byline {
+  margin: 22px 0 0;
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 18px;
+  font-size: 15px; color: var(--ink-soft);
+}
+.byline .who { font-weight: 700; letter-spacing: .18em; }
+.byline a {
+  color: var(--muted); text-decoration: none;
+  font-family: Fraunces, "Noto Serif SC", serif;
+}
+.byline a:hover { color: var(--cinnabar); }
+.note {
+  margin: 22px 0 0;
+  padding: 10px 0 10px 16px;
+  border-left: 3px solid var(--gold);
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+.seal {
+  position: absolute; right: 0; top: 72px;
+  width: 84px; height: 84px;
+  border: 3px solid var(--cinnabar);
+  color: var(--cinnabar);
+  display: grid; place-items: center;
+  font-weight: 900; font-size: 28px;
+  transform: rotate(-12deg);
+  opacity: .88;
+  box-shadow: inset 0 0 0 2px var(--cinnabar);
+}
+.lede { margin: 28px 0 0; font-size: 1.12rem; color: var(--ink-soft); }
+.lede::first-letter {
+  float: left; font-size: 3.4rem; line-height: .85;
+  padding: 8px 10px 0 0; color: var(--cinnabar); font-weight: 900;
+}
+h1.ch, h2.sec, article h1, article h2 {
+  scroll-margin-top: 76px;
+}
+h2.sec, article h2 {
+  margin: 3.2rem 0 1rem;
+  font-size: 1.45rem;
+  line-height: 1.35;
+  font-weight: 800;
+}
+h2.sec small, article h2 small {
+  display: block;
+  font-size: 12px;
+  letter-spacing: .2em;
+  color: var(--cinnabar);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+article h1 {
+  margin: 3.6rem 0 1rem;
+  font-size: 1.7rem;
+  font-weight: 900;
+  line-height: 1.3;
+}
+article h3 {
+  margin: 2rem 0 .7rem;
+  font-size: 1.12rem;
+  font-weight: 800;
+  scroll-margin-top: 76px;
+}
+p { margin: 0 0 1.05em; }
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 1.4em 0 1.6em;
+}
+.stat {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  padding: 14px 14px 12px;
+  box-shadow: 0 8px 24px var(--shadow);
+}
+.stat b {
+  display: block;
+  font-family: Fraunces, "Noto Serif SC", serif;
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: var(--cinnabar-deep);
+  letter-spacing: 0;
+  line-height: 1.2;
+}
+.stat span { font-size: 12px; color: var(--muted); }
+.formula {
+  margin: 1.2em 0 1.4em;
+  padding: 16px 18px;
+  background: #1c1712;
+  color: #f3ead6;
+  font-family: Fraunces, "Noto Serif SC", serif;
+  letter-spacing: .03em;
+  box-shadow: 0 12px 30px var(--shadow);
+}
+.formula .lbl {
+  font-family: Syne, sans-serif;
+  font-size: 10px;
+  letter-spacing: .22em;
+  color: #d9a39a;
+  margin-bottom: 8px;
+}
+.formula p { margin: 0; color: #f3ead6; font-size: 1.05rem; }
+blockquote, blockquote.pull {
+  margin: 1.6em 0;
+  padding: 0 0 0 18px;
+  border-left: 3px solid var(--cinnabar);
+  font-size: 1.12rem;
+  font-weight: 600;
+  line-height: 1.7;
+  color: var(--cinnabar-deep);
+}
+.close {
+  margin-top: 3rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--rule);
+}
+.close .final {
+  font-size: 1.35rem;
+  font-weight: 800;
+  line-height: 1.7;
+}
+footer.site {
+  grid-column: 1 / -1;
+  border-top: 1px solid var(--rule);
+  padding: 28px 0 12px;
+  color: var(--muted);
+  font-size: 13px;
+  display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+}
+.mask {
+  display: none;
+  position: fixed; inset: 0; background: rgba(28,23,18,.35); z-index: 14;
+}
+figure.fig {
+  margin: 1.6em 0 1.8em;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  padding: 12px 12px 10px;
+  box-shadow: 0 8px 24px var(--shadow);
+}
+figure.fig img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+figure.fig figcaption {
+  margin-top: 8px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+article table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  line-height: 1.45;
+  margin: 1em 0 1.5em;
+}
+article th, article td {
+  border: 1px solid var(--rule);
+  padding: 7px 8px;
+  vertical-align: top;
+}
+article th { background: var(--paper-2); font-weight: 700; }
+article hr {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin: 2.2em 0;
+}
+article ul, article ol { margin: 0 0 1.2em; padding-left: 1.4em; }
+.footnote { font-size: 14px; color: var(--ink-soft); }
+.footnote ol { padding-left: 1.3em; }
+@media (max-width: 980px) {
+  .layout { grid-template-columns: 1fr; padding: 0 18px 64px; }
+  .toc {
+    display: none; position: fixed; top: 48px; left: 0; bottom: 0;
+    width: min(82vw, 320px); background: var(--paper);
+    padding: 20px; z-index: 15; box-shadow: 8px 0 30px var(--shadow);
+    max-height: none;
+  }
+  body.toc-open .toc, body.toc-open .mask { display: block; }
+  .toc-btn { display: inline-block; }
+  .seal { display: none; }
+  .stats { grid-template-columns: 1fr; }
+  .topbar { padding: 10px 16px; }
+  .hero h1 { padding-right: 0; }
+}
+@media print {
+  .topbar, .toc, .toc-btn, .lang, body::before, .mask { display: none !important; }
+  body { background: #fff; font-size: 12pt; }
+  .layout { display: block; max-width: none; }
+  a { color: inherit; text-decoration: none; }
+  .formula { background: #111; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+
   </style>
 </head>
 <body>
+
   <a class="skip" id="skip" href="#main">跳到正文</a>
   <div class="mask" id="mask" hidden></div>
+  
   <header class="topbar">
-    <a class="brand" href="#top">
+    <a class="brand" href="./">
       <b>KOS-TL</b>
-      <span id="brandSub">可信软件宣言</span>
+      <span id="brandSub">使命软件檄文</span>
     </a>
     <nav>
+      
       <div class="lang" role="group" aria-label="Language / 语言">
         <button type="button" data-set-lang="zh" aria-pressed="true">中文</button>
         <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
       </div>
       <button class="toc-btn" type="button" id="tocBtn">目录</button>
+      <a id="navManifesto" href="./" aria-current="page">檄文</a>
+      <a id="navBook" href="book/">专著</a>
+      <a id="navDlM" href="files/manifesto.docx">檄文 Word</a>
+      <a id="navDlB" href="files/book-v13.docx">专著 Word</a>
       <a href="https://github.com/KOS-TL">GitHub</a>
     </nav>
   </header>
 
   <div class="layout" id="top">
-    <nav class="toc" data-lang="zh" aria-label="章节目录">
-      <h2>目录</h2>
-      <a href="#intro">引言</a>
-      <a href="#s1">一、可信性赤字</a>
-      <a href="#s2">二、不知是否可信</a>
-      <a href="#s3">三、复杂度越界</a>
-      <a href="#s4">四、漏洞的压力</a>
-      <a href="#s5">五、软件供应链</a>
-      <a href="#s6">六、经济代价</a>
-      <a href="#s7">七、人工智能新变量</a>
-      <a href="#s8">八、软件生产函数</a>
-      <a href="#s9">九、是否值得信任</a>
-      <a href="#s10">十、理解现实世界</a>
-      <a href="#s11">十一、理解还不够</a>
-      <a href="#s12">十二、KOS 的历史机会</a>
-      <a href="#s13">十三、KOS-TL</a>
-      <a href="#s14">十四、重新定义测试</a>
-      <a href="#s15">十五、新产业</a>
-      <a href="#s16">十六、软件价值</a>
-      <a href="#s17">十七、可信软件产业链</a>
-      <a href="#s18">十八、数字基础设施</a>
-      <a href="#s19">十九、更强的可信软件</a>
-      <a href="#s20">二十、中国的机会</a>
-      <a href="#s21">二十一、不能只做使用者</a>
-      <a href="#s22">二十二、从大国到强国</a>
-      <a href="#s23">二十三、这一代的使命</a>
-      <a href="#coda">结语</a>
-    </nav>
-
-    <nav class="toc pane-off" data-lang="en" aria-label="Contents">
-      <h2>Contents</h2>
-      <a href="#en-intro">Prologue</a>
-      <a href="#en-s1">I. The Trust Deficit</a>
-      <a href="#en-s2">II. Not Knowing If It Is Trusted</a>
-      <a href="#en-s3">III. Complexity Beyond the Old Imagination</a>
-      <a href="#en-s4">IV. The Pressure of Vulnerabilities</a>
-      <a href="#en-s5">V. The Software Supply Chain</a>
-      <a href="#en-s6">VI. The Economic Cost</a>
-      <a href="#en-s7">VII. AI as a New Variable</a>
-      <a href="#en-s8">VIII. The Software Production Function</a>
-      <a href="#en-s9">IX. Whether Software Is Worth Trusting</a>
-      <a href="#en-s10">X. Understanding the Real World</a>
-      <a href="#en-s11">XI. Understanding Is Not Enough</a>
-      <a href="#en-s12">XII. The Historical Chance of KOS</a>
-      <a href="#en-s13">XIII. KOS-TL</a>
-      <a href="#en-s14">XIV. Redefining Software Testing</a>
-      <a href="#en-s15">XV. A New Industry</a>
-      <a href="#en-s16">XVI. The Value of Software</a>
-      <a href="#en-s17">XVII. A Trusted Software Industry Chain</a>
-      <a href="#en-s18">XVIII. Next-Generation Digital Infrastructure</a>
-      <a href="#en-s19">XIX. Stronger Trusted Software</a>
-      <a href="#en-s20">XX. Why China Must Take This Chance</a>
-      <a href="#en-s21">XXI. Not Merely Users of Software</a>
-      <a href="#en-s22">XXII. From a Software Power in Scale to a Software Power in Kind</a>
-      <a href="#en-s23">XXIII. The Mission of This Generation</a>
-      <a href="#en-coda">Coda</a>
-    </nav>
-
-
+    <nav class="toc" data-lang="zh" aria-label="目录"><h2>目录</h2><a href="#intro">开篇</a>
+<a href="#s1">一、命脉已经交给了一个陌生人</a>
+<a href="#s2">二、十五万亿背后，缺的不是规模，是托付</a>
+<a href="#s3">三、对手不是“还不够可信”，是假使命</a>
+<a href="#s4">四、生成在加速，检查在掉队</a>
+<a href="#s5">五、供应链把可信计算基撑破了</a>
+<a href="#s6">六、理解世界并采取行动，仍可以执行未被写明的目的</a>
+<a href="#s7">七、做成系统，还是绑住目的</a>
+<a href="#s8">八、不是安全产业的细分，是准入条件</a>
+<a href="#s9">九、强国不是规模，是定义使命的权力</a>
+<a href="#s10">十、这一代要回答的，与尚未解开的</a>
+<a href="#coda">结语：让软件从“能够运行”走向“承担使命”</a></nav>
+    <nav class="toc pane-off" data-lang="en" aria-label="Contents"><h2>Contents</h2><a href="#en-intro">Prologue</a>
+<a href="#en-s1">I. The vital systems have already been handed to a stranger</a>
+<a href="#en-s2">II. Behind fifteen trillion, what is missing is not scale. It is the charge</a>
+<a href="#en-s3">III. The opponent is not “not trustworthy enough.” It is a false mission</a>
+<a href="#en-s4">IV. Generation is accelerating. Inspection is falling behind</a>
+<a href="#en-s5">V. The supply chain has stretched the trusted computing base until it burst</a>
+<a href="#en-s6">VI. Understanding the world and taking action can still execute a purpose that was never written down</a>
+<a href="#en-s7">VII. Make a system, or bind a purpose</a>
+<a href="#en-s8">VIII. Not a niche of the security industry. An entry condition</a>
+<a href="#en-s9">IX. A strong country is not scale. It is the power to define a mission</a>
+<a href="#en-s10">X. What this generation must still answer, and what is not yet undone</a>
+<a href="#en-coda">Coda: from “it runs” to “it bears a mission”</a></nav>
     <article id="main" data-lang="zh">
-      <header class="hero">
+      <header class="hero" id="intro">
         <p class="kicker">MANIFESTO · 檄文</p>
-        <h1>向可信软件时代进军</h1>
-        <p class="sub">——建设中国可信软件产业</p>
+        <h1>向软件使命时代进军</h1>
+        <p class="sub">把软件绑回可检验的托付</p>
+        <p class="kicker2">关于建设中国新一代使命软件基础设施的檄文</p>
         <p class="byline">
           <span class="who">陈鹏</span>
+          <span>二〇二六年九月</span>
           <a href="mailto:chenpeng_buaa@163.com">chenpeng_buaa@163.com</a>
         </p>
-        <div class="seal" aria-hidden="true">信</div>
-        <p class="lede">软件已经成为人类文明的基础设施，但我们真的能够信任它吗？人类文明正在进入一个前所未有的软件时代。</p>
+        <div class="seal" aria-hidden="true">命</div>
+        <p class="note">知识操作系统是架构主张，不是已经交付的操作系统。使命软件工程学是体系主张，不是已经形成的学科。本文与同题专著《向软件使命时代进军》第13稿同一条脊骨：专著展开论证、数据与未解清单，本文只钉钉子。</p>
+        <p class="lede">客气已经用完了。软件行业擅长把事故写成个案，把结构问题写成运气不好，把“还在跑”写成“已经承担使命”。当一段程序开始调度电网、间隔列车、清算支付、决定剂量时，真正要问的不是它还不够快、还不够强。快和强已经发生了。缺的是绳子。</p>
       </header>
+<p>对手不是“还不够可信”。对手是假使命：看起来像服务，失败时不像失败。患者还在刷手机，列车还在跑，账本还在记，只是目的已经换了。没有可信，托付是空话；没有托付，可信是手段。使命的内涵包含可信。可信不是旁立的另一套最高概念。</p><blockquote class="pull">没有可信，托付是空话；没有托付，可信是手段。</blockquote>
+<p>我们向软件使命时代进军，不是再喊一次产业口号，而是把软件绑回一件可检验的托付。</p>
+<h2 class="sec" id="s1"><small>01</small>一、命脉已经交给了一个陌生人</h2>
+<p>软件已经成为现代国家实际在用的操作系统。这句话不是隐喻。停电、停运、停诊、停清算，今天往往先是一段程序停了。Unix、C、数据库、编译器、云与大模型，把数学和工程变成了可执行的形式；金融、通信、电网、铁路、汽车、工厂、医院与城市治理，已经没有一套可以在软件之外独立运转的备用神经。人工智能还在把认知与行动写进这套神经。</p>
+<p>我们不会把一座城市交给一位无法出示诊断依据、也无法被追问的医生，哪怕他看起来很忙、很贵、很新。软件就是这样一位陌生人：依赖已经停不下来，却很少有人能够读懂它的判断依据，更少能够在它说“继续”的时候强制它停下来。</p>
+<p>Therac-25不是怀旧。它是一次信任转移的原型——从物理互锁转到程序保证，再从程序保证转到无人能够盘问。今天面对的不是一台加速器，而是成千上万个潜在的、隐藏的同类问题。</p>
+<h2 class="sec" id="s2"><small>02</small>二、十五万亿背后，缺的不是规模，是托付</h2>
+<p>2025年，中国软件和信息技术服务业实现软件业务收入15.48万亿元，同比增长13.2%；利润总额1.88万亿元；从业人员超过1,100万人。信息技术服务10.64万亿元，软件产品3.24万亿元，工业软件产品3,330亿元。以任何标准衡量，这都是一个庞大而充满活力的产业。</p>
 
-      <h2 class="sec" id="intro"><small>PROLOGUE</small>引言</h2>
-      <p>过去半个多世纪，人类创造了无数伟大的软件系统。从 Unix、C、Lisp、Windows、Linux、Git、Web、数据库、编译器，到今天的云计算、大数据、人工智能、工业软件、自动驾驶、数字孪生和智能 Agent。</p>
-      <p>这些软件，是人类智慧的结晶。它们把数学、逻辑、工程、知识和人类经验，转化成了可以被机器执行的形式。</p>
-      <p>今天：金融由软件运行；通信由软件连接；电网由软件调度；铁路由软件控制；汽车由软件定义；工厂由软件组织；医院由软件支撑；城市由软件治理；人工智能则开始让软件拥有越来越强的认知与行动能力。</p>
-      <p>软件已经不再是人类社会的辅助工具。软件正在成为现代文明本身的重要组成部分。</p>
-      <blockquote class="pull">当我们把越来越多的现实世界交给软件，我们是否已经建立了与软件重要性相匹配的可信体系？</blockquote>
-      <p>答案恐怕并不令人乐观。</p>
+<div class="stats">
+  <div class="stat"><b>15.48 万亿</b><span>2025 年软件业务收入 · 同比 +13.2%</span></div>
+  <div class="stat"><b>1.39%</b><span>基础软件 2,146 亿元</span></div>
+  <div class="stat"><b>1.44%</b><span>信息安全 2,235 亿元</span></div>
+</div>
 
-      <h2 class="sec" id="s1"><small>01</small>十五万亿元级软件产业背后，隐藏着一个巨大的「可信性赤字」</h2>
-      <p>中国的软件产业已经发展成为一个巨大的产业体系。</p>
-      <div class="stats">
-        <div class="stat"><b>15.48 万亿</b><span>2025 年软件业务收入 · 同比增长 13.2%</span></div>
-        <div class="stat"><b>1.88 万亿</b><span>利润总额</span></div>
-        <div class="stat"><b>10.64 万亿</b><span>信息技术服务收入</span></div>
-      </div>
-      <p>其中软件产品收入 3.24 万亿元；工业软件产品收入 3330 亿元；信息安全产品和服务收入 2235 亿元。这意味着：中国已经拥有一个 15 万亿元级的软件产业。</p>
-      <p>然而，我们必须提出一个更加基本的问题：在这 15 万亿元的软件中，有多少软件能够真正回答「为什么可以相信它」？</p>
-      <p>传统的软件工程当然已经建立了大量质量保障体系：编程语言、类型系统、编译器、软件测试、静态分析、动态分析、代码审查、软件配置管理、软件安全、形式化验证、DevOps、DevSecOps。这些都是人类软件工程最伟大的成果。</p>
-      <p>但是，随着软件规模和复杂度不断增加，一个新的问题正在出现：传统软件工程正在越来越难以独立承担现代软件系统的全部可信责任。</p>
-
-      <h2 class="sec" id="s2"><small>02</small>软件最大的危险，不只是 Bug，而是「我们不知道它是否可信」</h2>
-      <p>传统软件问题通常被理解为：有没有 Bug？但今天真正的问题已经远远超出了 Bug。我们需要问：</p>
-      <div class="ask">
-        <div><b>代码可信吗？</b> 代码是否正确实现了需求？</div>
-        <div><b>数据可信吗？</b> 数据来自哪里？是否完整、真实、最新？</div>
-        <div><b>软件供应链可信吗？</b> 第三方组件是否安全？开源软件是否存在未知漏洞？</div>
-        <div><b>知识可信吗？</b> 系统使用的知识是否正确？谁定义了这些知识？</div>
-        <div><b>规则可信吗？</b> 业务规则是否完整？规则之间是否存在冲突？</div>
-        <div><b>模型可信吗？</b> 模型为什么得出这个结果？</div>
-        <div><b>决策可信吗？</b> 系统为什么采取这个决策？</div>
-        <div><b>行动可信吗？</b> Agent 为什么执行这个动作？</div>
-        <div><b>系统可信吗？</b> 整个系统在复杂环境下是否仍然按照预期运行？</div>
-      </div>
-      <p>于是我们发现：软件可信已经从「代码正确性」扩展成为一个系统性问题。</p>
-
-      <h2 class="sec" id="s3"><small>03</small>软件复杂度已经远远超出了过去的软件工程想象</h2>
-      <p>过去的软件可能只有几千行代码。后来几万行。再后来几百万行、几千万行。</p>
-      <p>今天，一个大型软件系统往往不是一个程序，而是一个庞大的生态：</p>
-      <div class="chain">
-        <span>操作系统</span><i>→</i>
-        <span>数据库</span><i>→</i>
-        <span>编译器</span><i>→</i>
-        <span>开源组件</span><i>→</i>
-        <span>第三方 SDK</span><i>→</i>
-        <span>云平台</span><i>→</i>
-        <span>API</span><i>→</i>
-        <span>数据</span><i>→</i>
-        <span>AI 模型</span><i>→</i>
-        <span>Agent</span><i>→</i>
-        <span>业务规则</span>
-      </div>
-      <p>因此，现代软件已经不是一个程序，而是一个复杂的软件系统。更进一步：它已经成为一个复杂的社会—技术系统。</p>
-
-      <h2 class="sec" id="s4"><small>04</small>漏洞正在证明传统软件可信体系面临巨大压力</h2>
-      <p>美国国家标准与技术研究院（NIST）的数据已经给出了非常强烈的信号。2020—2025 年，CVE 漏洞提交数量增长 263%。2025 年，NIST 处理的 CVE 数量已经达到约 4.2 万个。</p>
-      <p>而进入 2026 年以后，漏洞提交速度仍然快速增长。这说明一个非常重要的问题：软件世界产生问题的速度，正在越来越接近甚至超过传统人工分析和治理能力。</p>
-      <p>这不是某一个软件公司的问题，也不是某一种编程语言的问题，而是软件规模化时代的结构性问题。</p>
-
-      <h2 class="sec" id="s5"><small>05</small>软件供应链让可信问题从「一个程序」扩展到「整个生态」</h2>
-      <p>现代软件几乎没有真正意义上的「独立软件」。一个系统可能依赖几百个、几千个、甚至数万个第三方软件组件。一个组件的问题可能沿着供应链传播。</p>
-      <p>Verizon 2026 年《Data Breach Investigations Report》显示：软件漏洞利用已经成为数据泄露最主要的初始攻击方式之一，占 31%。同时，涉及第三方的泄露事件达到 48%。</p>
-      <p>这说明：软件可信已经成为整个数字生态系统的问题。</p>
-
-      <h2 class="sec" id="s6"><small>06</small>软件错误的经济代价已经巨大到不能忽视</h2>
-      <p>IBM 2025 年《Cost of a Data Breach Report》显示：全球一次数据泄露事件的平均成本约为 444 万美元。美国则达到 1022 万美元。这还只是安全事件。</p>
-      <p>如果把软件故障、业务中断、工业停机、金融错误、医疗错误、数据损坏、软件供应链事故全部纳入考虑，那么现代社会因为「不可信软件」付出的代价将更加巨大。</p>
-      <blockquote class="pull">软件可信不是软件企业自己的质量问题，而是整个数字经济的基础设施问题。</blockquote>
-
-      <h2 class="sec" id="s7"><small>07</small>人工智能正在成为软件可信问题中的一个重要新变量</h2>
-      <p>这里必须特别强调：大模型不是软件可信问题的全部，也不是唯一解决方案。它只是正在改变软件工程的一项重要技术力量。</p>
-      <div class="two">
-        <figure>
-          <figcaption>过去</figcaption>
-          <div class="chain"><span>需求</span><i>↓</i><span>架构设计</span><i>↓</i><span>程序员</span><i>↓</i><span>代码</span><i>↓</i><span>测试</span><i>↓</i><span>软件</span></div>
-        </figure>
-        <figure>
-          <figcaption>今天</figcaption>
-          <div class="chain"><span>人的意图</span><i>↓</i><span>大模型</span><i>↓</i><span>代码</span><i>↓</i><span>测试</span><i>↓</i><span>部署</span><i>↓</i><span>Agent</span><i>↓</i><span>执行</span></div>
-        </figure>
-      </div>
-      <p>自动编程正在极大提高软件生产效率。这是一件非常积极的事情。它能够：降低开发门槛；提高程序员效率；自动生成代码；自动生成测试；自动分析代码；自动发现部分问题；自动重构；自动生成文档。</p>
-      <p>因此，大模型实际上也可能成为可信软件的重要技术工具。但是，它同时提出了一些新的问题：</p>
-      <ul class="q">
-        <li>AI 是否正确理解需求？</li>
-        <li>AI 生成的代码是否满足完整业务语义？</li>
-        <li>AI 使用的知识是否正确？</li>
-        <li>AI 是否遗漏边界条件？</li>
-        <li>AI 生成的软件是否存在隐藏漏洞？</li>
-        <li>AI Agent 是否越权？</li>
-        <li>AI 执行过程是否可追溯？</li>
-      </ul>
-      <p>因此：AI 不是简单地「解决可信问题」，而是把软件可信问题带入了新的阶段。它既是可信软件的工具，也是可信软件需要治理的新对象。这个定位更加准确。</p>
-
-      <h2 class="sec" id="s8"><small>08</small>大模型真正改变的是「软件生产函数」</h2>
-      <p>传统软件工程的核心瓶颈之一是：人写代码太慢。大模型正在改变这一点。可以粗略表示为：</p>
-      <div class="formula">
-        <div class="lbl">PRODUCTION FUNCTION</div>
-        <p>Software Generation Cost <span class="op">↓</span></p>
-        <p>Software Generation Speed <span class="op">↑</span></p>
-      </div>
-      <p>这是一场巨大的生产力革命。但软件产业存在一个非常重要的不对称：</p>
-      <div class="formula">
-        <div class="lbl">ASYMMETRY</div>
-        <p>生成软件 <span class="op">≠</span> 验证软件</p>
-      </div>
-      <p>软件生成能力提高以后：验证、测试、审计、理解和维护的重要性反而会上升。因此，AI 时代可能出现一个新的产业规律：</p>
-      <div class="formula">
-        <div class="lbl">INDUSTRIAL LAW</div>
-        <p>Generation <span class="op">↑</span> <span class="op">⇒</span> Verification Demand <span class="op">↑</span></p>
-      </div>
-      <p>这就是可信软件产业的重要经济基础。</p>
-
-      <h2 class="sec" id="s9"><small>09</small>真正的问题不是「AI 会不会写代码」，而是「软件是否值得信任」</h2>
-      <p>这是两个完全不同的问题。一个系统即使没有明显 Bug、测试通过、性能优秀，也未必可信——因为它可能实现了错误的需求。</p>
-      <p>因此未来必须从代码正确性进一步走向意图正确性，再进一步让知识、规则、决策、行动全部进入可信体系。</p>
-      <div class="chain">
-        <span>Code Correctness</span><i>→</i>
-        <span>Intent Correctness</span><i>→</i>
-        <b>Knowledge</b><i>→</i>
-        <b>Rule</b><i>→</i>
-        <b>Decision</b><i>→</i>
-        <b>Action</b>
-      </div>
-      <p>这意味着：软件可信正在从「代码层问题」升级为「语义层问题」。</p>
-
-      <h2 class="sec" id="s10"><small>10</small>Palantir 揭示了另一个重要变化：软件开始理解现实世界</h2>
-      <p>这也是我们研究 Palantir 最重要的原因。Palantir 真正重要的地方，并不是某个单独的软件产品，而是它提出了一种重要的软件思想：AI 不能只理解数据，还必须理解数据背后的现实世界。</p>
-      <p>因此，它通过 Ontology 组织对象、属性、关系、业务规则、行动、权限。这使软件从 Data-Centric 逐渐走向 World-Centric。这是 AI 时代软件体系非常重要的一次变化。</p>
-
-      <h2 class="sec" id="s11"><small>11</small>但仅仅「理解世界」还不够</h2>
-      <p>这恰恰是中国可信软件产业可以进一步突破的地方。下一代系统不能只回答「这是什么」，还必须回答：</p>
-      <ul class="plain">
-        <li>为什么？</li>
-        <li>应该怎么办？</li>
-        <li>谁允许这么做？</li>
-        <li>这个规则从哪里来？</li>
-        <li>这个决定是否正确？</li>
-        <li>这个动作是否符合约束？</li>
-        <li>最终到底发生了什么？</li>
-      </ul>
-      <p>因此需要从</p>
-      <div class="chain"><span>Data</span><i>→</i><span>Ontology</span><i>→</i><span>AI</span><i>→</i><span>Action</span></div>
-      <p>进一步走向</p>
-      <div class="chain">
-        <span>Data</span><i>→</i><span>Knowledge</span><i>→</i><span>Ontology</span><i>→</i>
-        <span>Rule</span><i>→</i><span>AI</span><i>→</i><span>Decision</span><i>→</i>
-        <span>Action</span><i>→</i><span>Verification</span><i>→</i><b>Evidence</b>
-      </div>
-      <p>这就是：可信智能软件。</p>
-
-      <h2 class="sec" id="s12"><small>12</small>这正是 Knowledge Operating System 的历史机会</h2>
-      <p>传统操作系统管理 CPU、内存、进程、文件、设备。下一代知识操作系统需要管理 Entity、Event、State、Relation、Rule、Decision、Action、Trace、Evidence。</p>
-      <blockquote class="pull">KOS 不是一个知识库。它是面向知识计算、推理、决策、执行与验证的新型软件基础设施。</blockquote>
-
-      <h2 class="sec" id="s13"><small>13</small>KOS-TL 解决的是「知识如何进入可信执行」</h2>
-      <p>知识如果只是文档、PDF、向量、RAG 上下文，仍然不能保证可信。必须让知识能够进入：</p>
-      <div class="chain"><span>事件</span><i>→</i><span>规则</span><i>→</i><span>状态</span><i>→</i><span>行动</span><i>→</i><b>轨迹</b></div>
-      <p>形成可计算、可验证的执行语义。因此 KOS-TL 所探索的</p>
-      <div class="formula">
-        <div class="lbl">KOS-TL</div>
-        <p>Event <span class="op">+</span> Rule <span class="op">+</span> State <span class="op">+</span> Execution Trace</p>
-      </div>
-      <p>实际上对应的是一个非常重要的未来问题：如何让知识成为可信计算过程的一部分。这可能成为可信软件基础理论的重要组成部分。</p>
-
-      <h2 class="sec" id="s14"><small>14</small>可信软件将重新定义软件测试</h2>
-      <p>传统测试：输入 → 输出。未来测试覆盖数据、知识、语义、规则、模型、决策、行动、执行、证据：</p>
-      <ul class="plain">
-        <li>数据可信测试</li>
-        <li>知识一致性测试</li>
-        <li>Ontology 一致性测试</li>
-        <li>规则冲突测试</li>
-        <li>模型行为测试</li>
-        <li>Agent 行为测试</li>
-        <li>权限测试</li>
-        <li>执行轨迹测试</li>
-        <li>证据链测试</li>
-      </ul>
-      <p>最终，Software Verification 将从 Code Verification 走向 Knowledge + Software + AI + Action Verification。</p>
-
-      <h2 class="sec" id="s15"><small>15</small>这将产生一个巨大的新产业</h2>
-      <p>中国 2025 年软件产业规模已经达到 15.48 万亿元。即使仅按照整个软件产业的 1% 计算：</p>
-      <div class="formula">
-        <div class="lbl">SCENARIO</div>
-        <p>15.48 万亿 × 1% = 1548 亿元</p>
-        <p>15.48 万亿 × 5% = 7740 亿元</p>
-      </div>
-      <p>这不是对未来市场规模的预测，而是一个简单的产业渗透情景测算。它所揭示的是：即使可信软件只成为整个软件产业中的一个小价值层，也足以形成千亿元乃至万亿元级产业空间。</p>
-      <p>而可信软件还将覆盖 AI 安全、Agent 治理、软件验证、软件供应链、知识基础设施、Ontology、工业软件、数字孪生、可信操作系统、软件认证、软件审计。</p>
-      <p>因此：可信软件完全有可能成为 AI 时代新的基础软件产业。</p>
-
-      <h2 class="sec" id="s16"><small>16</small>我们必须重新定义「软件价值」</h2>
-      <div class="formula">
-        <div class="lbl">VALUE FUNCTION</div>
-        <p>过去：Software Value ≈ Function</p>
-        <p>后来：Software Value ≈ Function + Platform</p>
-        <p>AI 时代：Software Value ≈ Function + Platform + Intelligence</p>
-        <p>未来：Software Value ≈ Function + Platform + Intelligence + <span class="op">Trust</span></p>
-      </div>
-      <p>最终：可信将成为软件价值的重要组成部分。</p>
-
-      <h2 class="sec" id="s17"><small>17</small>我们必须建立中国自己的可信软件产业链</h2>
-      <p>不是再建设一个单独的「安全软件产业」，而是形成完整链条：</p>
-      <div class="chain">
-        <span>可信芯片</span><i>↓</i>
-        <span>可信硬件</span><i>↓</i>
-        <span>可信操作系统</span><i>↓</i>
-        <span>可信数据库</span><i>↓</i>
-        <span>可信中间件</span><i>↓</i>
-        <b>Knowledge OS</b><i>↓</i>
-        <span>Ontology</span><i>↓</i>
-        <span>可信 AI</span><i>↓</i>
-        <span>可信 Agent</span><i>↓</i>
-        <span>可信行业软件</span><i>↓</i>
-        <span>可信认证</span><i>↓</i>
-        <span>可信服务</span>
-      </div>
-      <p>形成完整的：标准—技术—平台—工具—软件—行业—认证体系。</p>
-
-      <h2 class="sec" id="s18"><small>18</small>这不是一个普通产业问题，而是下一代数字基础设施问题</h2>
-      <p>操作系统曾经是数字时代的基础设施。数据库曾经是数字时代的基础设施。互联网曾经是数字时代的基础设施。云计算正在成为基础设施。</p>
-      <p>今天：知识正在成为新的计算资源。而 AI 正在成为新的计算主体。因此未来需要新的基础设施：Knowledge Infrastructure。而可信软件，就是这个基础设施不可缺少的一层。</p>
-
-      <h2 class="sec" id="s19"><small>19</small>我们不能只追求「更强的 AI」，还必须建立「更强的可信软件」</h2>
-      <p>未来的竞争不能只有：谁的模型参数更多？谁的 Benchmark 更高？谁的 GPU 更多？还必须比较：</p>
-      <ul class="q">
-        <li>谁能够让 AI 安全进入现实世界？</li>
-        <li>谁能够让 Agent 可信地行动？</li>
-        <li>谁能够让软件行为被验证？</li>
-        <li>谁能够让知识进入机器执行体系？</li>
-        <li>谁能够建立完整的软件证据链？</li>
-      </ul>
-      <p>这才是真正的下一代软件竞争。</p>
-
-      <h2 class="sec" id="s20"><small>20</small>中国为什么必须抓住这个机会？</h2>
-      <p>因为中国已经拥有 15 万亿元级软件产业；拥有庞大的制造业体系；拥有世界规模最大的产业应用场景之一；拥有快速发展的人工智能产业；拥有巨大的数据和知识资源；拥有完整的软件产业链；拥有庞大的工程师队伍。</p>
-      <p>我们缺少的不是基础。我们缺少的是：把这些基础组织成下一代可信软件基础设施的战略能力。</p>
-
-      <h2 class="sec" id="s21"><small>21</small>我们不能满足于成为软件的使用者</h2>
-      <p>过去的软件时代，中国长期存在一个问题：底层软件基础设施掌握在别人手中。今天，我们有机会改变这种局面。</p>
-      <div class="ask">
-        <div>我们不仅要使用软件，还要<strong>定义软件</strong>。</div>
-        <div>我们不仅要使用 AI，还要<strong>定义 AI 进入现实世界的可信机制</strong>。</div>
-        <div>我们不仅要建设数据中心，还要<strong>建设知识基础设施</strong>。</div>
-        <div>我们不仅要建设大模型，还要<strong>建设可信智能软件体系</strong>。</div>
-      </div>
-
-      <h2 class="sec" id="s22"><small>22</small>这是从「软件大国」走向「软件强国」的关键一步</h2>
-      <p>软件大国意味着：软件产业规模巨大。软件强国则意味着：掌握软件基础理论，掌握核心基础软件，掌握软件标准，掌握软件生态，掌握软件基础设施，掌握下一代软件范式。</p>
-      <p>因此：可信软件可能成为中国软件产业实现范式跃迁的重要突破口。</p>
-
-      <h2 class="sec" id="s23"><small>23</small>我们这一代软件人的历史使命</h2>
-      <p>回望软件史：Unix 改变了操作系统。C 改变了系统软件。Lisp 改变了人工智能思想。Web 改变了信息世界。Git 改变了软件协作。LLVM 改变了编译基础设施。大模型正在改变软件生产方式。</p>
-      <p>那么，我们这一代软件人需要继续回答：</p>
-      <ul class="q">
-        <li>如何让软件真正理解现实世界？</li>
-        <li>如何让知识成为计算的一部分？</li>
-        <li>如何让 AI 可信地使用知识？</li>
-        <li>如何让 Agent 可信地采取行动？</li>
-        <li>如何让复杂软件拥有可验证的行为？</li>
-        <li>如何让每一个关键决策都能够被解释、追踪和审计？</li>
-      </ul>
-      <p>这就是：可信软件时代的问题。</p>
-
-      <section class="close" id="coda">
-        <h2 class="sec"><small>CODA</small>结语：让软件从「能够运行」走向「值得信任」</h2>
-        <p>今天，我们面对的并不是一个简单的软件升级问题，而是一场软件文明的结构性变革。</p>
-        <p>过去：软件帮助人类计算。后来：软件帮助人类连接。再后来：软件帮助人类管理复杂世界。今天：软件开始理解世界。未来：软件将越来越多地参与决策并直接作用于现实世界。</p>
-        <blockquote class="pull">软件不仅要能够运行，更必须值得信任。</blockquote>
-        <p>大模型不会自动解决这个问题。传统软件工程也无法单独解决这个问题。网络安全同样不能完全解决这个问题。我们需要的是一个新的综合体系：</p>
-        <div class="formula">
-          <div class="lbl">TRUSTED SOFTWARE</div>
-          <p>Data + Knowledge + Ontology + Rules + Software + AI + Verification + Execution + Evidence</p>
-        </div>
-        <p>而这正是中国发展可信软件产业的历史起点。</p>
-        <p>它不是对传统软件产业的否定。恰恰相反：它是 15 万亿元级软件产业发展到今天之后，必然出现的下一层价值。</p>
-        <p>它不是为了替代大模型，而是为了让大模型成为可信软件体系的一部分。</p>
-        <p>它不是为了替代传统软件工程，而是为了把传统软件工程提升到知识、AI 和现实世界的时代。</p>
-        <p>它不是为了简单复制 Palantir，而是吸收其 Ontology 和现实世界建模思想，进一步建立完整可信计算体系：</p>
-        <div class="chain">
-          <b>Knowledge</b><i>→</i><b>Reasoning</b><i>→</i><b>Decision</b><i>→</i><b>Action</b><i>→</i><b>Verification</b>
-        </div>
-        <p>这就是我们应该争取的未来。</p>
-        <p class="final">让中国从软件大国走向软件强国。让中国从人工智能大国走向可信智能软件强国。让中国不仅拥有更强大的 AI，更拥有让 AI 可信进入现实世界的软件基础设施。<br/>让机器更聪明。让软件更可靠。让知识可以计算。让智能可以验证。让行动值得信任。</p>
-        <p class="final">这，就是可信软件时代。<br/>这，就是我们这一代软件人的历史使命。</p>
-      </section>
-
+<p>成绩单里另有两个数字更值得看。基础软件收入2,146亿元，只占1.39%。信息安全产品和服务收入2,235亿元，只占1.44%。两者相加，不到全行业的百分之三。结构数字说明的不是产业不行，而是下一层还没有被建起来。</p>
+<p>传统软件工程已经建立了人类工程史上最了不起的质量保障体系：语言、类型、编译、测试、静态与动态分析、审查、配置管理、安全、形式化验证、DevOps。本文对此抱有充分敬意。但它的核心预设是“正确性相对于规范定义”，而它把“规范本身是否正确”推到了自己的边界之外。一个系统可以完全做成被要求的系统，同时执行一件从未被托付的事。门禁被证明只认红色许可证，证明完全正确，要的却是授权——这是规范鸿沟。</p>
+<p>十五万亿回答了规模。它还没有回答：在这十五万亿里，有多少软件能够出示行为论证，说明它仍在执行那一件被托付的事。</p>
+<h2 class="sec" id="s3"><small>03</small>三、对手不是“还不够可信”，是假使命</h2>
+<p>传统问题被写成：有没有缺陷。今天真正的问题已经远远超出缺陷。代码可以对，供应链可以列清单，模型可以出分，Agent可以执行。清单不是证据，声明不是使命。</p>
+<p>假使命看起来像服务。它用“赋能”“智能”“为人民服务”这类无法被证伪的句子代替托付。为人民服务在这里不是横幅，而是一份有名字的名单：患者、乘客、调度员、存款人、士兵。名单之外的繁荣，可以是真生意，不能冒充这份托付。没有使命证据的软件，不能声称它服务于人民。</p>
+<p>使命软件不是按行业划分的产品门类，也不是英文里的mission-critical。它是在特定托付关系中被五条同时绑住的软件：</p>
+<div class="formula"><div class="lbl">MISSION-BOUND SOFTWARE</div><p>使命软件 ≡ 明示的托付 ∧ 明确的禁区 ∧ 绑在执行路径上 ∧ 可信（可检验的论证） ∧ 可被追究的人</p></div>
+<p>少一条，对象就退回产品或愿景。可信在这里是认识论器官：论证可被别人拿去证伪。它不是可信计算的同义词。可信计算提供硬件信任根；可信赖性回答系统是否还在工作；可信性回答你怎么知道。三者互补。谁也不替代使命。使命在最上面。</p>
+<h2 class="sec" id="s4"><small>04</small>四、生成在加速，检查在掉队</h2>
+<p>美国国家标准与技术研究院给出的官方解释是：漏洞提交量在2020年至2025年间增长了263%。2025年它完成富化分析的漏洞接近42,000个，比历史上任何一年都多出45%。它跑得比以往任何时候都快。它还是输了。2026年4月15日，它所管理的国家漏洞数据库在制度上放弃了对全部漏洞做完整分析。信任的问题，不再只是该不该信任软件，而变成有没有能力判断软件是否仍在执行使命。</p>
+<p>生成与验证不对称。大模型把生成成本压下去，把生成速度抬上去。这是一场生产力革命。它并不能自动补上检查。模型越强、生成越便宜，验证在总成本中的占比反而越高。人工智能既是工具，也是新对象：当一段代码由模型写出，当一个动作由Agent执行，流畅可以先于理解，行动可以先于纠正。</p>
+<p>“让人工智能自己验收人工智能”在类型上走不通。统计判定回答看起来对不对；演绎判定回答能否重跑得到同一结果；制度判定回答谁有权决定对不对。无论把准确率提到多高，统计跨不到制度这一档。人要留在立法、划界、审判三个位置上。把最强的判断力放在监视屏幕前，是这一代最昂贵的一种浪费。</p>
+<h2 class="sec" id="s5"><small>05</small>五、供应链把可信计算基撑破了</h2>
+<p>现代软件几乎没有真正独立的程序。一个系统依赖几百、几千、数万个组件。可信计算基被供应链无限扩大。Verizon 2026年《Data Breach Investigations Report》显示，漏洞利用作为初始访问途径升至31%，十九年来首次超过凭证窃取。2025年同一系列报告显示，涉及第三方的泄露事件比例从15%上升到30%。必须更正一篇更早论述里的误用：48%是2026年报告中勒索软件占泄露事件的比例，不是第三方涉事比例。</p>
+<p>IBM 2025年《数据泄露成本报告》给出全球单次平均成本444万美元、美国1,022万美元。444万是五年来首次下降，不能写成“代价一味增大”。下降的解释比绝对值更有价值：防御侧的人工智能有效；美国创新高则与监管罚款有关。同一份报告里，被攻陷的组织中97%没有部署人工智能访问控制。</p>
+<p>软件错误的代价，从来不只是安全事件。故障、停机、金融错账、医疗错剂、供应链事故，都会进入同一本账。这不是软件企业自己的质量问题。这是整个数字经济的基础设施问题。</p>
+<h2 class="sec" id="s6"><small>06</small>六、理解世界并采取行动，仍可以执行未被写明的目的</h2>
+<p>Palantir常被写成“理解世界并采取行动”的样板。要争的是另一面。它的本体包含对象、关系、行动类型与动态安全，官方表述是数据、逻辑、行动与安全的四重整合。它不缺行动，也不缺权限。它真正缺少的是验证与证据：这个行动是对的吗？依据是什么？能否重建？规则之间是否一致？</p>
+<p>没有验证与证据，理解世界仍可以执行未被写明的目的。下一代不能停在“这是什么、可以做什么、谁可以做、做了什么”。还必须回答：为什么允许；依据从哪里来；这个决定是否仍在那一件托付上；最终到底发生了什么，证据能否被别人拿去证伪。</p>
+<p>材料可以写成：数据、知识、本体、规则、软件、人工智能、验证、执行、证据。绳子是另一件事。材料再齐，没有托付、禁区、绑定、可信与追究，仍可以执行更顺手的那一件事。</p>
+<h2 class="sec" id="s7"><small>07</small>七、做成系统，还是绑住目的</h2>
+<p>使命软件是对象。使命软件工程是使这个对象成立的工程。两者不能混。</p>
+<p>核心只有一件：</p>
+<div class="formula"><div class="lbl">CORE</div><p>核心 ≡ 明示的托付 ∧ 仍在执行这一件 ∧ 检查可被证伪</p></div>
+<p>少了明示的托付，检查对着一张更顺手的目标函数，再严格也是假使命。少了仍在执行，定义停在纸上。少了可被证伪的检查，托付是声明，可信是空话。</p>
+<p>本质区别不在多几份文档，也不在换一套节奏。以往软件工程做成系统；使命软件工程绑住目的。它不是软件工程学旁边另开的一门课，而是软件工程学在托付成为问题之后的下一次定向。它继承软件工程学的工程能力，不继承把交付当成成功。判据不换，底座只是更昂贵地交付假使命；底座不要，使命只是换了词的愿景。</p>
+<p>四层必须分开立住。内涵：托付之工程，假使命为对手，可检查为成功，人在立法、划界、审判。它不是正确性2.0，不是安全换皮，不是可信计算，也不是知识操作系统。装置可以换，内涵不能换。方法论：原则先于步骤，步骤先于工具；禁区先于能力；定义、对齐、达成；生成与检查故障独立；强度与后果挂钩。生成覆盖广度，演绎覆盖深度。理论体系：对象是托付关系，问题是仍在执行这一件，判据是你怎么知道；加上规范鸿沟、生成与验证的不对称、信任转移、条件保证。可组合性仍是未解。工程体系：继承的底座，加上原则、对象、层次、环节与可重放。知识操作系统是装置的名字，用来让核心可计算，不是已经交货的操作系统。仓库里的原型可以检验若干机制，不能被当成规格已经实现的证据。</p>
+<p>体系可以主张。学尚未形成。</p>
+<h2 class="sec" id="s8"><small>08</small>八、不是安全产业的细分，是准入条件</h2>
+<p>网络安全不能单独解决这件事。安全关注的是面对恶意时能否维持性质；可信性的大部分问题与恶意无关：错误的知识、冲突的规则、未经审议的默认、静默的行为漂移。Ken Thompson说过，你无法信任不是你亲手创造的代码。代码越来越由机器生成时，这句话变得更深：不仅不是亲手创造的，甚至它是否被理解，都无法确定。</p>
+<p>大模型不会自动解决。传统软件工程也无法单独解决。需要的是新的综合：把知识与规则做成可计算的一等公民；让行动与轨迹可记录、可检查、可撤销；让证据在正常运行中自动产生；让可信性从芯片走到行动，而不是停在孤立节点上。</p>
+<p>这不是再建设一个单独的“安全软件产业”，而是横切所有软件领域的一层：从可信芯片、基础软件、知识操作系统，到本体、使命人工智能、使命Agent、行业软件、认证与服务。分级与证据格式是定价、认证与交易的前提。使命Agent基础设施的时间窗口最紧。把构建溯源纳入信创的技术判据，是目前最具可操作性的制度动作。</p>
+<p>以2025年15.48万亿元软件业务收入为基准，1%的渗透大约是1,548亿元，5%大约是7,742亿元。这是情景测算，不是市场预测。即使只成为整个软件产业中的一个小价值层，也足以形成千亿元乃至万亿元级空间。更有意义的不是切出一块收入，而是解锁已经发生、却尚未兑现的人工智能价值。使命创造的价值，可能远大于它捕获的收入。</p>
+<h2 class="sec" id="s9"><small>09</small>九、强国不是规模，是定义使命的权力</h2>
+<p>我们不能满足于成为软件的使用者。软件大国意味着规模。软件强国包含递进的几层：基础理论、核心基础软件、标准、生态、基础设施，以及下一代软件范式。前面几层是追赶。最后一层是跃迁。在既有范式内追赶困难，因为壁垒是生态锁定；在范式转换点上跃迁可能，因为新范式没有需要迁移的既有生态。使命软件构成真实的转换点——它改变了问题的定义。认识到转换点的存在，与在其中占据位置，是两件不同的事。</p>
+<p>最有价值的是定义人工智能进入现实世界的使命机制。当人工智能从生成走向行动，决定它能被用到什么程度的不再只是能力，而是行动能否被信任。这套机制在全球都不成熟。中国的行业知识只能由中国自己形式化。定义权也是责任：一个不能被独立检验的标准，无论由谁定义，都是自相矛盾的。正确姿态不是抢占标准，而是做出更好的东西并让它可被检验。</p>
+<p>中国已经拥有十五万亿元级软件产业、庞大的制造业、世界规模最大的产业应用场景之一、快速发展的人工智能、完整的软件产业链，以及1,100万软件从业者。这个规模既是优势也是约束：任何需要专家才能使用的方案，在这个规模上都无法推广；必须把其中最强的一部分，从虚假繁荣拨向工业与国防科技工业软件。缺少的不是基础。缺少的是把这些基础组织成下一代使命软件基础设施的战略能力，以及愿意在未解问题上工作很多年的人。</p>
+<h2 class="sec" id="s10"><small>10</small>十、这一代要回答的，与尚未解开的</h2>
+<p>回望软件史：Unix回答操作系统如何组织，C回答如何在接近机器的同时保持可移植，Lisp回答程序如何处理符号与自身，Web回答信息如何跨越边界，开源回答谁有权修改与检查，云与移动回答软件如何变成远程能力，Git回答分布式协作如何保持一致，LLVM回答编译基础设施如何被复用。大模型正在回答软件应当如何被生产。尚未被回答的，是这一次生产跃迁之后，验证与证据放在哪里。</p>
+<p>这一代需要继续回答：如何让软件真正理解现实世界；如何定义、对齐、达成一件托付；如何把内涵、方法论、理论体系与工程体系分开立住，而不假装学科已经立住；如何让知识成为计算的一部分；如何让人工智能按使命使用知识；如何让Agent按使命采取行动；如何让复杂软件拥有可验证的行为；如何让每一个关键决策都能被解释、追踪和审计。它们目前都没有成熟的答案。这既是困难，也是值得投入的理由。</p>
+<p>最应当避免的，是让人以为问题已经被解决。建模成本是整条路线最主要的实践风险，目前尚未被证明已解决。可组合性仍依赖工程纪律而非架构保证。表达力与可判定性存在理论限制。可能存在一类系统，其性能要求与完整使命论证根本不兼容。知识表示的标准化、人工智能边界的实际维持、证据保存与隐私的冲突，都还在。形式合规取代实质使命、被平台吸收而不形成独立产业、国际标准窗口关闭，同样可能发生。这些不是免责声明，而是这条路线的真实地形。一个知道自己边界的系统，比一个不知道自己边界的系统更可信。一条路线也是如此。</p>
+<section class="close" id="coda">
+<h2 class="sec" id="coda"><small>CODA</small>结语：让软件从“能够运行”走向“承担使命”</h2>
+<p>软件不仅要能够运行，更必须承担使命。这句话听起来近乎常识。它目前还不是现实。</p>
+<p>现阶段能够诚实争取的，不是让一切软件承担使命，而是三件更窄的事：让关键系统开始出示论证；让生成与验证不再朝相反方向跑；让行动进入现实世界时留下可检验的轨迹。机械的核对必须交给机器。人要回到只有人能站的位置——定义意图、设定边界、保有推翻机器结论的能力与证据。</p>
+<p>驯服软件、驯服人工智能，是同一条缰绳。把它们做成可检验的使命，才谈得上真正为人民服务。其余的，留给实践去证伪或证实。</p>
+<p class="final">向软件使命时代进军。</p>
+</section>
       <footer class="site">
         <span>作者　陈鹏　·　<a href="mailto:chenpeng_buaa@163.com">chenpeng_buaa@163.com</a></span>
         <span>KOS-TL · Knowledge Operating System — Type Logic</span>
       </footer>
     </article>
-
     <article id="main-en" class="pane-off" data-lang="en">
-      <header class="hero">
+      <header class="hero" id="en-intro">
         <p class="kicker">MANIFESTO · 檄文</p>
-        <h1>Advance into the Age of Trusted Software</h1>
-        <p class="sub">— Building China’s Trusted Software Industry</p>
+        <h1>Advance into the Age of Mission-bound Software</h1>
+        <p class="sub">Bind software back to an inspectable charge</p>
+        <p class="kicker2">A manifesto on building China’s next-generation mission-bound software infrastructure</p>
         <p class="byline">
           <span class="who">Chen Peng</span>
+          <span>September 2026</span>
           <a href="mailto:chenpeng_buaa@163.com">chenpeng_buaa@163.com</a>
         </p>
-        <div class="seal" aria-hidden="true">信</div>
-        <p class="lede">Software has become infrastructure for human civilization. But can we truly trust it? Civilization is entering an unprecedented software age.</p>
+        <div class="seal" aria-hidden="true">命</div>
+        <p class="note">A Knowledge Operating System is an architectural claim, not a shipped operating system. Mission-bound software engineering is a systems claim, not a formed discipline. This essay shares one spine with the monograph *Advance into the Age of Mission-bound Software*, draft 13: the book carries the argument, the data and the unsolved list; this text only drives the nails.</p>
+        <p class="lede">Courtesy is spent. The software trade is good at writing accidents as cases, structural problems as bad luck, and “it is still running” as “it already bears a mission.” When a program begins to dispatch a grid, space trains, clear payments or set a dose, the real question is not that it is not yet fast enough or strong enough. Speed and strength have already arrived. What is missing is the rope.</p>
       </header>
+<p>The opponent is not “not trustworthy enough.” The opponent is a false mission: it looks like service, and does not look like failure when it fails. The patient is still on a phone, the train is still moving, the ledger is still being written—only the purpose has already changed. Without trustworthiness, a charge is empty talk; without a charge, trustworthiness is a means. Mission contains trustworthiness. Trustworthiness is not another highest concept standing beside it.</p><blockquote class="pull">Without trustworthiness, a charge is empty talk; without a charge, trustworthiness is a means.</blockquote>
+<p>To advance into the age of mission-bound software is not another industrial slogan. It is to bind software back to one inspectable charge.</p>
+<h2 class="sec" id="en-s1"><small>01</small>I. The vital systems have already been handed to a stranger</h2>
+<p>Software has become the operating system a modern state actually uses. That is not a metaphor. A blackout, a stoppage of trains, of clinics, of clearing, today often begins when a program stops. Unix, C, databases, compilers, the cloud and large models turned mathematics and engineering into executable form. Finance, communications, the grid, railways, cars, factories, hospitals and city government no longer have a spare nervous system that can run outside software. Artificial intelligence is still writing cognition and action into that nerve.</p>
+<p>We would not hand a city to a doctor who cannot show the grounds of a diagnosis and cannot be questioned—however busy, expensive or new he looks. Software is that stranger: dependence can no longer be stopped, yet few can read its grounds, and still fewer can force it to halt when it says “continue.”</p>
+<p>Therac-25 is not nostalgia. It is a prototype of a transfer of trust—from a physical interlock to a program’s guarantee, then from that guarantee to a place where no one can put a question. What we face now is not one accelerator, but thousands of potential, hidden cases of the same kind.</p>
+<h2 class="sec" id="en-s2"><small>02</small>II. Behind fifteen trillion, what is missing is not scale. It is the charge</h2>
+<p>In 2025 China’s software and information-technology services booked RMB 15.48 trillion in software business revenue, up 13.2%; profit RMB 1.88 trillion; more than 11 million people employed. IT services RMB 10.64 trillion; software products RMB 3.24 trillion; industrial software products RMB 333 billion. By any measure this is a large and living industry.</p>
 
-      <h2 class="sec" id="en-intro"><small>PROLOGUE</small>Introduction</h2>
-      <p>Over the past half century, humanity has created countless great software systems: from Unix, C, Lisp, Windows, Linux, Git, the Web, databases and compilers, to today’s cloud computing, big data, artificial intelligence, industrial software, autonomous driving, digital twins and intelligent agents.</p>
-      <p>These systems are crystallizations of human intelligence. They turn mathematics, logic, engineering, knowledge and experience into forms that machines can execute.</p>
-      <p>Today finance runs on software; communications are joined by software; power grids are dispatched by software; railways are controlled by software; automobiles are defined by software; factories are organized by software; hospitals are supported by software; cities are governed by software. Artificial intelligence is beginning to give software ever stronger powers of cognition and action.</p>
-      <p>Software is no longer an auxiliary tool of human society. It is becoming a constituent part of modern civilization itself.</p>
-      <blockquote class="pull">As we hand more and more of the real world to software, have we built a system of trust commensurate with its importance?</blockquote>
-      <p>The answer, I fear, is not encouraging.</p>
+<div class="stats">
+  <div class="stat"><b>¥15.48 tn</b><span>2025 software business revenue · +13.2% YoY</span></div>
+  <div class="stat"><b>1.39%</b><span>Foundational software · ¥214.6 bn</span></div>
+  <div class="stat"><b>1.44%</b><span>Information security · ¥223.5 bn</span></div>
+</div>
 
-      <h2 class="sec" id="en-s1"><small>01</small>Behind a RMB 15-trillion software industry lies a vast “trust deficit”</h2>
-      <p>China’s software industry has already grown into an enormous industrial system.</p>
-      <div class="stats">
-        <div class="stat"><b>¥15.48 tn</b><span>2025 software business revenue · +13.2% YoY</span></div>
-        <div class="stat"><b>¥1.88 tn</b><span>Total profit</span></div>
-        <div class="stat"><b>¥10.64 tn</b><span>IT services revenue</span></div>
-      </div>
-      <p>Software products accounted for RMB 3.24 trillion; industrial software products, RMB 333 billion; information-security products and services, RMB 223.5 billion. This means China already has a software industry on the order of RMB 15 trillion.</p>
-      <p>Yet we must ask a more basic question: of this RMB 15 trillion in software, how much can truly answer “why it may be trusted”? Traditional software engineering has of course built a great apparatus of quality: programming languages, type systems, compilers, testing, static and dynamic analysis, code review, configuration management, software security, formal verification, DevOps and DevSecOps. These are among the greatest achievements of software engineering.</p>
-      <p>But as scale and complexity keep rising, a new problem appears: traditional software engineering is increasingly unable, by itself, to bear the full burden of trust for modern systems.</p>
-
-      <h2 class="sec" id="en-s2"><small>02</small>The greatest danger is not only bugs, but that we do not know whether software is trusted</h2>
-      <p>The traditional software question is usually: are there bugs? Today’s real question has already gone far beyond bugs. We need to ask:</p>
-      <div class="ask">
-        <div><b>Is the code trusted?</b> Does it correctly implement the requirements?</div>
-        <div><b>Is the data trusted?</b> Where does it come from? Is it complete, authentic and current?</div>
-        <div><b>Is the software supply chain trusted?</b> Are third-party components safe? Do open-source packages hide unknown vulnerabilities?</div>
-        <div><b>Is the knowledge trusted?</b> Is the knowledge the system uses correct? Who defined it?</div>
-        <div><b>Are the rules trusted?</b> Are business rules complete? Do they conflict with one another?</div>
-        <div><b>Is the model trusted?</b> Why did the model reach this result?</div>
-        <div><b>Is the decision trusted?</b> Why did the system take this decision?</div>
-        <div><b>Is the action trusted?</b> Why did the agent execute this act?</div>
-        <div><b>Is the system trusted?</b> Does the whole still behave as intended in complex environments?</div>
-      </div>
-      <p>We then see: software trust has expanded from “code correctness” into a systems problem.</p>
-
-      <h2 class="sec" id="en-s3"><small>03</small>Software complexity has far outrun the old imagination of software engineering</h2>
-      <p>Software once meant a few thousand lines of code. Then tens of thousands. Then millions and tens of millions.</p>
-      <p>Today a large software system is often not a program but a vast ecology:</p>
-      <div class="chain">
-        <span>OS</span><i>→</i>
-        <span>Database</span><i>→</i>
-        <span>Compiler</span><i>→</i>
-        <span>Open source</span><i>→</i>
-        <span>Third-party SDK</span><i>→</i>
-        <span>Cloud</span><i>→</i>
-        <span>API</span><i>→</i>
-        <span>Data</span><i>→</i>
-        <span>AI model</span><i>→</i>
-        <span>Agent</span><i>→</i>
-        <span>Business rules</span>
-      </div>
-      <p>Modern software is therefore not a program. It is a complex software system. Further still: it has become a complex socio-technical system.</p>
-
-      <h2 class="sec" id="en-s4"><small>04</small>Vulnerabilities show that the old trust regime is under severe strain</h2>
-      <p>Data from the U.S. National Institute of Standards and Technology already send a strong signal. From 2020 to 2025, CVE submissions grew 263%. In 2025 NIST handled about 42,000 CVEs.</p>
-      <p>Into 2026 the pace of submissions is still rising fast. This points to a crucial fact: the speed at which the software world produces problems is approaching—and may exceed—the capacity of traditional human analysis and governance.</p>
-      <p>This is not the problem of one company, nor of one programming language. It is a structural problem of the age of software at scale.</p>
-
-      <h2 class="sec" id="en-s5"><small>05</small>The supply chain stretches trust from “one program” to “an entire ecology”</h2>
-      <p>There is almost no truly independent software anymore. A system may depend on hundreds, thousands, even tens of thousands of third-party components. A flaw in one component can travel down the chain.</p>
-      <p>Verizon’s 2026 Data Breach Investigations Report shows that exploitation of software vulnerabilities has become one of the leading initial attack vectors in data breaches, at 31%. Incidents involving third parties reached 48%.</p>
-      <p>This means software trust has become a problem of the whole digital ecosystem.</p>
-
-      <h2 class="sec" id="en-s6"><small>06</small>The economic cost of software failure is already too large to ignore</h2>
-      <p>IBM’s 2025 Cost of a Data Breach Report puts the global average cost of a breach at about USD 4.44 million, and USD 10.22 million in the United States. That is security incidents alone.</p>
-      <p>If we also count software faults, business interruption, industrial downtime, financial error, medical error, data corruption and supply-chain accidents, the price modern society pays for untrusted software is far greater still.</p>
-      <blockquote class="pull">Software trust is not a quality issue for software firms alone. It is an infrastructure issue for the entire digital economy.</blockquote>
-
-      <h2 class="sec" id="en-s7"><small>07</small>Artificial intelligence is becoming an important new variable in software trust</h2>
-      <p>This must be stated with care: large models are neither the whole of the trust problem nor its only solution. They are one major technical force now changing software engineering.</p>
-      <div class="two">
-        <figure>
-          <figcaption>THEN</figcaption>
-          <div class="chain"><span>Requirements</span><i>↓</i><span>Architecture</span><i>↓</i><span>Programmer</span><i>↓</i><span>Code</span><i>↓</i><span>Test</span><i>↓</i><span>Software</span></div>
-        </figure>
-        <figure>
-          <figcaption>NOW</figcaption>
-          <div class="chain"><span>Human intent</span><i>↓</i><span>Large model</span><i>↓</i><span>Code</span><i>↓</i><span>Test</span><i>↓</i><span>Deploy</span><i>↓</i><span>Agent</span><i>↓</i><span>Execute</span></div>
-        </figure>
-      </div>
-      <p>Automatic programming is greatly raising the productivity of software. That is a good thing. It can lower the barrier to building, raise the efficiency of programmers, generate code and tests, analyze code, find some defects, refactor, and write documentation.</p>
-      <p>Large models may therefore become an important tool of trusted software. But they also raise new questions:</p>
-      <ul class="q">
-        <li>Did the AI correctly understand the requirements?</li>
-        <li>Does the generated code satisfy the full business semantics?</li>
-        <li>Is the knowledge the AI used correct?</li>
-        <li>Did it miss edge conditions?</li>
-        <li>Does the generated software hide vulnerabilities?</li>
-        <li>Did the agent exceed its authority?</li>
-        <li>Is the execution traceable?</li>
-      </ul>
-      <p>AI does not simply “solve” trust. It carries the trust problem into a new stage. It is both a tool of trusted software and a new object that trusted software must govern. That is the accurate position.</p>
-
-      <h2 class="sec" id="en-s8"><small>08</small>What large models truly change is the software production function</h2>
-      <p>One core bottleneck of classical software engineering is that people write code too slowly. Large models are changing that. Roughly:</p>
-      <div class="formula">
-        <div class="lbl">PRODUCTION FUNCTION</div>
-        <p>Software Generation Cost <span class="op">↓</span></p>
-        <p>Software Generation Speed <span class="op">↑</span></p>
-      </div>
-      <p>This is a vast productivity revolution. But the industry contains a crucial asymmetry:</p>
-      <div class="formula">
-        <div class="lbl">ASYMMETRY</div>
-        <p>Generating software <span class="op">≠</span> verifying software</p>
-      </div>
-      <p>Once generation capacity rises, verification, testing, audit, understanding and maintenance become more—not less—important. The AI age may therefore obey a new industrial law:</p>
-      <div class="formula">
-        <div class="lbl">INDUSTRIAL LAW</div>
-        <p>Generation <span class="op">↑</span> <span class="op">⇒</span> Verification Demand <span class="op">↑</span></p>
-      </div>
-      <p>That is an economic foundation of the trusted-software industry.</p>
-
-      <h2 class="sec" id="en-s9"><small>09</small>The real question is not whether AI can write code, but whether software is worth trusting</h2>
-      <p>These are two different questions. A system may have no obvious bugs, pass its tests and perform well, and still not be trusted—because it may have implemented the wrong requirements.</p>
-      <p>The future must therefore move from code correctness to intent correctness, and then bring knowledge, rules, decisions and actions all inside the trust regime.</p>
-      <div class="chain">
-        <span>Code Correctness</span><i>→</i>
-        <span>Intent Correctness</span><i>→</i>
-        <b>Knowledge</b><i>→</i>
-        <b>Rule</b><i>→</i>
-        <b>Decision</b><i>→</i>
-        <b>Action</b>
-      </div>
-      <p>This means software trust is rising from a problem of the code layer to a problem of the semantic layer.</p>
-
-      <h2 class="sec" id="en-s10"><small>10</small>Palantir reveals another change: software begins to understand the real world</h2>
-      <p>This is the most important reason we study Palantir. What matters is not any single product, but a software idea: AI cannot understand data alone; it must understand the real world behind the data.</p>
-      <p>Through an ontology it organizes objects, attributes, relations, business rules, actions and permissions. Software thus moves from data-centric toward world-centric. That is a major shift in the software stack of the AI age.</p>
-
-      <h2 class="sec" id="en-s11"><small>11</small>But merely “understanding the world” is not enough</h2>
-      <p>Here is precisely where China’s trusted-software industry can go further. The next systems must not only answer “what is this?” They must also answer:</p>
-      <ul class="plain">
-        <li>Why?</li>
-        <li>What should be done?</li>
-        <li>Who is allowed to do it?</li>
-        <li>Where did this rule come from?</li>
-        <li>Is this decision correct?</li>
-        <li>Does this action satisfy the constraints?</li>
-        <li>What, in the end, actually happened?</li>
-      </ul>
-      <p>We must therefore move from</p>
-      <div class="chain"><span>Data</span><i>→</i><span>Ontology</span><i>→</i><span>AI</span><i>→</i><span>Action</span></div>
-      <p>further to</p>
-      <div class="chain">
-        <span>Data</span><i>→</i><span>Knowledge</span><i>→</i><span>Ontology</span><i>→</i>
-        <span>Rule</span><i>→</i><span>AI</span><i>→</i><span>Decision</span><i>→</i>
-        <span>Action</span><i>→</i><span>Verification</span><i>→</i><b>Evidence</b>
-      </div>
-      <p>That is trusted intelligent software.</p>
-
-      <h2 class="sec" id="en-s12"><small>12</small>This is the historical opportunity of a Knowledge Operating System</h2>
-      <p>A classical operating system manages CPU, memory, processes, files and devices. The next knowledge operating system must manage entity, event, state, relation, rule, decision, action, trace and evidence.</p>
-      <blockquote class="pull">KOS is not a knowledge base. It is a new software infrastructure for computing, reasoning, deciding, executing and verifying knowledge.</blockquote>
-
-      <h2 class="sec" id="en-s13"><small>13</small>KOS-TL asks how knowledge enters trusted execution</h2>
-      <p>If knowledge remains a document, a PDF, a vector or a RAG context, trust is still not guaranteed. Knowledge must be able to enter:</p>
-      <div class="chain"><span>Event</span><i>→</i><span>Rule</span><i>→</i><span>State</span><i>→</i><span>Action</span><i>→</i><b>Trace</b></div>
-      <p>and form executable, verifiable semantics. What KOS-TL explores—</p>
-      <div class="formula">
-        <div class="lbl">KOS-TL</div>
-        <p>Event <span class="op">+</span> Rule <span class="op">+</span> State <span class="op">+</span> Execution Trace</p>
-      </div>
-      <p>—corresponds to a decisive future question: how knowledge becomes part of a trusted computational process. This may become an important piece of the foundational theory of trusted software.</p>
-
-      <h2 class="sec" id="en-s14"><small>14</small>Trusted software will redefine software testing</h2>
-      <p>Classical testing: input → output. Future testing covers data, knowledge, semantics, rules, models, decisions, actions, execution and evidence:</p>
-      <ul class="plain">
-        <li>Data-trust tests</li>
-        <li>Knowledge-consistency tests</li>
-        <li>Ontology-consistency tests</li>
-        <li>Rule-conflict tests</li>
-        <li>Model-behavior tests</li>
-        <li>Agent-behavior tests</li>
-        <li>Authorization tests</li>
-        <li>Execution-trace tests</li>
-        <li>Evidence-chain tests</li>
-      </ul>
-      <p>In the end, software verification will move from code verification to knowledge + software + AI + action verification.</p>
-
-      <h2 class="sec" id="en-s15"><small>15</small>This will give rise to a large new industry</h2>
-      <p>China’s software industry reached RMB 15.48 trillion in 2025. Even at 1% of that whole:</p>
-      <div class="formula">
-        <div class="lbl">SCENARIO</div>
-        <p>¥15.48 tn × 1% = ¥154.8 bn</p>
-        <p>¥15.48 tn × 5% = ¥774 bn</p>
-      </div>
-      <p>This is not a forecast of future market size. It is a simple penetration scenario. It shows that if trusted software is only a thin value layer inside the software industry, it is still enough to form a space of hundreds of billions—even trillions—of yuan.</p>
-      <p>Trusted software will also cover AI safety, agent governance, software verification, the software supply chain, knowledge infrastructure, ontology, industrial software, digital twins, trusted operating systems, software certification and software audit.</p>
-      <p>Trusted software may well become a new foundational software industry of the AI age.</p>
-
-      <h2 class="sec" id="en-s16"><small>16</small>We must redefine the value of software</h2>
-      <div class="formula">
-        <div class="lbl">VALUE FUNCTION</div>
-        <p>Once: Software Value ≈ Function</p>
-        <p>Then: Software Value ≈ Function + Platform</p>
-        <p>The AI age: Software Value ≈ Function + Platform + Intelligence</p>
-        <p>The future: Software Value ≈ Function + Platform + Intelligence + <span class="op">Trust</span></p>
-      </div>
-      <p>In the end, trust will be an essential part of software’s value.</p>
-
-      <h2 class="sec" id="en-s17"><small>17</small>We must build China’s own trusted-software industry chain</h2>
-      <p>Not another isolated “security-software industry,” but a complete chain:</p>
-      <div class="chain">
-        <span>Trusted chips</span><i>↓</i>
-        <span>Trusted hardware</span><i>↓</i>
-        <span>Trusted OS</span><i>↓</i>
-        <span>Trusted database</span><i>↓</i>
-        <span>Trusted middleware</span><i>↓</i>
-        <b>Knowledge OS</b><i>↓</i>
-        <span>Ontology</span><i>↓</i>
-        <span>Trusted AI</span><i>↓</i>
-        <span>Trusted agent</span><i>↓</i>
-        <span>Trusted industry software</span><i>↓</i>
-        <span>Trusted certification</span><i>↓</i>
-        <span>Trusted services</span>
-      </div>
-      <p>A complete system of standards, technology, platforms, tools, software, industries and certification.</p>
-
-      <h2 class="sec" id="en-s18"><small>18</small>This is not an ordinary industrial question. It is next-generation digital infrastructure</h2>
-      <p>Operating systems were infrastructure of the digital age. So were databases. So was the internet. Cloud computing is becoming infrastructure now.</p>
-      <p>Today knowledge is becoming a new computational resource, and AI a new computational subject. The future therefore needs a new infrastructure: knowledge infrastructure. Trusted software is an indispensable layer of it.</p>
-
-      <h2 class="sec" id="en-s19"><small>19</small>We cannot chase only stronger AI. We must also build stronger trusted software</h2>
-      <p>Future competition cannot be only: whose model has more parameters? Whose benchmark is higher? Who has more GPUs? It must also ask:</p>
-      <ul class="q">
-        <li>Who can let AI enter the real world safely?</li>
-        <li>Who can let agents act in a trusted way?</li>
-        <li>Who can make software behavior verifiable?</li>
-        <li>Who can let knowledge enter machine execution?</li>
-        <li>Who can build a complete software evidence chain?</li>
-      </ul>
-      <p>That is the true next competition in software.</p>
-
-      <h2 class="sec" id="en-s20"><small>20</small>Why China must take this chance</h2>
-      <p>Because China already has a RMB 15-trillion software industry; a vast manufacturing system; one of the world’s largest bodies of industrial application; a fast-growing AI industry; enormous data and knowledge resources; a complete software chain; and a huge corps of engineers.</p>
-      <p>What we lack is not the base. What we lack is the strategic capacity to organize that base into next-generation trusted-software infrastructure.</p>
-
-      <h2 class="sec" id="en-s21"><small>21</small>We cannot be content to remain users of software</h2>
-      <p>In the last software age China long faced a problem: the underlying software infrastructure was in other hands. Today we have a chance to change that.</p>
-      <div class="ask">
-        <div>We must not only use software. We must <strong>define software</strong>.</div>
-        <div>We must not only use AI. We must <strong>define the trusted mechanisms by which AI enters the real world</strong>.</div>
-        <div>We must not only build data centers. We must <strong>build knowledge infrastructure</strong>.</div>
-        <div>We must not only build large models. We must <strong>build a trusted intelligent-software system</strong>.</div>
-      </div>
-
-      <h2 class="sec" id="en-s22"><small>22</small>This is the step from a large software country to a strong software country</h2>
-      <p>A large software country means a vast industry. A strong software country means mastery of foundational theory, of core systems software, of standards, of ecosystems, of infrastructure, and of the next software paradigm.</p>
-      <p>Trusted software may therefore be a decisive opening for a paradigm shift in China’s software industry.</p>
-
-      <h2 class="sec" id="en-s23"><small>23</small>The historical mission of this generation of software people</h2>
-      <p>Look back: Unix changed operating systems. C changed systems software. Lisp changed the ideas of AI. The Web changed the world of information. Git changed collaboration. LLVM changed compiler infrastructure. Large models are changing how software is produced.</p>
-      <p>This generation must still answer:</p>
-      <ul class="q">
-        <li>How can software truly understand the real world?</li>
-        <li>How can knowledge become part of computation?</li>
-        <li>How can AI use knowledge in a trusted way?</li>
-        <li>How can agents act in a trusted way?</li>
-        <li>How can complex software have verifiable behavior?</li>
-        <li>How can every critical decision be explained, traced and audited?</li>
-      </ul>
-      <p>These are the questions of the age of trusted software.</p>
-
-      <section class="close" id="en-coda">
-        <h2 class="sec"><small>CODA</small>Coda: from “it runs” to “it is worth trusting”</h2>
-        <p>What we face is not a simple upgrade of software. It is a structural change in software civilization.</p>
-        <p>Once, software helped us compute. Then it helped us connect. Then it helped us manage a complex world. Today software begins to understand the world. Tomorrow it will take part in decisions and act more and more directly on reality.</p>
-        <blockquote class="pull">Software must not only be able to run. It must be worth trusting.</blockquote>
-        <p>Large models will not solve this by themselves. Neither will classical software engineering alone, nor cybersecurity alone. What we need is a new synthesis:</p>
-        <div class="formula">
-          <div class="lbl">TRUSTED SOFTWARE</div>
-          <p>Data + Knowledge + Ontology + Rules + Software + AI + Verification + Execution + Evidence</p>
-        </div>
-        <p>This is the historical starting point of China’s trusted-software industry.</p>
-        <p>It is not a negation of the traditional software industry. On the contrary: it is the next layer of value that a RMB 15-trillion industry must now grow.</p>
-        <p>It is not meant to replace large models, but to make them part of a trusted-software system.</p>
-        <p>It is not meant to replace classical software engineering, but to raise it into the age of knowledge, AI and the real world.</p>
-        <p>It is not meant to copy Palantir. It absorbs the ontology and world-modeling idea, and goes further, to a complete trusted computational system:</p>
-        <div class="chain">
-          <b>Knowledge</b><i>→</i><b>Reasoning</b><i>→</i><b>Decision</b><i>→</i><b>Action</b><i>→</i><b>Verification</b>
-        </div>
-        <p>That is the future we should contend for.</p>
-        <p class="final">Let China move from a large software country to a strong one. From a large AI country to a strong country of trusted intelligent software. Let China possess not only more powerful AI, but the software infrastructure that lets AI enter the real world in a trusted way.<br/>Let machines be wiser. Let software be more reliable. Let knowledge be computable. Let intelligence be verifiable. Let action be worth trusting.</p>
-        <p class="final">This is the age of trusted software.<br/>This is the historical mission of our generation of software people.</p>
-      </section>
-
+<p>Two other figures on the same sheet matter more. Foundational software: RMB 214.6 billion, 1.39%. Information-security products and services: RMB 223.5 billion, 1.44%. Together, less than three percent of the whole. The structural numbers do not say the industry has failed. They say the next layer has not been built.</p>
+<p>Classical software engineering has built the most formidable quality apparatus in the history of human engineering: languages, types, compilation, testing, static and dynamic analysis, review, configuration, security, formal verification, DevOps. This essay holds that in full respect. But its core premise is that correctness is defined relative to a specification, and it pushes “whether the specification itself is right” outside its own border. A system can be made exactly as required and still execute something that was never charged to it. A gate is proved to accept only a red permit—the proof is perfect—when what was wanted was authorization. That is the specification gap.</p>
+<p>Fifteen trillion answers scale. It has not answered: of that fifteen trillion, how much software can produce an argument of behavior, showing that it is still executing the one thing it was charged to do.</p>
+<h2 class="sec" id="en-s3"><small>03</small>III. The opponent is not “not trustworthy enough.” It is a false mission</h2>
+<p>The old question was written: are there defects? Today’s real question has already gone far beyond defects. Code can be right, the supply chain can show a list, a model can post a score, an agent can execute. A list is not evidence. A declaration is not a mission.</p>
+<p>A false mission looks like service. It replaces the charge with sentences that cannot be falsified—“empowerment,” “intelligence,” “serve the people.” Serve the people is not a banner here. It is a named list: patients, passengers, dispatchers, depositors, soldiers. Prosperity outside that list may be a real business. It cannot impersonate this charge. Software without evidence of mission cannot claim to serve the people.</p>
+<p>Mission-bound software is not a product category cut by industry, nor *mission-critical* in English. It is software bound, in a particular relation of charge, by five things at once:</p>
+<div class="formula"><div class="lbl">MISSION-BOUND SOFTWARE</div><p>Mission-bound software ≡ an explicit charge ∧ an explicit forbidden zone ∧ bound onto the path of execution ∧ trustworthiness (an inspectable argument) ∧ a person who can be held to account</p></div>
+<p>Miss one, and the object falls back to a product or a vision. Trustworthiness here is an epistemological organ: an argument others can take away and try to falsify. It is not a synonym for trusted computing. Trusted computing supplies a hardware root of trust; dependability answers whether the system is still working; trustworthiness answers how you know. The three complement one another. None replaces mission. Mission sits on top.</p>
+<h2 class="sec" id="en-s4"><small>04</small>IV. Generation is accelerating. Inspection is falling behind</h2>
+<p>The U.S. National Institute of Standards and Technology’s official account is that vulnerability submissions grew 263% from 2020 to 2025. In 2025 it finished enriching nearly 42,000 vulnerabilities, 45% more than in any year in its history. It ran faster than it ever had. It still lost. On 15 April 2026 the National Vulnerability Database it runs abandoned, as a matter of policy, complete analysis of every vulnerability. The question of trust is no longer only whether software should be trusted. It is whether we still have the capacity to judge whether software is still executing its mission.</p>
+<p>Generation and verification are asymmetric. Large models push the cost of generation down and the speed of generation up. That is a productivity revolution. It does not automatically supply inspection. The stronger the model, the cheaper the generation, the higher the share of verification in total cost. Artificial intelligence is both a tool and a new object: when a model writes the code, when an agent performs the act, fluency can precede understanding, and action can precede correction.</p>
+<p>“Let AI accept AI” does not go through in type. Statistical judgment answers whether something looks right; deductive judgment answers whether a rerun yields the same result; institutional judgment answers who has the authority to decide that it is right. No accuracy, however high, lets statistics climb into the institutional tier. Persons must remain in three seats: legislation, boundary-drawing, judgment. To put the strongest judgment in front of a monitoring screen is this generation’s most expensive waste.</p>
+<h2 class="sec" id="en-s5"><small>05</small>V. The supply chain has stretched the trusted computing base until it burst</h2>
+<p>There is almost no truly independent program left. A system depends on hundreds, thousands, tens of thousands of components. The trusted computing base is enlarged without limit by the supply chain. Verizon’s 2026 *Data Breach Investigations Report* shows exploitation of vulnerabilities as an initial access path rising to 31%, overtaking stolen credentials for the first time in nineteen years. The 2025 report in the same series shows incidents involving third parties rising from 15% to 30%. An earlier essay must be corrected: 48% is the share of breaches involving ransomware in the 2026 report, not the share involving third parties.</p>
+<p>IBM’s 2025 *Cost of a Data Breach Report* gives a global average of USD 4.44 million per incident, and USD 10.22 million in the United States. 4.44 million is the first fall in five years. It cannot be written as “the cost only grows.” The explanation of the fall is worth more than the absolute: AI on the defensive side works; the U.S. record high is tied to regulatory fines. In the same report, 97% of compromised organizations had not deployed AI access control.</p>
+<p>The cost of software error was never only a security incident. Faults, downtime, a wrong financial entry, a wrong medical dose, a supply-chain accident, all enter the same ledger. This is not a quality problem for software firms alone. It is an infrastructure problem for the whole digital economy.</p>
+<h2 class="sec" id="en-s6"><small>06</small>VI. Understanding the world and taking action can still execute a purpose that was never written down</h2>
+<p>Palantir is often written as the specimen of “understand the world and take action.” The other face is what is to be contested. Its ontology contains objects, relations, action types and dynamic security; the official formula is a fourfold integration of data, logic, action and security. It does not lack action, nor permission. What it truly lacks is verification and evidence: was this action right? On what grounds? Can it be reconstructed? Are the rules consistent with one another?</p>
+<p>Without verification and evidence, understanding the world can still execute a purpose that was never written down. The next generation cannot stop at “what is this, what can be done, who may do it, what was done.” It must still answer: why is it allowed; where did the ground come from; is this decision still on that one charge; what, in the end, happened, and can the evidence be taken away and falsified by someone else.</p>
+<p>The materials can be written: data, knowledge, ontology, rules, software, AI, verification, execution, evidence. The rope is another thing. However complete the materials, without charge, forbidden zone, binding, trustworthiness and account, the system can still execute whichever purpose comes more readily to hand.</p>
+<h2 class="sec" id="en-s7"><small>07</small>VII. Make a system, or bind a purpose</h2>
+<p>Mission-bound software is the object. Mission-bound software engineering is the engineering that makes that object hold. The two must not be mixed.</p>
+<p>The core is only one thing:</p>
+<div class="formula"><div class="lbl">CORE</div><p>Core ≡ an explicit charge ∧ still executing this one thing ∧ inspection that can be falsified</p></div>
+<p>Without an explicit charge, inspection faces a more convenient objective function; however strict, it is still a false mission. Without still-executing, the definition stays on paper. Without inspection that can be falsified, the charge is a declaration and trustworthiness is empty talk.</p>
+<p>The essential distinction is not a few more documents, nor a change of cadence. Classical software engineering makes a system; mission-bound software engineering binds a purpose. It is not a course opened beside software engineering. It is software engineering’s next orientation, after the charge itself became the problem. It inherits the engineering capacity of software engineering. It does not inherit “delivery equals success.” If the criterion is not changed, the base only delivers a false mission at greater expense. If the base is refused, mission is only a vision that changed its words.</p>
+<p>Four layers must be set up apart. Connotation: the engineering of a charge; false mission as opponent; inspectability as success; persons in legislation, boundary-drawing and judgment. It is not correctness 2.0, not security under a new skin, not trusted computing, and not a Knowledge Operating System. The apparatus can be changed. The connotation cannot. Method: principles before steps, steps before tools; the forbidden zone before capability; define, align, achieve; generation and inspection fail independently; intensity tied to consequence. Generation covers breadth; deduction covers depth. Theory: the object is a relation of charge; the problem is still executing this one thing; the criterion is how you know—plus the specification gap, the generation–verification asymmetry, the transfer of trust, conditional guarantee. Composability remains unsolved. Engineering system: the inherited base, plus principles, objects, layers, links and replay. A Knowledge Operating System is the name of the apparatus, used to make the core computable. It is not a shipped operating system. Prototypes in a repository can test some mechanisms. They cannot be taken as evidence that a specification has already been realized.</p>
+<p>A system can be claimed. The discipline has not yet formed.</p>
+<h2 class="sec" id="en-s8"><small>08</small>VIII. Not a niche of the security industry. An entry condition</h2>
+<p>Cybersecurity cannot solve this alone. Security asks whether a property can be kept under malice; most problems of trustworthiness have nothing to do with malice: wrong knowledge, conflicting rules, undeliberated defaults, silent drift of behavior. Ken Thompson said you cannot trust code you did not create yourself. When code is increasingly generated by machines, the sentence goes deeper: not only was it not created by our hands; even whether it was understood cannot be determined.</p>
+<p>Large models will not solve it by themselves. Classical software engineering cannot solve it alone. What is needed is a new synthesis: make knowledge and rules first-class computable citizens; make actions and traces recordable, inspectable, revocable; let evidence arise in ordinary running; let trustworthiness walk from chip to action, and not stop at an isolated node.</p>
+<p>This is not another isolated “security-software industry.” It is a layer cut across every software domain: from trusted chips and foundational software and a Knowledge Operating System, to ontologies, mission-bound AI, mission-bound agents, industry software, certification and services. Grading and evidence formats are the premise of pricing, certification and trade. The time window for mission-bound agent infrastructure is the tightest. To bring build provenance into the technical criteria of Xinchuang is, for now, the most operable institutional move.</p>
+<p>Taking 2025’s RMB 15.48 trillion of software business revenue as the base, 1% penetration is about RMB 154.8 billion; 5% about RMB 774.2 billion. This is a scenario calculation, not a market forecast. Even as a thin value layer inside the whole software industry, it is enough to form a space of hundreds of billions—even trillions—of yuan. What matters more than cutting out a slice of revenue is unlocking AI value that has already arrived and has not yet been cashed. The value a mission creates may far exceed the revenue it captures.</p>
+<h2 class="sec" id="en-s9"><small>09</small>IX. A strong country is not scale. It is the power to define a mission</h2>
+<p>We cannot be content to remain users of software. A large software country means scale. A strong software country contains successive layers: foundational theory, core systems software, standards, ecology, infrastructure, and the next software paradigm. The first layers are catch-up. The last is a leap. Catch-up inside an existing paradigm is hard, because the barrier is ecological lock-in; a leap at a point of paradigm change is possible, because the new paradigm has no existing ecology that must be migrated. Mission-bound software is a real point of change—it changes the definition of the problem. To recognize the point of change, and to occupy a place in it, are two different things.</p>
+<p>What is most valuable is to define the mission mechanism by which AI enters the real world. When AI moves from generation to action, what decides how far it may be used is no longer capability alone, but whether the action can be trusted. That mechanism is immature everywhere. China’s industry knowledge can be formalized only by China. The power to define is also a duty: a standard that cannot be independently inspected, whoever defines it, contradicts itself. The right stance is not to seize a standard, but to make something better and let it be inspectable.</p>
+<p>China already has a software industry on the order of fifteen trillion yuan, a vast manufacturing system, one of the world’s largest bodies of industrial application, fast-growing AI, a complete software chain, and 11 million software workers. That scale is both an advantage and a constraint: any scheme that only experts can use cannot spread at this scale; the strongest part of that corps must be turned from a false prosperity toward industrial and defense-industrial software. What is missing is not the base. What is missing is the strategic capacity to organize that base into next-generation mission-bound software infrastructure, and people willing to work for many years on problems still unsolved.</p>
+<h2 class="sec" id="en-s10"><small>10</small>X. What this generation must still answer, and what is not yet undone</h2>
+<p>Look back: Unix answered how an operating system should be organized; C, how to stay close to the machine and remain portable; Lisp, how a program treats symbols and itself; the Web, how information crosses a boundary; open source, who may change and who may inspect; cloud and mobile, how software becomes a remote capability; Git, how distributed collaboration stays consistent; LLVM, how compiler infrastructure is reused. Large models are answering how software should be produced. What has not been answered is where, after this leap in production, verification and evidence are to be placed.</p>
+<p>This generation must still answer: how software can truly understand the real world; how to define, align and achieve a charge; how to set connotation, method, theory and engineering apart, without pretending the discipline already stands; how knowledge becomes part of computation; how AI uses knowledge under a mission; how an agent acts under a mission; how complex software can have verifiable behavior; how every critical decision can be explained, traced and audited. None of these yet has a mature answer. That is the difficulty, and the reason it is worth the work.</p>
+<p>What must most be avoided is letting anyone think the problem is already solved. Modeling cost is the chief practical risk of the whole route; it has not been shown to be solved. Composability still depends on engineering discipline, not on an architectural guarantee. Expressiveness and decidability are theoretically constrained. There may be a class of systems whose performance requirements are simply incompatible with a complete mission argument. Standardization of knowledge representation, the actual holding of AI’s boundary, the conflict between keeping evidence and keeping privacy, all remain. Formal compliance replacing a real mission, absorption into a platform so that no independent industry forms, the closing of a window in international standards, can all still happen. These are not disclaimers. They are the real terrain of the route. A system that knows its own border is more trustworthy than one that does not. A route is the same.</p>
+<section class="close" id="en-coda">
+<h2 class="sec" id="en-coda"><small>CODA</small>Coda: from “it runs” to “it bears a mission”</h2>
+<p>Software must not only be able to run. It must bear a mission. The sentence sounds like common sense. It is not yet a fact.</p>
+<p>What can be honestly sought at this stage is not that all software bear a mission, but three narrower things: that critical systems begin to produce arguments; that generation and verification stop running in opposite directions; that when an action enters the real world it leaves an inspectable trace. Mechanical checking must be given to machines. Persons must return to the seats only persons can occupy—defining intent, setting a boundary, keeping the capacity and the evidence to overturn a machine’s conclusion.</p>
+<p>To tame software and to tame artificial intelligence is the same rein. Only when they are made into an inspectable mission can one speak of truly serving the people. The rest is left to practice, to falsify or to confirm.</p>
+<p class="final">Advance into the age of mission-bound software.</p>
+</section>
       <footer class="site">
         <span>Author: Chen Peng · <a href="mailto:chenpeng_buaa@163.com">chenpeng_buaa@163.com</a></span>
         <span>KOS-TL · Knowledge Operating System — Type Logic</span>
       </footer>
     </article>
-
   </div>
 
-  <script>
-    const btn = document.getElementById("tocBtn");
-    const mask = document.getElementById("mask");
-    const skip = document.getElementById("skip");
-    const brandSub = document.getElementById("brandSub");
-    const copy = {
-      zh: {
-        title: "向可信软件时代进军 —— 建设中国可信软件产业",
-        brand: "可信软件宣言",
-        toc: "目录",
-        skip: "跳到正文",
-        skipHref: "#main"
-      },
-      en: {
-        title: "Advance into the Age of Trusted Software — Building China’s Trusted Software Industry",
-        brand: "Manifesto",
-        toc: "Contents",
-        skip: "Skip to content",
-        skipHref: "#main-en"
-      }
-    };
-
-    let io;
-    function setOpen(open) {
-      document.body.classList.toggle("toc-open", open);
-      mask.hidden = !open;
+<script>
+  const btn = document.getElementById("tocBtn");
+  const mask = document.getElementById("mask");
+  const skip = document.getElementById("skip");
+  const brandSub = document.getElementById("brandSub");
+  const copy = {
+    zh: {
+      title: "\u5411\u8f6f\u4ef6\u4f7f\u547d\u65f6\u4ee3\u8fdb\u519b \u2014\u2014 \u628a\u8f6f\u4ef6\u7ed1\u56de\u53ef\u68c0\u9a8c\u7684\u6258\u4ed8",
+      brand: "\u4f7f\u547d\u8f6f\u4ef6\u6a84\u6587",
+      toc: "\u76ee\u5f55",
+      skip: "\u8df3\u5230\u6b63\u6587",
+      skipHref: "#main",
+      m: "\u6a84\u6587", b: "\u4e13\u8457", dm: "\u6a84\u6587 Word", db: "\u4e13\u8457 Word"
+    },
+    en: {
+      title: "Advance into the Age of Mission-bound Software",
+      brand: "Manifesto",
+      toc: "Contents",
+      skip: "Skip to content",
+      skipHref: "#main-en",
+      m: "Manifesto", b: "Monograph", dm: "Manifesto.docx", db: "Book.docx"
     }
-    btn.addEventListener("click", () => setOpen(!document.body.classList.contains("toc-open")));
-    mask.addEventListener("click", () => setOpen(false));
-    document.querySelectorAll(".toc").forEach((toc) => {
-      toc.addEventListener("click", (e) => {
-        if (e.target.tagName === "A") setOpen(false);
-      });
+  };
+  let io;
+  function setOpen(open) {
+    document.body.classList.toggle("toc-open", open);
+    if (mask) mask.hidden = !open;
+  }
+  if (btn) btn.addEventListener("click", () => setOpen(!document.body.classList.contains("toc-open")));
+  if (mask) mask.addEventListener("click", () => setOpen(false));
+  document.querySelectorAll(".toc").forEach((toc) => {
+    toc.addEventListener("click", (e) => {
+      if (e.target.tagName === "A") setOpen(false);
     });
-
-    function bindToc(lang) {
-      if (io) io.disconnect();
-      const toc = document.querySelector('.toc[data-lang="' + lang + '"]');
-      const links = [...toc.querySelectorAll("a")];
-      const sections = links
-        .map((a) => document.querySelector(a.getAttribute("href")))
-        .filter(Boolean);
-      io = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          const id = "#" + entry.target.id;
-          links.forEach((a) => a.classList.toggle("active", a.getAttribute("href") === id));
-        });
-      }, { rootMargin: "-20% 0px -70% 0px", threshold: 0 });
-      sections.forEach((el) => io.observe(el));
-    }
-
-    function mapHash(lang) {
-      const raw = (location.hash || "").replace(/^#/, "");
-      if (!raw) return;
-      const id = lang === "en"
-        ? (raw.startsWith("en-") ? raw : "en-" + raw)
-        : raw.replace(/^en-/, "");
-      const el = document.getElementById(id);
-      if (el) history.replaceState(null, "", "#" + id);
-    }
-
-    function setLang(lang) {
-      lang = lang === "en" ? "en" : "zh";
-      document.documentElement.lang = lang === "en" ? "en" : "zh-CN";
-      document.querySelectorAll("[data-lang]").forEach((el) => {
-        el.classList.toggle("pane-off", el.getAttribute("data-lang") !== lang);
+  });
+  function bindToc(lang) {
+    if (io) io.disconnect();
+    const toc = document.querySelector('.toc[data-lang="' + lang + '"]') || document.querySelector(".toc");
+    if (!toc) return;
+    const links = [...toc.querySelectorAll("a")];
+    const sections = links.map((a) => document.querySelector(a.getAttribute("href"))).filter(Boolean);
+    io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const id = "#" + entry.target.id;
+        links.forEach((a) => a.classList.toggle("active", a.getAttribute("href") === id));
       });
-      document.querySelectorAll("[data-set-lang]").forEach((b) => {
-        b.setAttribute("aria-pressed", b.getAttribute("data-set-lang") === lang ? "true" : "false");
-      });
-      const t = copy[lang];
-      document.title = t.title;
-      brandSub.textContent = t.brand;
-      btn.textContent = t.toc;
-      skip.textContent = t.skip;
-      skip.setAttribute("href", t.skipHref);
-      const url = new URL(location.href);
-      url.searchParams.set("lang", lang);
-      history.replaceState(null, "", url.pathname + url.search + url.hash);
-      try { localStorage.setItem("kos-lang", lang); } catch (e) {}
-      mapHash(lang);
-      bindToc(lang);
-    }
-
+    }, { rootMargin: "-20% 0px -70% 0px", threshold: 0 });
+    sections.forEach((el) => io.observe(el));
+  }
+  function mapHash(lang) {
+    const raw = (location.hash || "").replace(/^#/, "");
+    if (!raw) return;
+    const id = lang === "en" ? (raw.startsWith("en-") ? raw : "en-" + raw) : raw.replace(/^en-/, "");
+    const el = document.getElementById(id);
+    if (el) history.replaceState(null, "", "#" + id);
+  }
+  function setLang(lang) {
+    lang = lang === "en" ? "en" : "zh";
+    document.documentElement.lang = lang === "en" ? "en" : "zh-CN";
+    document.querySelectorAll("[data-lang]").forEach((el) => {
+      el.classList.toggle("pane-off", el.getAttribute("data-lang") !== lang);
+    });
     document.querySelectorAll("[data-set-lang]").forEach((b) => {
-      b.addEventListener("click", () => setLang(b.getAttribute("data-set-lang")));
+      b.setAttribute("aria-pressed", b.getAttribute("data-set-lang") === lang ? "true" : "false");
     });
-
+    const t = copy[lang];
+    if (!t) { bindToc("zh"); return; }
+    document.title = t.title;
+    if (brandSub) brandSub.textContent = t.brand;
+    if (btn) btn.textContent = t.toc;
+    if (skip) { skip.textContent = t.skip; skip.setAttribute("href", t.skipHref); }
+    const nm = document.getElementById("navManifesto");
+    const nb = document.getElementById("navBook");
+    const ndm = document.getElementById("navDlM");
+    const ndb = document.getElementById("navDlB");
+    if (nm) nm.textContent = t.m;
+    if (nb) nb.textContent = t.b;
+    if (ndm) ndm.textContent = t.dm;
+    if (ndb) ndb.textContent = t.db;
+    const url = new URL(location.href);
+    url.searchParams.set("lang", lang);
+    history.replaceState(null, "", url.pathname + url.search + url.hash);
+    try { localStorage.setItem("kos-lang", lang); } catch (e) {}
+    mapHash(lang);
+    bindToc(lang);
+  }
+  document.querySelectorAll("[data-set-lang]").forEach((b) => {
+    b.addEventListener("click", () => setLang(b.getAttribute("data-set-lang")));
+  });
+  if (document.querySelector("[data-set-lang]")) {
     const params = new URLSearchParams(location.search);
     const start = params.get("lang") || (function () {
       try { return localStorage.getItem("kos-lang"); } catch (e) { return null; }
     }()) || "zh";
     setLang(start);
-  </script>
+  } else {
+    bindToc("zh");
+  }
+</script>
+
 </body>
 </html>
