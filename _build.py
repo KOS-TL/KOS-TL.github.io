@@ -57,7 +57,7 @@ JS = r"""
       toc: "\u76ee\u5f55",
       skip: "\u8df3\u5230\u6b63\u6587",
       skipHref: "#main",
-      m: "\u6a84\u6587", b: "\u4e13\u8457", dm: "\u6a84\u6587 Word", db: "\u4e13\u8457 Word"
+      m: "\u6a84\u6587", b: "\u4e13\u8457"
     },
     en: {
       title: "Advance into the Age of Mission-bound Software",
@@ -65,7 +65,7 @@ JS = r"""
       toc: "Contents",
       skip: "Skip to content",
       skipHref: "#main-en",
-      m: "Manifesto", b: "Monograph", dm: "Manifesto.docx", db: "Book.docx"
+      m: "Manifesto", b: "Monograph"
     }
   };
   let io;
@@ -119,12 +119,8 @@ JS = r"""
     if (skip) { skip.textContent = t.skip; skip.setAttribute("href", t.skipHref); }
     const nm = document.getElementById("navManifesto");
     const nb = document.getElementById("navBook");
-    const ndm = document.getElementById("navDlM");
-    const ndb = document.getElementById("navDlB");
     if (nm) nm.textContent = t.m;
     if (nb) nb.textContent = t.b;
-    if (ndm) ndm.textContent = t.dm;
-    if (ndb) ndb.textContent = t.db;
     const url = new URL(location.href);
     url.searchParams.set("lang", lang);
     history.replaceState(null, "", url.pathname + url.search + url.hash);
@@ -284,8 +280,6 @@ def toc_html(toc, lang):
 def nav_bar(prefix, current, show_lang=True):
     m_href = prefix + "index.html" if prefix else "./"
     b_href = prefix + "book/"
-    dm = prefix + "files/manifesto.docx"
-    db = prefix + "files/book-v13.docx"
     lang = ""
     if show_lang:
         lang = """
@@ -304,8 +298,6 @@ def nav_bar(prefix, current, show_lang=True):
       <button class="toc-btn" type="button" id="tocBtn">\u76ee\u5f55</button>
       <a id="navManifesto" href="%s"%s>\u6a84\u6587</a>
       <a id="navBook" href="%s"%s>\u4e13\u8457</a>
-      <a id="navDlM" href="%s">\u6a84\u6587 Word</a>
-      <a id="navDlB" href="%s">\u4e13\u8457 Word</a>
       <a href="https://github.com/KOS-TL">GitHub</a>
     </nav>
   </header>
@@ -315,7 +307,6 @@ def nav_bar(prefix, current, show_lang=True):
         lang,
         m_href, ' aria-current="page"' if current == "manifesto" else "",
         b_href, ' aria-current="page"' if current == "book" else "",
-        dm, db,
     )
 
 
@@ -528,7 +519,7 @@ def convert_book():
           <a href="mailto:chenpeng_buaa@163.com">chenpeng_buaa@163.com</a>
         </p>
         <div class="seal" aria-hidden="true">命</div>
-        <p class="note">知识操作系统是架构主张，不是已经交付的操作系统。使命软件工程学是体系主张，不是已经形成的学科。正文与插图按第13稿网页重排，便于阅读；完整版式与分页以 Word 为准，可从顶栏下载。</p>
+        <p class="note">知识操作系统是架构主张，不是已经交付的操作系统。使命软件工程学是体系主张，不是已经形成的学科。正文与插图按第13稿网页重排，便于阅读。</p>
       </header>
       %s
       <footer class="site">
@@ -571,8 +562,6 @@ def copy_files():
 <meta charset="utf-8"/><title>下载</title>
 <meta http-equiv="refresh" content="0;url=../"/>
 </head><body>
-<p><a href="manifesto.docx">檄文 Word</a></p>
-<p><a href="book-v13.docx">专著第13稿 Word</a></p>
 <p><a href="../">返回</a></p>
 </body></html>
 """,
@@ -590,8 +579,6 @@ KOS-TL 公开阅读站点。檄文与专著第13稿。
 
 - 檄文：https://kos-tl.github.io/
 - 专著：https://kos-tl.github.io/book/
-- Word 檄文：https://kos-tl.github.io/files/manifesto.docx
-- Word 专著：https://kos-tl.github.io/files/book-v13.docx
 
 兼容路径：https://kos-tl.github.io/kos.github.io/
 

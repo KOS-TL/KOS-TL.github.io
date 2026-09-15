@@ -396,8 +396,6 @@ article ul, article ol { margin: 0 0 1.2em; padding-left: 1.4em; }
       <button class="toc-btn" type="button" id="tocBtn">目录</button>
       <a id="navManifesto" href="./" aria-current="page">檄文</a>
       <a id="navBook" href="book/">专著</a>
-      <a id="navDlM" href="files/manifesto.docx">檄文 Word</a>
-      <a id="navDlB" href="files/book-v13.docx">专著 Word</a>
       <a href="https://github.com/KOS-TL">GitHub</a>
     </nav>
   </header>
@@ -609,7 +607,7 @@ article ul, article ol { margin: 0 0 1.2em; padding-left: 1.4em; }
       toc: "\u76ee\u5f55",
       skip: "\u8df3\u5230\u6b63\u6587",
       skipHref: "#main",
-      m: "\u6a84\u6587", b: "\u4e13\u8457", dm: "\u6a84\u6587 Word", db: "\u4e13\u8457 Word"
+      m: "\u6a84\u6587", b: "\u4e13\u8457"
     },
     en: {
       title: "Advance into the Age of Mission-bound Software",
@@ -617,7 +615,7 @@ article ul, article ol { margin: 0 0 1.2em; padding-left: 1.4em; }
       toc: "Contents",
       skip: "Skip to content",
       skipHref: "#main-en",
-      m: "Manifesto", b: "Monograph", dm: "Manifesto.docx", db: "Book.docx"
+      m: "Manifesto", b: "Monograph"
     }
   };
   let io;
@@ -671,12 +669,8 @@ article ul, article ol { margin: 0 0 1.2em; padding-left: 1.4em; }
     if (skip) { skip.textContent = t.skip; skip.setAttribute("href", t.skipHref); }
     const nm = document.getElementById("navManifesto");
     const nb = document.getElementById("navBook");
-    const ndm = document.getElementById("navDlM");
-    const ndb = document.getElementById("navDlB");
     if (nm) nm.textContent = t.m;
     if (nb) nb.textContent = t.b;
-    if (ndm) ndm.textContent = t.dm;
-    if (ndb) ndb.textContent = t.db;
     const url = new URL(location.href);
     url.searchParams.set("lang", lang);
     history.replaceState(null, "", url.pathname + url.search + url.hash);

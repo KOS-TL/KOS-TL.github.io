@@ -4,8 +4,6 @@ KOS-TL 公开阅读站点。檄文与专著第13稿。
 
 - 檄文：https://kos-tl.github.io/
 - 专著：https://kos-tl.github.io/book/
-- Word 檄文：https://kos-tl.github.io/files/manifesto.docx
-- Word 专著：https://kos-tl.github.io/files/book-v13.docx
 
 兼容路径：https://kos-tl.github.io/kos.github.io/
 
