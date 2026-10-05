@@ -4,6 +4,8 @@ KOS-TL 公开阅读站点。檄文与专著第13稿。
 
 - 檄文：https://kos-tl.github.io/
 - 专著：https://kos-tl.github.io/book/
+- 体系图：https://kos-tl.github.io/system/
+- 典型案例：https://kos-tl.github.io/cases/
 
 兼容路径：https://kos-tl.github.io/kos.github.io/
 

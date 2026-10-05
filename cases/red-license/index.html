@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>红许可证：实现满足规范，可以完美执行假使命 —— 方法经 · 案</title>
+  <meta name="description" content="思想实验，不是事故。规范鸿沟的门：门禁可以被证明只认红色许可证，要的却是授权。形式化证明可以证明实现满足规范。满足的是一份已经被改写的目的。"/>
+  <meta name="author" content="陈鹏"/>
+  <meta property="og:title" content="红许可证：实现满足规范，可以完美执行假使命 —— 方法经 · 案"/>
+  <meta property="og:description" content="思想实验，不是事故。规范鸿沟的门：门禁可以被证明只认红色许可证，要的却是授权。形式化证明可以证明实现满足规范。满足的是一份已经被改写的目的。"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:image" content="https://kos-tl.github.io/cases/cover-c08.png"/>
+  <link rel="canonical" href="https://kos-tl.github.io/cases/red-license/"/>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect fill='%238c1c13' width='64' height='64' rx='4'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-size='32' fill='%23f4ead5' font-family='serif'%3E案%3C/text%3E%3C/svg%3E"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Noto+Serif+SC:wght@400;500;600;700;900&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../../assets/site.css"/>
+  <link rel="stylesheet" href="../../assets/cases.css"/>
+</head>
+<body class="cases">
+  <header class="topbar">
+    <a class="brand" href="../../">
+      <b>KOS-TL</b>
+      <span>方法经 · 案</span>
+    </a>
+    <nav>
+      <a href="../../">檄文</a>
+      <a href="../../book/">专著</a>
+      <a href="../../system/">体系</a>
+      <a href="../" aria-current="page">案例</a>
+      <a href="https://github.com/KOS-TL">GitHub</a>
+    </nav>
+  </header>
+
+  <main class="case-read">
+    <p class="plate"><span>KOS-TL · CASE-08 · 2026</span><span>负向 · 证伪</span></p>
+    <header class="case-hero">
+      <p class="kicker">向软件使命时代进军 · 方法经 案-08 / 13</p>
+      <h1>红许可证：实现满足规范，可以完美执行假使命</h1>
+      <p class="joint">关节：实现满足规范可以完美执行假使命</p>
+      <p class="mis">不能误读成：形式化无用</p>
+    </header>
+    <figure class="cover-frame">
+      <img class="cover" src="../cover-c08.png" alt="封面：红许可证：实现满足规范，可以完美执行假使命" width="1280" height="545"/>
+    </figure>
+    <p class="cover-cap">方法经 · 案-08　纸色底 · 朱砂印</p>
+    <p class="byline">作者 陈鹏 · 二〇二六年十月 · 本文独立成篇</p>
+    <p class="dl">
+      <a href="../../files/cases/案08-红许可证.docx">导入 Word</a>
+      <a href="../../files/cases/案08-红许可证.md">导入 Markdown</a>
+    </p>
+    <article>
+      <h2 class="pass">经过</h2>
+<p>这不是一起被调查过的事故。它是用来说明规范鸿沟的门。门禁可以被形式化地证明：只允许持有红色许可证的人进入。证明完全正确。现实要求的是：只有经过授权的人才能进入。红色许可证只是一张更顺手的牌子。证明再完美，也在执行假使命。seL4 自己承认：形式验证能证明代码实现了 specification，specification 是否表达了真正需要的行为，是另一件事。</p>
+<p>门不在证明的强度上。门在规范写的是不是那件被托付的事。立法写下「须经授权」。实现把授权改写成「持有红证」。验证者证明实现符合那份已经被改写的规范。三步都可以「完成」。完成的是一次假使命。</p>
+<p>假使命不是「使命感不够」。它是另一件被执行的目的：看起来仍在做被吩咐的事，绳子已经绑到别处。红许可证是它最干净的形态——不需要崩溃，不需要蓝屏，不需要市场波动。系统按规范工作。规范已经不是托付。传统软件工程把「规范本身对不对」放在自己的边界之外。使命软件工程把这件被放出去的事收回来。</p>
+<figure class="illust"><img src="../fig-c08-pass.png" alt="实现满足规范，可以完美执行假使命"/><figcaption>实现满足规范，可以完美执行假使命</figcaption></figure>
+<h2 class="cut">剖析</h2>
+<p>定义是这一案唯一真正的战场。托付是只有经过授权的人才能进入。禁区必须先于能力，必须不可绕过。红许可证把「授权」改写成一张更顺手的牌子。牌子一旦可发，禁区就不再是禁区，是实现自己颁发的通行证。能力（放行）压过了禁区（须经授权）。使命绑定在定义这一步已经断了。后面的对齐与达成越认真，越是在给假目的打工。</p>
+<p>对齐可以全部为真。写下的规范（只认红证）、编出的代码（验红证）、跑着的系统（有证则放行）、世界上发生的（未授权者持证进入），彼此对齐。它们与托付者心里那句「须经授权」不对齐。形式化方法证明的是前一条链。前一条链不自动等于后一句。正确性是符合给定规范。给定规范可以是假使命的说明书。</p>
+<p>达成若等于「证明通过、测试通过、审计通过」，红许可证系统是优等生。验收即结束。合同买的是符合规范的实现。规范里已经为未授权的进入留了门。高峰停在证明，证明停在一份被改写的句子上。</p>
+<p>人的三个位置在这里被拆开才看得见。立法若写下「须经授权」，实现不得把授权改写成自颁发的牌子。划界若允许例外，例外本身必须被定义、被约束、被记录、被追究——例外不是更顺手的标签。审判必须能盘问：这一次放行走的是哪一条授权、授权是否仍在托付里。把授权做成红证，是把立法权交给了实现。验证者若只负责「代码是否符合文档」，等于在假使命的门口盖章。</p>
+<p>方法论 ≡ 原则 ∧ 步骤 ∧ 理性 ∧ 分级 ∧ 制品 ∧ 角色 ∧ 非法推进。红许可证证明：少了「非法推进」这一条，前面六条可以全部齐全。原则仍在，步骤仍在，证明仍在，分级仍在，制品仍在，角色仍在。推进的却是另一件事。方法必须能失败。如果一种方法不能指出「规范已被改写」，它会把假使命做成合格交付。</p>
+<p>它也解释为什么「把定义、对齐、达成填成三张检查单」会掏空方法。三张单都可以勾完。勾完的是红许可证，不是托付。思想实验的价值正在于：没有任何崩溃可以帮忙暴露。暴露必须来自对目的本身的盘问。</p>
+<figure class="illust"><img src="../fig-c08-cut.png" alt="证明实现满足规范，不是证明仍在执行托付"/><figcaption>证明实现满足规范，不是证明仍在执行托付</figcaption></figure>
+<aside class="needle"><h2>对方法的一针</h2><blockquote><p>证明实现满足规范，不是证明仍在执行托付。规范本身必须被对着托付盘问，例外必须被当成禁区的缺口而不是功能。形式化方法关掉的是「实现是否符合这句话」。这句话是不是那件被托付的事，要另问。没有这一问，高峰是假高峰。</p></blockquote></aside>
+    </article>
+    <nav class="pager"><a href="../xz/">上一篇 · XZ Utils</a><a href="../palantir/">下一篇 · Palantir</a></nav>
+    <p class="chart-foot">
+      <span>作者 陈鹏 · 知识操作系统是架构主张，不是已经交付的操作系统。学尚未形成。</span>
+      <span><a href="../">专题目录</a> · <a href="../../book/">专著</a></span>
+    </p>
+  </main>
+
+</body>
+</html>

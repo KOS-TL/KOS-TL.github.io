@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>爱国者宰赫兰：忠实执行了不再成立的假设 —— 方法经 · 案</title>
+  <meta name="description" content="1991年2月25日，爱国者导弹拦截系统因时钟累积误差错过一枚飞毛腿。二十八名美军士兵死亡。代码忠实执行了设计时的假设。正确性是有有效期的。"/>
+  <meta name="author" content="陈鹏"/>
+  <meta property="og:title" content="爱国者宰赫兰：忠实执行了不再成立的假设 —— 方法经 · 案"/>
+  <meta property="og:description" content="1991年2月25日，爱国者导弹拦截系统因时钟累积误差错过一枚飞毛腿。二十八名美军士兵死亡。代码忠实执行了设计时的假设。正确性是有有效期的。"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:image" content="https://kos-tl.github.io/cases/cover-c04.png"/>
+  <link rel="canonical" href="https://kos-tl.github.io/cases/patriot/"/>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect fill='%238c1c13' width='64' height='64' rx='4'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-size='32' fill='%23f4ead5' font-family='serif'%3E案%3C/text%3E%3C/svg%3E"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Noto+Serif+SC:wght@400;500;600;700;900&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../../assets/site.css"/>
+  <link rel="stylesheet" href="../../assets/cases.css"/>
+</head>
+<body class="cases">
+  <header class="topbar">
+    <a class="brand" href="../../">
+      <b>KOS-TL</b>
+      <span>方法经 · 案</span>
+    </a>
+    <nav>
+      <a href="../../">檄文</a>
+      <a href="../../book/">专著</a>
+      <a href="../../system/">体系</a>
+      <a href="../" aria-current="page">案例</a>
+      <a href="https://github.com/KOS-TL">GitHub</a>
+    </nav>
+  </header>
+
+  <main class="case-read">
+    <p class="plate"><span>KOS-TL · CASE-04 · 2026</span><span>负向 · 证伪</span></p>
+    <header class="case-hero">
+      <p class="kicker">向软件使命时代进军 · 方法经 案-04 / 13</p>
+      <h1>爱国者宰赫兰：忠实执行了不再成立的假设</h1>
+      <p class="joint">关节：忠实执行了不再成立的假设</p>
+      <p class="mis">不能误读成：程序发疯</p>
+    </header>
+    <figure class="cover-frame">
+      <img class="cover" src="../cover-c04.png" alt="封面：爱国者宰赫兰：忠实执行了不再成立的假设" width="1280" height="545"/>
+    </figure>
+    <p class="cover-cap">方法经 · 案-04　纸色底 · 朱砂印</p>
+    <p class="byline">作者 陈鹏 · 二〇二六年十月 · 本文独立成篇</p>
+    <p class="dl">
+      <a href="../../files/cases/案04-爱国者宰赫兰.docx">导入 Word</a>
+      <a href="../../files/cases/案04-爱国者宰赫兰.md">导入 Markdown</a>
+    </p>
+    <article>
+      <h2 class="pass">经过</h2>
+<p>1991 年 2 月 25 日，海湾战争期间，一枚伊拉克「飞毛腿」导弹击中沙特阿拉伯宰赫兰的美军兵营。爱国者导弹拦截系统本应拦截这枚来袭导弹，却因软件时钟累积误差导致目标跟踪失败。二十八名美军士兵死亡。这不是一次「没写对」的事故。代码忠实执行了设计时的假设。假设已经不再成立。</p>
+<p>相邻概念必须被拆开。第一章用 Therac-25 说明信任从硬件转到软件。那是一次托付转移：物理互锁被撤掉，剂量交给程序。爱国者导弹拦截系统在宰赫兰错过拦截，不是同一类失败。时钟累积误差让目标跟踪偏离。代码没有背叛设计。它按当时的假设执行了。世界已经不在那个假设里。正确性是有有效期的。</p>
+<p>形式化方法可以证明一段程序符合给定规范，这是正确性。它不自动等于这段程序仍在执行托付。规范可以写错，规范可以过期。正确性是必要条件，不是使命。把正确性当使命，是把绳子交给一份已经过期的说明书。</p>
+<figure class="illust"><img src="../fig-c04-pass.png" alt="忠实执行了不再成立的假设"/><figcaption>忠实执行了不再成立的假设</figcaption></figure>
+<h2 class="cut">剖析</h2>
+<p>定义这一步在设计时是清楚的：拦截来袭的飞毛腿，保护兵营。禁区是不得把跟踪窗口对准一个已经漂移的位置。禁区写在设计假设里——时钟精度足以支撑连续运行若干小时。持续开机的时间越过那一截，假设就不再是假设，是一份过期的许可证。使命绑定要求验证覆盖运行中的这一次，而不是覆盖出厂那一次。</p>
+<p>对齐失败发生在时间轴上，而不是发生在模块之间。写下的规范、编出的代码、跑着的跟踪循环，彼此对齐。它们与世界上那枚飞毛腿的真实位置不对齐。接口契约可以全部满足。时间把契约的前提抽走了。这比「两边各写各的单位」更难看见：表面上没有任何接口破裂。破裂的是「系统被允许连续运行多久」这一条从未被当作运行时的检查。</p>
+<p>达成若等于雷达还在转、拦截程序还在循环，那天系统达成了。它达成的是一份过期的正确性。托付者是兵营里的士兵。软件执行托付。当假设过期，执行越忠实，后果越确定。</p>
+<p>人的三个位置在战时被压缩。立法把拦截写成任务。划界本应规定：开机超过某一时长必须重新校准、必须切换、必须停机人工确认。审判本应能在累积误差越过阈值时拒绝继续自动拦截。把士兵留在已经过期的自动循环里，不是让机器承担使命，是让人在最没有干预余地的位置上承担后果。</p>
+<p>分级上，这是关键执行级。自主执行不可逆、高影响的拦截决策，要求运行中确认，而不是出厂证明。出厂证明回答「按这份规范，它当时是对的」。运行中确认回答「这一秒，规范的前提还在不在」。少了后一句，高峰停在实验室。</p>
+<p>它也钉住方法学的一条边界。方法论必须能失败。如果一份方法只能证明「符合规范」，不能说出「规范的哪一条前提已经过期」，它会把过期的正确性当成完成。假使命可以寄生在方法里：方法越完整，过期的假设越像一份合格证明。</p>
+<figure class="illust"><img src="../fig-c04-cut.png" alt="正确性有有效期，验证必须覆盖运行中的这一次"/><figcaption>正确性有有效期，验证必须覆盖运行中的这一次</figcaption></figure>
+<aside class="needle"><h2>对方法的一针</h2><blockquote><p>正确性有有效期。验证必须覆盖运行中的这一次。假设必须被写成可过期的对象：超时、越界、连续运行过长，都应变成拒绝继续自动执行的检查，而不是事后调查里才被发现的前提。士兵是托付者。软件执行托付，不签发过期的正确性。</p></blockquote></aside>
+    </article>
+    <nav class="pager"><a href="../knight/">上一篇 · Knight Capital</a><a href="../mco/">下一篇 · 火星气候轨道器</a></nav>
+    <p class="chart-foot">
+      <span>作者 陈鹏 · 知识操作系统是架构主张，不是已经交付的操作系统。学尚未形成。</span>
+      <span><a href="../">专题目录</a> · <a href="../../book/">专著</a></span>
+    </p>
+  </main>
+
+</body>
+</html>

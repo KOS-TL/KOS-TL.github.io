@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>CrowdStrike：保护软件成为可信计算基 —— 方法经 · 案</title>
+  <meta name="description" content="2024年7月19日，一次配置更新让全球至少八百五十万台 Windows 设备同时蓝屏。保护端点的软件走进了内核。它成为单点。保护者必须先被约束。"/>
+  <meta name="author" content="陈鹏"/>
+  <meta property="og:title" content="CrowdStrike：保护软件成为可信计算基 —— 方法经 · 案"/>
+  <meta property="og:description" content="2024年7月19日，一次配置更新让全球至少八百五十万台 Windows 设备同时蓝屏。保护端点的软件走进了内核。它成为单点。保护者必须先被约束。"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:image" content="https://kos-tl.github.io/cases/cover-c06.png"/>
+  <link rel="canonical" href="https://kos-tl.github.io/cases/crowdstrike/"/>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect fill='%238c1c13' width='64' height='64' rx='4'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-size='32' fill='%23f4ead5' font-family='serif'%3E案%3C/text%3E%3C/svg%3E"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Noto+Serif+SC:wght@400;500;600;700;900&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../../assets/site.css"/>
+  <link rel="stylesheet" href="../../assets/cases.css"/>
+</head>
+<body class="cases">
+  <header class="topbar">
+    <a class="brand" href="../../">
+      <b>KOS-TL</b>
+      <span>方法经 · 案</span>
+    </a>
+    <nav>
+      <a href="../../">檄文</a>
+      <a href="../../book/">专著</a>
+      <a href="../../system/">体系</a>
+      <a href="../" aria-current="page">案例</a>
+      <a href="https://github.com/KOS-TL">GitHub</a>
+    </nav>
+  </header>
+
+  <main class="case-read">
+    <p class="plate"><span>KOS-TL · CASE-06 · 2026</span><span>负向 · 证伪</span></p>
+    <header class="case-hero">
+      <p class="kicker">向软件使命时代进军 · 方法经 案-06 / 13</p>
+      <h1>CrowdStrike：保护软件成为可信计算基</h1>
+      <p class="joint">关节：保护软件成为可信计算基单点</p>
+      <p class="mis">不能误读成：一次性供应商丑闻</p>
+    </header>
+    <figure class="cover-frame">
+      <img class="cover" src="../cover-c06.png" alt="封面：CrowdStrike：保护软件成为可信计算基" width="1280" height="545"/>
+    </figure>
+    <p class="cover-cap">方法经 · 案-06　纸色底 · 朱砂印</p>
+    <p class="byline">作者 陈鹏 · 二〇二六年十月 · 本文独立成篇</p>
+    <p class="dl">
+      <a href="../../files/cases/案06-CrowdStrike.docx">导入 Word</a>
+      <a href="../../files/cases/案06-CrowdStrike.md">导入 Markdown</a>
+    </p>
+    <article>
+      <h2 class="pass">经过</h2>
+<p>2024 年 7 月 19 日 04 时 09 分（UTC），CrowdStrike 向 Falcon 传感器推送一次配置更新。这类更新每天要推送多次，属于例行操作。编号 291 的通道文件含有逻辑错误，传感器发生越界内存读取，Windows 蓝屏。微软估计受影响设备至少八百五十万台，真实范围被认为更大。不到百分之一的设备，切断的是航班、手术与柜面。CrowdStrike 很快发现错误：七十八分钟后，即 05 时 27 分（UTC）之后时间戳的文件已经修正。对已经陷入引导循环或恢复模式的机器没有意义——一台无法启动的机器，无法自动接收修复。</p>
+<p>这不是一次普通的软件缺陷。它是一次关于信任位置的事故。Falcon 被设计为保护端点。为了在攻击者之前看到系统的每一个动作，它运行在 Windows 内核——操作系统最特权、最不可隔离的位置。Falcon 的任何缺陷都直接成为操作系统的缺陷。一次配置更新——不是一次软件版本升级——就可以绕过操作系统的全部质量门禁，直接进入全球数百万台设备的内核。用来保护系统的软件，成为了摧毁系统的单点。</p>
+<p>保护者成为了最大的风险源。不是因为 CrowdStrike 的工程师不称职，而是因为系统设计把一个第三方的配置更新通道放进了可信计算基，却没有给这个通道配上与其权限相称的约束。内核驱动有数字签名。签名证明的是「这段代码来自 CrowdStrike」，不是「这次配置更新不会让机器无法启动」。身份不是行为。证书链回答「谁签的」，不回答「这一次推送是不是仍在被允许的行为空间里」。</p>
+<figure class="illust"><img src="../fig-c06-pass.png" alt="保护软件走进内核，成为单点"/><figcaption>保护软件走进内核，成为单点</figcaption></figure>
+<h2 class="cut">剖析</h2>
+<p>定义上，托付是保护端点，使业务继续。禁区是不得让保护软件自己把主机打进无法启动。禁区弱于能力：配置更新通道被赋予了内核级的到达能力，却没有被赋予与之相称的验证。配置因为「不是代码」而常逃过与版本升级同等的门禁。横切变更会把已经做过的保证重新打开。这一次打开的不是一个模块，是全球同时开机的内核。TCB 一旦包含持续自动更新的外部组件，系统的可信性上限就是那一次发布流程。</p>
+<p>对齐失败发生在「谁被信任」与「什么被检查」之间。写下的是保护。跑着的是一次有缺陷的配置文件。世界上发生的是航空、医院与银行同时停摆。保护软件的使命与操作系统的使命在那一时刻互相取消。乘客、患者、存款人是托付者。他们没有把托付签给 291 号通道文件。</p>
+<p>达成若等于传感器覆盖率、更新到达率，那天凌晨系统高度达成。更新发出去了，设备收到了，内核加载了。按运行指标，保护网在工作。按托付，保护网把被保护对象锁在启动循环里。上线、推送成功、签名验证通过，都不是达成。达成要问：这一次更新之后，主机是否仍能启动、业务是否仍能继续、保护是否仍是保护。</p>
+<p>可信计算基必须闭合。走进内核的第三方，必须被当作 TCB 的一部分来约束：最小权限、可回滚、可隔离、更新本身可被验证、失败时不得剥夺主机启动。七十八分钟的修复对已进循环的机器没有意义，说明回滚不在那条路径上。回滚若需要一台已经死掉的机器去下载补丁，回滚只是文档。</p>
+<p>人的位置被推到机场柜台与医院值班室。立法在供应商合同里写的是保护端点。划界没有把配置更新写成与内核驱动同等的变更。审判发生在蓝屏之后，由现场的人在已经无法启动的机器上清除文件。把恢复交给已经无法开机的现场，不是让人承担使命。</p>
+<p>它与 Therac-25 是同一类托付转移，只是规模换成了全球。保护从操作系统与物理隔离，转到一家供应商的内核传感器，再转到一条配置通道。通道无法被盘问的那天，信任经营失败。2024 年已经证明：软件缺陷引发系统性后果，不是极端个别事件。</p>
+<figure class="illust"><img src="../fig-c06-cut.png" alt="保护者必须先被约束"/><figcaption>保护者必须先被约束</figcaption></figure>
+<aside class="needle"><h2>对方法的一针</h2><blockquote><p>保护者必须先被约束。走进 TCB 的更新通道，必须带与权限相称的验证、隔离与可回滚路径。签名证明身份，不证明这一次行为。乘客与患者是托付者。保护软件执行托付，不因为写了「安全」就自动可信。</p></blockquote></aside>
+    </article>
+    <nav class="pager"><a href="../mco/">上一篇 · 火星气候轨道器</a><a href="../xz/">下一篇 · XZ Utils</a></nav>
+    <p class="chart-foot">
+      <span>作者 陈鹏 · 知识操作系统是架构主张，不是已经交付的操作系统。学尚未形成。</span>
+      <span><a href="../">专题目录</a> · <a href="../../book/">专著</a></span>
+    </p>
+  </main>
+
+</body>
+</html>

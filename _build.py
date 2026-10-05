@@ -57,7 +57,7 @@ JS = r"""
       toc: "\u76ee\u5f55",
       skip: "\u8df3\u5230\u6b63\u6587",
       skipHref: "#main",
-      m: "\u6a84\u6587", b: "\u4e13\u8457"
+      m: "\u6a84\u6587", b: "\u4e13\u8457", s: "\u4f53\u7cfb", c: "\u6848\u4f8b"
     },
     en: {
       title: "Advance into the Age of Mission-bound Software",
@@ -65,7 +65,7 @@ JS = r"""
       toc: "Contents",
       skip: "Skip to content",
       skipHref: "#main-en",
-      m: "Manifesto", b: "Monograph"
+      m: "Manifesto", b: "Monograph", s: "System", c: "Cases"
     }
   };
   let io;
@@ -119,8 +119,12 @@ JS = r"""
     if (skip) { skip.textContent = t.skip; skip.setAttribute("href", t.skipHref); }
     const nm = document.getElementById("navManifesto");
     const nb = document.getElementById("navBook");
+    const ns = document.getElementById("navSystem");
+    const nc = document.getElementById("navCases");
     if (nm) nm.textContent = t.m;
     if (nb) nb.textContent = t.b;
+    if (ns) ns.textContent = t.s;
+    if (nc) nc.textContent = t.c;
     const url = new URL(location.href);
     url.searchParams.set("lang", lang);
     history.replaceState(null, "", url.pathname + url.search + url.hash);
@@ -280,6 +284,13 @@ def toc_html(toc, lang):
 def nav_bar(prefix, current, show_lang=True):
     m_href = prefix + "index.html" if prefix else "./"
     b_href = prefix + "book/"
+    s_href = prefix + "system/"
+    brand = {
+        "manifesto": "\u4f7f\u547d\u8f6f\u4ef6\u6a84\u6587",
+        "book": "\u4f7f\u547d\u8f6f\u4ef6\u4e13\u8457",
+        "system": "\u4f7f\u547d\u8f6f\u4ef6\u5de5\u7a0b\u5b66",
+        "cases": "\u65b9\u6cd5\u7ecf \u00b7 \u6848",
+    }.get(current, "\u4f7f\u547d\u8f6f\u4ef6")
     lang = ""
     if show_lang:
         lang = """
@@ -287,6 +298,8 @@ def nav_bar(prefix, current, show_lang=True):
         <button type="button" data-set-lang="zh" aria-pressed="true">\u4e2d\u6587</button>
         <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
       </div>"""
+    toc = "" if current == "system" else '<button class="toc-btn" type="button" id="tocBtn">\u76ee\u5f55</button>'
+    c_href = prefix + "cases/"
     return """
   <header class="topbar">
     <a class="brand" href="%s">
@@ -295,18 +308,23 @@ def nav_bar(prefix, current, show_lang=True):
     </a>
     <nav>
       %s
-      <button class="toc-btn" type="button" id="tocBtn">\u76ee\u5f55</button>
+      %s
       <a id="navManifesto" href="%s"%s>\u6a84\u6587</a>
       <a id="navBook" href="%s"%s>\u4e13\u8457</a>
+      <a id="navSystem" href="%s"%s>\u4f53\u7cfb</a>
+      <a id="navCases" href="%s"%s>\u6848\u4f8b</a>
       <a href="https://github.com/KOS-TL">GitHub</a>
     </nav>
   </header>
 """ % (
         m_href,
-        "\u4f7f\u547d\u8f6f\u4ef6\u6a84\u6587" if current == "manifesto" else "\u4f7f\u547d\u8f6f\u4ef6\u4e13\u8457",
+        brand,
         lang,
+        toc,
         m_href, ' aria-current="page"' if current == "manifesto" else "",
         b_href, ' aria-current="page"' if current == "book" else "",
+        s_href, ' aria-current="page"' if current == "system" else "",
+        c_href, ' aria-current="page"' if current == "cases" else "",
     )
 
 
@@ -436,6 +454,17 @@ def build_manifesto():
         "<title>\u4e13\u8457</title></head><body>"
         '<p><a href="/book/">\u6253\u5f00\u4e13\u8457\u300a\u5411\u8f6f\u4ef6\u4f7f\u547d\u65f6\u4ee3\u8fdb\u519b\u300b</a></p>'
         "<script>location.replace('/book/'+location.hash)</script>"
+        "</body></html>",
+        encoding="utf-8",
+    )
+    (nested / "system").mkdir(exist_ok=True)
+    (nested / "system" / "index.html").write_text(
+        '<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"/>'
+        '<meta http-equiv="refresh" content="0;url=/system/"/>'
+        '<link rel="canonical" href="https://kos-tl.github.io/system/"/>'
+        "<title>\u4f53\u7cfb</title></head><body>"
+        '<p><a href="/system/">\u6253\u5f00\u4f7f\u547d\u8f6f\u4ef6\u5de5\u7a0b\u5b66\u4f53\u7cfb\u56fe</a></p>'
+        "<script>location.replace('/system/')</script>"
         "</body></html>",
         encoding="utf-8",
     )
@@ -571,6 +600,23 @@ def copy_files():
     (ROOT / ".nojekyll").write_text("", encoding="utf-8")
 
 
+def write_system():
+    import runpy
+    runpy.run_path(str(ROOT / "_tmp_write_system.py"), run_name="__system__")
+    nested = ROOT / "kos.github.io"
+    (nested / "system").mkdir(parents=True, exist_ok=True)
+    (nested / "system" / "index.html").write_text(
+        '<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"/>'
+        '<meta http-equiv="refresh" content="0;url=/system/"/>'
+        '<link rel="canonical" href="https://kos-tl.github.io/system/"/>'
+        "<title>\u4f53\u7cfb</title></head><body>"
+        '<p><a href="/system/">\u6253\u5f00\u4f7f\u547d\u8f6f\u4ef6\u5de5\u7a0b\u5b66\u4f53\u7cfb\u56fe</a></p>'
+        "<script>location.replace('/system/')</script>"
+        "</body></html>",
+        encoding="utf-8",
+    )
+
+
 def write_readme():
     (ROOT / "README.md").write_text(
         """# 向软件使命时代进军
@@ -579,6 +625,8 @@ KOS-TL 公开阅读站点。檄文与专著第13稿。
 
 - 檄文：https://kos-tl.github.io/
 - 专著：https://kos-tl.github.io/book/
+- 体系图：https://kos-tl.github.io/system/
+- 典型案例：https://kos-tl.github.io/cases/
 
 兼容路径：https://kos-tl.github.io/kos.github.io/
 
@@ -593,6 +641,7 @@ def main():
     build_manifesto()
     convert_book()
     write_readme()
+    write_system()
     idx = ROOT / "index.html"
     book = ROOT / "book" / "index.html"
     figs = list((ROOT / "book" / "figs").glob("*.png"))

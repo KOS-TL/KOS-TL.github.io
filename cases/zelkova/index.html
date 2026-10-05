@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>AWS Zelkova：工程可用性决定覆盖率 —— 方法经 · 案</title>
+  <meta name="description" content="Zelkova 把 SMT 用到 IAM 策略分析，规模从每天约一千次走到约十亿次。决定覆盖率的不是证明强度的上限，是工程师是否用得上。高峰若不能被日常变更咬住，就停在论文里。"/>
+  <meta name="author" content="陈鹏"/>
+  <meta property="og:title" content="AWS Zelkova：工程可用性决定覆盖率 —— 方法经 · 案"/>
+  <meta property="og:description" content="Zelkova 把 SMT 用到 IAM 策略分析，规模从每天约一千次走到约十亿次。决定覆盖率的不是证明强度的上限，是工程师是否用得上。高峰若不能被日常变更咬住，就停在论文里。"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:image" content="https://kos-tl.github.io/cases/cover-c12.png"/>
+  <link rel="canonical" href="https://kos-tl.github.io/cases/zelkova/"/>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect fill='%238c1c13' width='64' height='64' rx='4'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-size='32' fill='%23f4ead5' font-family='serif'%3E案%3C/text%3E%3C/svg%3E"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Noto+Serif+SC:wght@400;500;600;700;900&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../../assets/site.css"/>
+  <link rel="stylesheet" href="../../assets/cases.css"/>
+</head>
+<body class="cases">
+  <header class="topbar">
+    <a class="brand" href="../../">
+      <b>KOS-TL</b>
+      <span>方法经 · 案</span>
+    </a>
+    <nav>
+      <a href="../../">檄文</a>
+      <a href="../../book/">专著</a>
+      <a href="../../system/">体系</a>
+      <a href="../" aria-current="page">案例</a>
+      <a href="https://github.com/KOS-TL">GitHub</a>
+    </nav>
+  </header>
+
+  <main class="case-read">
+    <p class="plate"><span>KOS-TL · CASE-12 · 2026</span><span>正向 · 高峰</span></p>
+    <header class="case-hero">
+      <p class="kicker">向软件使命时代进军 · 方法经 案-12 / 13</p>
+      <h1>AWS Zelkova：工程可用性决定覆盖率</h1>
+      <p class="joint">关节：工程可用性决定覆盖率</p>
+      <p class="mis">不能误读成：弱保证没有价值</p>
+    </header>
+    <figure class="cover-frame">
+      <img class="cover" src="../cover-c12.png" alt="封面：AWS Zelkova：工程可用性决定覆盖率" width="1280" height="545"/>
+    </figure>
+    <p class="cover-cap">方法经 · 案-12　纸色底 · 朱砂印</p>
+    <p class="byline">作者 陈鹏 · 二〇二六年十月 · 本文独立成篇</p>
+    <p class="dl">
+      <a href="../../files/cases/案12-AWS-Zelkova.docx">导入 Word</a>
+      <a href="../../files/cases/案12-AWS-Zelkova.md">导入 Markdown</a>
+    </p>
+    <article>
+      <h2 class="pass">经过</h2>
+<p>AWS 的 Zelkova 验证访问策略：一段权限配置是否允许某种访问，两条策略是否等价，一次变更是否把禁区打开。它属于亚马逊云科技自动推理组把形式化验证应用于云安全与合规的一条路径，与 Tiros、CBMC 等并列，服务客户也服务内部开发者。工程上真正改变行业的，不是又一个求解器论文。是规模。Zelkova 通过构建抽象、消除规范撰写，五年内从每天约一千次 SMT 求解器调用，增长到每天约十亿次。从千到十亿，六个数量级。这个数量级意味着：验证不再是发布前请专家做一次的活动，而是策略被写下、被评审、被部署时就会碰到的门。</p>
+<p>决定这个数量级的，不是 SMT 理论上还能证明什么更强的性质。是工程师用不用得上：延迟能否被等，失败能否被理解，误报能否被处理，结果能否变成「这次合并不得通过」。用不上的证明强度等于零覆盖。用得上的有限检查，可以盖住真正被改到的那一截配置。云上的权限是横切的。一次 IAM 变更可以越过应用全部测试。把分析放在变更路径上，是把横切变更重新打开那本账。</p>
+<p>它示范的第三条是分级可以被自动化咬住。不是所有策略都需要定理证明器里最强的那一类。需要的是：这一次变更所涉及的访问，是否仍在被允许的集合里。问小了，才能问得频繁。问得频繁，才盖得住每天都在改的那一层。把每一次云上配置都写成 seL4 式精化，做不到。把每一次配置都只交给人工审计，也做不到。Zelkova 走的是中间那条：有限性质、机器检查、变更门禁、规模覆盖。</p>
+<figure class="illust"><img src="../fig-c12-pass.png" alt="用得上的有限检查，盖过用不上的无穷证明"/><figcaption>用得上的有限检查，盖过用不上的无穷证明</figcaption></figure>
+<h2 class="cut">剖析</h2>
+<p>定义上，Zelkova 定义的是权限语句的行为，不是云上全部托付。禁区是「这段策略不得授权某类访问」。能力是快速判断。禁区与能力在工具内部是对齐的。云上真正的托付——存款、病历、航路——仍在应用里。权限分析通过，应用仍可执行假使命。它关掉的是「我们相信这次 IAM 变更看起来没问题」。它没有关掉「应用想做的那件事是不是托付」。</p>
+<p>对齐上，策略文本、求解器编码、判定结果、是否允许部署，被拉到同一条门禁上。这是对齐在云配置层的工业形态。编码会错，求解器会超时，等价性会在简化后失真。可用性包含如何失败：超时不得被当成通过。失败必须显式。把超时当绿灯，是红许可证在自动化里的形态。</p>
+<p>达成上，每天十亿次分析，达成的是覆盖率，不是一次具体业务的使命。覆盖率有牙齿：没有分析，变更进不去。牙齿咬住的是权限语句。业务行动仍要另绑。把 SMT 次数当成可信性已经完成，是把对象层与保证层再次压成一句广告。</p>
+<p>人的位置被门禁改写。立法进入策略语言与允许的访问类。划界进入「哪些变更必须过 Zelkova」。审判进入求解结果：通过、拒绝、超时。工程师仍在，但不再是唯一盯着百万行 JSON 的人。把人从最不擅长的穷举里撤下来，放到对性质的命名、对误报的裁决、对超时的拒绝上。这与 Therac 的操作员按 “P” 相反，与光大一人开发实盘不足十五日也相反。规模不是为了取代人。规模是为了不把审判交给偶然。</p>
+<p>对方法的借鉴必须克制。可用性 &gt; 证明强度，不是正确性不重要。是：再强的证明，若不能出现在这一次变更里，等于没有。seL4 示范精化可以成为开发。CompCert 示范工具链可以关掉一截假设。Zelkova 示范日常变更可以咬住一截有限性质。三例合起来仍不是学。它们是基础工作。基础工作要被翻译成定义·对齐·达成里可失败的步骤，而不是被翻译成「云厂商已经做完」。</p>
+<figure class="illust"><img src="../fig-c12-cut.png" alt="超时不得当通过。规模咬住的是权限变更，不是全部托付"/><figcaption>超时不得当通过。规模咬住的是权限变更，不是全部托付</figcaption></figure>
+<aside class="needle"><h2>对方法的一针</h2><blockquote><p>用得上的有限检查，盖过用不上的无穷证明。门禁必须显式失败，超时不得当通过。规模咬住的是权限变更，不是全部托付。把每天十亿次写成使命已经完成，是假使命里最像工程的一种。</p></blockquote></aside>
+    </article>
+    <nav class="pager"><a href="../compcert/">上一篇 · CompCert</a></nav>
+    <p class="chart-foot">
+      <span>作者 陈鹏 · 知识操作系统是架构主张，不是已经交付的操作系统。学尚未形成。</span>
+      <span><a href="../">专题目录</a> · <a href="../../book/">专著</a></span>
+    </p>
+  </main>
+
+</body>
+</html>
